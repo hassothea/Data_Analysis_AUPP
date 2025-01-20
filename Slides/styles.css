@@ -41,6 +41,16 @@
     padding: -3px 0; /* Smaller padding */
 }
 
+.up1 {
+    display: block;
+    padding: -10px 0; /* Smaller padding */
+}
+
+.up2 {
+    display: block;
+    padding: -15px 0; /* Smaller padding */
+}
+
 .secbr {
     display: block;
     margin: 2px 0; /* Adjust the vertical space as needed */
