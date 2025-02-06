@@ -1,0 +1,711 @@
+---
+title: "Data Quality & Preprocessing"
+subtitle: "<br> [INF-604: Data Analysis]{.blue} <br>
+[![](./img/AUPP_Logo.png){width=150px}](https://www.aupp.edu.kh/){target='_blank'} <br>"
+author: "[Lecturer: Dr. Sothea HAS]{.blue}"
+toc-depth: 2
+format:
+    revealjs:
+        touch: true
+        controls: true
+        slide-number: c/t
+        logo: './img/AUPP_Logo.png'
+        theme: [default, custom.scss]
+        css: styles.css
+        include-in-header:
+            - text: |
+                <style>
+                #title-slide .title {
+                    font-size: 2em;
+                }
+                </style>
+        menu: false
+linestretch: 1em
+font-size: 10pt
+---
+
+## 📋 Outline
+
+- [Data Sources]{.section .secbr} <br>
+
+- [Data Quality]{.section .secbr} <br>
+
+- [Data Preprocessing]{.section .secbr} <br>
+
+- [Real Examples]{.section .secbr} <br>
+
+```{python}
+path0 = "D:/Sothea_PC/Teaching_AUPP/Data_Analytics/Courses/data"
+path_titanic = "C:/Users/hasso/.cache/kagglehub/datasets/yasserh/titanic-dataset/versions/1"
+
+```
+
+# Data Sources {background-color="#345a8b"} 
+
+## Data Sources
+:::{.columns}
+:::{.column width="50%"}
+:::{.fragment}
+### Primary
+- Data **collected directly from the source** for a specific purpose.
+:::
+:::{.incremental}
+- `Example:`
+    - Surveys or Questionnaires 🗳️
+    - Interviews 🎙️
+    - Observations 🧐
+    - Experiments 🔬
+:::
+:::
+:::{.column width="50%" .fragment}
+### Secondary
+:::{.fragment}
+- Data that **has already been collected, processed, and made available** by others.
+:::
+:::{.incremental}
+- `Example:`
+    - Government publications or reports 📄
+    - Books and articles 📚
+    - **Online databases and repositories** 🌐
+    - Industry/NGO reports 🏭
+:::
+:::
+:::
+
+## Data Sources
+### Format
+:::{style="font-size: 82.5%"}
+:::{.columns}
+:::{.column width="50%"}
+:::{.fragment}
+### Structured
+- Highly **organized** and easily **searchable** in databases using predefined schemas.
+:::
+:::{.incremental}
+- `Structure:` typically stored in tables with **rows** and **columns**.
+- `Example:`
+    - Spreadsheets: Excel ![](./img/excel.jpg){width=30}
+    - CSV files
+
+:::{.fragment .up2}
+![](./img/friends.jpg){width="150" fig-align="center"}
+:::
+:::
+:::
+:::{.column width="50%" .fragment}
+### Unstructured
+:::{.fragment}
+- Lacks a predefined format or schema and is typically stored in its raw form.
+:::
+:::{.incremental}
+- `Structure:` Free-form and can be `text`, `images`, `videos`...
+- `Example:`
+    - Emails/Documents (e.g., Word files, PDFs)
+    - Social media posts, images, audio, videos
+    - Web pages...
+:::
+:::
+:::
+:::
+
+# Data Quality {background-color="#345a8b"} 
+
+## Data quality {auto-animate="true"}
+:::{style="fotn-size: 80%%" .incremental}
+- Someone in 60s said [**Garbage In, Garbage Out (GIGO)!**]{.blue}.
+- **Data quality** is the most important thing in **Data Analysis**.
+
+:::{data-id='quality' .fragment}
+![](./img/data_qual.png){width="500" fig-align="center"}
+:::
+:::
+
+## Data quality {auto-animate="true"}
+:::{style="fotn-size: 80%"}
+:::{data-id='quality'}
+![](./img/data_qual.png){width="500" fig-align="center"}
+:::
+:::
+
+## Data quality {auto-animate="true"}
+:::{style="fotn-size: 80%"}
+:::{data-id='quality'}
+![](./img/data_qual1.png){width="500" fig-align="center"}
+:::
+:::{.incremental}
+- [**Timeliness**]{.blue}: how up-to-date the data is for its intended use.
+- Ex: Temperature of 60s wouldn't help forecasting tomorrow.
+:::
+:::
+
+## Data quality {auto-animate="true"}
+:::{style="fotn-size: 80%"}
+:::{data-id='quality'}
+![](./img/data_qual2.png){width="500" fig-align="center"}
+:::
+:::{.incremental}
+- [**Uniqueness**]{.blue}: data should not be duplicated.
+- Ex: Recording the **same female heart disease patient** many times may lead to a conclude that **females have a higher likelihood** of developing heart disease.
+:::
+:::
+
+## Data quality {auto-animate="true"}
+:::{style="fotn-size: 80%"}
+:::{data-id='quality'}
+![](./img/data_qual3.png){width="500" fig-align="center"}
+:::
+:::{.incremental}
+- [**Validity**]{.blue}: data should take values within its valid range.
+- Ex: Height & weight should not be 0.
+:::
+:::
+
+## Data quality {auto-animate="true"}
+:::{style="fotn-size: 80%"}
+:::{data-id='quality'}
+![](./img/data_qual4.png){width="500" fig-align="center"}
+:::
+:::{.incremental}
+- [**Consistency**]{.blue}: data should be uniform and compatible (format, type...) across different datasets and over time.
+- Ex: 15/03/2004 & 03/15/2004, Male & M...
+:::
+:::
+
+## Data quality {auto-animate="true"}
+:::{style="fotn-size: 80%"}
+:::{data-id='quality'}
+![](./img/data_qual5.png){width="500" fig-align="center"}
+:::
+:::{.incremental}
+- [**Accuracy**]{.blue}: data should be accurate and reflects what it is meant to measure.
+- Ex: You entered '**I like DA Course**' in my survey beause it's not anonymous.
+:::
+:::
+
+## Data quality {auto-animate="true"}
+:::{style="fotn-size: 80%"}
+:::{data-id='quality'}
+![](./img/data_qual6.png){width="500" fig-align="center"}
+:::
+:::{.incremental}
+- [**Completeness**]{.blue}: data should not contain **missing values**.
+- Ex: In [Lab1](https://hassothea.github.io/Data_Analysis_AUPP/Labs/Lab1_Introduction.html){target="_blank"}, `Cabin` column of [Titanic dataset](https://www.kaggle.com/datasets/yasserh/titanic-dataset){target="_blank"} contains mostly `NaN`.
+:::
+:::
+
+
+## Data quality {auto-animate="true"}
+:::{style="fotn-size: 80%"}
+:::{data-id='quality'}
+![](./img/data_quality.png){width="500" fig-align="center"}
+:::
+
+- [**Data quality**]{.blue} includes these 6 factors. 
+:::
+
+## Data quality
+:::{style="fotn-size: 80%"}
+:::{data-id='quality'}
+![](./img/data_qual_sol.png){width="500" fig-align="center"}
+:::
+
+- [**Data quality**]{.blue} includes these 6 factors. 
+- If there is a problem with any of these, you may ☝️
+
+:::{.fragment style="font-size: 90%"}
+- For secondary sources, [**Incompleteness**]{.light-red} is the common one.
+:::
+:::
+
+<!-- https://3453376.fs1.hubspotusercontent-na1.net/hubfs/3453376/Data-quality-dimensions.jpg -->
+
+# Data Preprocessing {background-color="#345a8b"} 
+
+## Data preprocessing
+### Consider an example
+:::{.columns}
+:::{.column width="60%"}
+![](./img/NA0.png){fig-align="center"}
+:::
+:::{.column width="40%"}
+:::{style="font-size: 58%" .fragment}
+```{python}
+import pandas as pd
+data = pd.read_csv(path_titanic + "/Titanic-Dataset.csv")
+data[['Sex', 'Pclass', 'Fare', 'Cabin']].head(12)
+```
+:::
+:::
+:::
+
+## Data preprocessing
+### Consider an example
+:::{.columns}
+:::{.column width="60%"}
+![](./img/NA1.png){fig-align="center"}
+:::
+:::{.column width="40%"}
+:::{style="font-size: 58%"}
+```{python}
+data[['Sex', 'Pclass', 'Fare', 'Cabin']].head(12)
+```
+
+```{python}
+#| echo: true
+#| eval: false
+data.dropna(inplace=True)
+```
+:::
+:::
+:::
+
+## Data preprocessing
+### Consider an example
+:::{.columns}
+:::{.column width="60%"}
+![](./img/NA2.png){fig-align="center"}
+:::
+:::{.column width="40%"}
+:::{style="font-size: 58%"}
+```{python}
+data[['Sex', 'Pclass', 'Fare', 'Cabin']].head(12)
+```
+
+```{python}
+#| echo: true
+#| eval: false
+data.drop(columns = ['Cabin'])
+```
+:::
+:::
+:::
+
+## Data preprocessing
+### Missing values
+
+:::{.columns}
+:::{.column width="58%"}
+- Data of $4$-$7$ years old kids.
+
+```{python}
+import pandas as pd
+data_kids = pd.read_csv("D:/Sothea_PC/Teaching_ITC/EDA\data/Enfants.txt", sep="\t")
+data_kids.columns = ["Gender", "Age", "Height", "Weight"]
+id_show = list(data_kids.index[(data_kids.Height == 0) & (data_kids.Weight != 0)])[:3] + list(data_kids.index[(data_kids.Height != 0) & (data_kids.Weight == 0)])[:3]
+data_kids.iloc[id_show[::2]+id_show[1::2],:].style.hide()
+```
+:::{.fragment}
+- What's wrong with this data?
+:::
+:::
+:::{.column width="42%"}
+:::{.incremental}
+- These are probably missing values (`NA`, `nan`, `NaN`...) in disguise.
+
+- [**Question**]{.light-red}: how do we handle it: [Drop]{.light-red} or [Impute]{.light-blue}?
+
+- [**Answer**]{.green}: we should at least know what kind of missing values are they: **MCAR**, **MAR** or **MNAR**?
+:::
+:::
+:::
+
+## Data Preprocessing
+### Missing values
+:::{.columns}
+#### [Missing Completely At Random (MCAR)]{.light-red}
+
+:::{.column width="50%" .incremental}
+- They are randomly missing.
+- Easy to handle with [imputation](https://en.wikipedia.org/wiki/Imputation_(statistics)){target="_blank"} or [**dropping**]{.light-red} methods if not so many.
+- They don’t introduce **bias**.
+- Removing them does not affect other columns.
+- Ex: Missing values do not affect `Age`. They are **MCAR** in this case.
+:::
+
+:::{.column width="50%"}
+```{python}
+#| echo: true
+#| code-fold: true
+import plotly.graph_objects as go
+import plotly.express as px
+from plotly.subplots import make_subplots
+data_dropped_NA = data_kids.loc[(data_kids.Height > 0) & (data_kids.Weight > 0)]
+fig_kid1 = go.Figure(go.Histogram(
+    x=data_kids.Age, 
+    name="Before dropping NA", 
+    showlegend=True))
+fig_kid1.add_trace(
+    go.Histogram(
+        x=data_dropped_NA.Age, 
+        name="After dropping NA", 
+        showlegend=True, 
+        visible="legendonly"))
+fig_kid1.update_layout(barmode='overlay', 
+                       title="Distribution of Age", 
+                       xaxis=dict(title="Age"),
+                       yaxis=dict(title="Count"),
+                       width=500,
+                       height=400)
+fig_kid1.update_traces(opacity=0.5)
+fig_kid1.show()
+```
+:::
+:::
+
+## Data Preprocessing
+### Missing values
+:::{.columns}
+#### [Missing At Random (MAR)]{.light-red}
+
+:::{.column width="50%" .incremental} 
+- The *missingness* is related to other [**columns**]{.light-blue}.
+- One can try using [**those related columns**]{.light-blue} to impute.
+- If not too many, model-based [imputation](https://en.wikipedia.org/wiki/Imputation_(statistics)){target="_blank"} often work well: [KNN](https://www.ibm.com/topics/knn){target="_blank"}...
+- Ex: Most of the missing values are from female children. They are **MAR** in this case.
+:::
+
+:::{.column width="50%"}
+```{python}
+#| echo: true
+#| code-fold: true
+count = data_kids.Gender.value_counts()
+fig_kid2 = go.Figure(
+    go.Bar(
+        x=count.index, 
+        y=count, 
+        name="Before dropping NA"))
+count_NA = data_dropped_NA.Gender.value_counts()
+fig_kid2.add_trace(
+    go.Bar(x=count_NA.index, 
+    y=count_NA, 
+    name="After dropping NA", 
+    visible="legendonly"))
+fig_kid2.update_layout(barmode='overlay', 
+                       title="Distribution of Gender", 
+                       xaxis=dict(title="Gender"),
+                       yaxis=dict(title="Count"),
+                       width=500,
+                       height=400)
+fig_kid2.update_traces(opacity=0.5)
+fig_kid2.show()
+```
+:::
+
+:::
+
+## Data Preprocessing
+### Missing values
+#### [Missing Not At Random (MNAR)]{.light-red}
+:::{.incremental}
+- These are the trickiest, as the *missingness* is related to the missing values themselves.
+- It may require domain-specific knowledge or advanced techniques (more data, external info...).
+- It's hard to judge if missing values are actually **MNAR**.
+- Ex: Very high or very low salaries are often missing from a survey if it's optional.
+- If not so many, [**dropping**]{.light-red} is a common solution.
+:::
+
+## Data Preprocessing
+### Rules of Thumb
+
+| Proportion of `NA` | Rules of thumb |
+|:-----------|:------------------------|
+| $< 5\%$      | **Drop/remove** rows.   |
+| $5-10\%$     | Can be **dropped but must be** [**cautious**]{.light-blue} about the type of missing. |
+| $10-20\%$    | Better to be **imputed** according to their types. |
+| $20-30\%$    | **Remove the entire column**, if it's not so important. |
+| $>30\%$      | **Remove** the entire column. |
+|
+
+
+## Data Preprocessing
+### Outliers
+- Data points that deviate significantly from the majority of observations in a dataset.
+- It can influence our analyses: insightful or problematic!
+- We can hunt them down using:
+    - Graphs: Scatterplots, Boxplots or histograms...
+    - They often fall outside $[\text{Q}_1-1.5\text{IQR},\text{Q}_3+1.5\text{IQR}]$.
+
+```{python}
+fig_H = px.box(x=data_dropped_NA.Height)
+fig_H.update_layout(title="Boxplot of children's Heights",
+                    xaxis=dict(title="Height (cm)"),
+                    height=200)
+fig_H.show()
+```
+
+
+## Data Preprocessing
+### Handling outliers
+
+:::{.incremental}
+- **Not all outliers** would affect the analysis (may be ignored).
+- We can apply [**capping**]{.light-blue} (limiting outliers to some values) or [**Trimming**]{.light-red} (completely remove them).
+- Some transformations may reduce the effect of outliers:
+    - [Z-score](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html){target="_blank"}: $x\to \frac{x-\overline{x}}{\sigma_{x}}$ (centered by `mean`, scaled by `std`).
+    - [Min-Max scaling](https://scikit-learn.org/1.5/modules/generated/sklearn.preprocessing.MinMaxScaler.html){target="_blank"}: $x\to\frac{x-\min}{\max-\min}\in [0,1]$.
+    - If the data are positive: $x\to \log(x)$ or $x\to \sqrt{x}$
+- [**No absolute solution! It depends on the analysis**]{.light-red}.
+:::
+
+## Data Preprocessing
+### One-hot encoding
+
+:::{.columns}
+:::{.column width="50%"}
+- This is taken from [`gapminder`](https://www.gapminder.org/){target="_blank"} dataset (2007).
+
+```{python}
+#| echo: true
+#| code-fold: true
+from gapminder import gapminder
+import numpy as np
+from sklearn.preprocessing import OneHotEncoder as onehot
+encoder = onehot()
+encoded_data = encoder.fit_transform(gapminder.loc[gapminder.year == 2007, ['continent']]).toarray()
+
+# encoded dataset
+X_encoded = pd.DataFrame(encoded_data, columns=[x.replace('continent_', '') for x in encoder.get_feature_names_out(['continent'])])
+df_encoded = X_encoded.copy()
+df_encoded['lifeExp'] = gapminder.lifeExp.loc[gapminder.year==2007].values
+fig_cont = px.box(data_frame=gapminder.loc[gapminder.year==2007,:],
+                  x="continent", y="lifeExp", color="continent")
+fig_cont.update_layout(title="Life Expectancy vs Continent", height=250, width=500)
+fig_cont.show()
+```
+:::
+:::{.column width="50%" style="font-size: 80%" .incremental}
+- Sometimes, categorical data are very informative and useful especially for building models.
+- **One-hot encoding** is a way to covert them into numbers.
+- For example: <br> `{python} list(gapminder.loc[gapminder.year == 2007, ['continent']].continent[:4])` 👇
+
+:::{style="font-size: 75%" .fragment}
+```{python}
+df_encoded.iloc[:4,:-1].round()
+```
+:::
+:::
+:::
+
+# Real Example {background-color="#345a8b"} 
+
+```{python}
+path = "C:/Users/hasso/.cache/kagglehub/datasets/surendhan/titanic-dataset/versions/1/"
+```
+
+## Real Example
+### [Titanic Dataset](https://www.kaggle.com/datasets/yasserh/titanic-dataset){target="_blank"} (891 rows, 12 columns)
+:::{style="font-size: 70%" .incremental}
+
+```{python}
+#| code-fold: true
+data = pd.read_csv(path + "titanic.csv")
+data.iloc[:,[1,2,4,5,6,7,9,10,11]].head(2)
+```
+
+:::{.fragment}
+#### Data types:
+
+```{python}
+data.iloc[:,[1,2,4,5,6,7,9,10,11]].dtypes.to_frame().T
+```
+:::
+:::{.fragment}
+#### Missing values:
+
+```{python}
+data.iloc[:,[1,2,4,5,6,7,9,10,11]].isna().sum().to_frame().T
+```
+:::
+
+- [**Question:**]{.light-red} What should we do in the preprocessing step?
+- [**Answer:**]{.green} We should:
+    - Convert **Survived** and **Pclass** to be `object`.
+    - Handle missing values: [drop]{.light-red} 1 `NA` of **Fare**, [remove]{.light-red} column **Cabin** and [study]{.light-blue} **Age**.
+
+:::
+
+## Real Example
+### [Titanic Dataset](https://www.kaggle.com/datasets/yasserh/titanic-dataset){target="_blank"} (891 rows, 12 columns)
+:::{style="font-size: 90%"}
+:::{.columns}
+:::{.column width="60%"}
+:::{.fragment}
+- Convert data types:
+
+```{python}
+#| echo: true
+#| code-line-numbers: "1|2,3|4"
+#| fragment: true
+col_to_be_converted = ['Survived', 'Pclass']
+for col in col_to_be_converted:
+    data[col] = data[col].astype(object)
+data[col_to_be_converted].dtypes.to_frame().T
+```
+:::
+:::{.fragment}
+- Drop column `Cabin`:
+
+```{python}
+#| echo: true
+data.drop(columns = ["Cabin"], inplace = True)
+```
+:::
+:::{.fragment}
+- Drop 1 row with `NA` in `Fare`:
+
+```{python}
+#| echo: true
+data.dropna(subset = ['Fare'], inplace = True)
+```
+:::
+:::
+:::{.column width="40%"}
+:::{.fragment style="font-size: 85%" .incremental}
+- Study missing values in `Age`:
+    - Impact on qual columns:
+
+:::{.fragment}
+```{python}
+#| echo: true
+#| code-fold: true
+import seaborn as sns
+import matplotlib.pyplot as plt
+sns.set(style="whitegrid")
+fig, axs = plt.subplots(2, 4, figsize=(6, 3.75))
+col_qual = ['Survived', 'Pclass', 'Sex', 'Embarked']
+for i, va in enumerate(col_qual):
+    sns.countplot(data, x=va, ax=axs[0,i], stat = "proportion")
+    axs[0,i].bar_label(axs[0,i].containers[0], fmt="%0.2f")
+
+    sns.countplot(data.dropna(), x=va, ax=axs[1,i] , stat = "proportion")
+    axs[1,i].bar_label(axs[1,i].containers[0], fmt="%0.2f")
+    if i == 0:
+        axs[0,i].set_ylabel("Before remove NA")
+        axs[1,i].set_ylabel("After remove NA")
+    else:
+        axs[0,i].set_ylabel("")
+        axs[1,i].set_ylabel("")
+plt.tight_layout()
+plt.show()
+```
+:::
+:::
+:::
+:::
+:::
+
+## Real Example
+### [Titanic Dataset](https://www.kaggle.com/datasets/yasserh/titanic-dataset){target="_blank"} (891 rows, 12 columns)
+:::{style="font-size: 90%"}
+:::{.columns}
+:::{.column width="60%"}
+- Impact on quan columns:
+
+```{python}
+#| echo: true
+#| code-fold: true
+sns.set(style="whitegrid")
+fig, axs = plt.subplots(2, 3, figsize=(6, 3.5))
+col_quan = ['SibSp', 'Parch', 'Fare']
+for i, va in enumerate(col_quan):
+    sns.histplot(data, x=va, ax=axs[0,i], kde=True)
+    sns.histplot(data.dropna(), x=va, ax=axs[1,i], kde=True)
+    if i == 0:
+        axs[0,i].set_ylabel("Before remove NA")
+        axs[1,i].set_ylabel("After remove NA")
+    else:
+        axs[0,i].set_ylabel("")
+        axs[1,i].set_ylabel("")
+plt.tight_layout()
+plt.show()
+```
+
+:::{.fragment style="font-size: 80%" .light-red}
+- Do you think that removing `NA` greatly affects other columns?
+:::
+:::
+:::{.column width="40%"}
+:::{style="font-size: 85%"}
+- Study missing values in `Age`:
+    - Impact on qual columns:
+
+```{python}
+#| echo: true
+#| code-fold: true
+import seaborn as sns
+import matplotlib.pyplot as plt
+sns.set(style="whitegrid")
+fig, axs = plt.subplots(2, 4, figsize=(6, 3.75))
+col_qual = ['Survived', 'Pclass', 'Sex', 'Embarked']
+for i, va in enumerate(col_qual):
+    sns.countplot(data, x=va, ax=axs[0,i], stat = "proportion")
+    axs[0,i].bar_label(axs[0,i].containers[0], fmt="%0.2f")
+
+    sns.countplot(data.dropna(), x=va, ax=axs[1,i] , stat = "proportion")
+    axs[1,i].bar_label(axs[1,i].containers[0], fmt="%0.2f")
+    if i == 0:
+        axs[0,i].set_ylabel("Before remove NA")
+        axs[1,i].set_ylabel("After remove NA")
+    else:
+        axs[0,i].set_ylabel("")
+        axs[1,i].set_ylabel("")
+plt.tight_layout()
+plt.show()
+```
+:::
+:::
+:::
+:::
+
+
+## Real Example
+### [Titanic Dataset](https://www.kaggle.com/datasets/yasserh/titanic-dataset){target="_blank"} (891 rows, 12 columns)
+:::{style="font-size: 80%"}
+- As removing `NA` barely impacts other columns, we can
+    - Drop rows with `NA` or
+    - Impute with `mean` or `median`.
+
+```{python}
+#| echo: true
+data.fillna(value = data[['Age']].mean(), inplace = True)
+data.iloc[:,[1,2,4,5,6,7,9,10]].isna().sum().to_frame().T
+```
+
+:::{.fragment}
+- `Age` after imputation:
+
+```{python}
+#| fig-align: center
+plt.figure(figsize=(10, 1.5))
+ax = sns.boxplot(data, x = "Age")
+plt.show()
+```
+:::
+:::
+
+:::{.center}
+
+## 🥳 Yeahhhh....  {background-image="./img/end_page.jpg" background-opacity="0.3"}
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+### Let's Party... 🥂
+:::
+
+## 
+
+![](./img/kid_end.jpeg){width="90%" fig-align="center"}
+
+
+
+<!--
+<iframe width="100%" height="90%" src="https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=WA91U0Pvf5bCaVXUdR6X7crGJM6Z7499&id=5lO5wryojkq_zkjrwHUnMWS5zwU1oqlEh9vQjCQRLPdURDdSVU9TM0RZV0NOTFJSUU8xM1VFTExSVi4u" frameborder="0" marginwidth="0" marginheight="0" style="border: none; max-width:100%; max-height:100vh" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen> </iframe>
+
+-->
