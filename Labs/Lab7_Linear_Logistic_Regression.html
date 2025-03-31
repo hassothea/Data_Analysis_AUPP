@@ -199,7 +199,54 @@ window.Quarto = {
 </section>
 <section id="ii.-logistic-regression" class="level2">
 <h2 class="anchored" data-anchor-id="ii.-logistic-regression"><strong>II. Logistic Regression</strong></h2>
-<p>…Loading</p>
+<p><a href="https://www.who.int/health-topics/cardiovascular-diseases#tab=tab_1">Cardiovascular diseases (CVDs)</a> are the leading cause of death globally, taking an estimated 17.9 million lives each year (<a href="https://www.who.int/health-topics/cardiovascular-diseases#tab=tab_1">WHO</a>). CVDs are a group of disorders of the heart and blood vessels and include coronary heart disease, cerebrovascular disease, rheumatic heart disease and other conditions. More than four out of five CVD deaths are due to heart attacks and strokes, and one third of these deaths occur prematurely in people under 70 years of age. This research intends to pinpoint the most relevant/risk factors of heart disease as well as predict the overall risk using logistic regression.</p>
+<p>We will explore <a href="https://www.kaggle.com/datasets/dileep070/heart-disease-prediction-using-logistic-regression">Kaggle Heart Disease Dataset</a>. Load the dataset into the environment.</p>
+<div id="cell-15" class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># To do</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="data-preprocessing-and-eda-1" class="level2">
+<h2 class="anchored" data-anchor-id="data-preprocessing-and-eda-1"><strong>1. Data Preprocessing and EDA</strong></h2>
+<p><strong>A. Univariate Analysis</strong></p>
+<ul>
+<li>Check and modify if there is any column with wrong data type.</li>
+<li>Are there any missing values in this dataset? If so, compute percentage of missing values within each column containing such values and properly handle them.</li>
+<li>Compute descriptive statistics of the data and visualize their distribution.</li>
+<li>Pick a few columns and describe their distribution.</li>
+</ul>
+<div id="cell-17" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Todo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>B. Bivariate Analysis</strong></p>
+<ul>
+<li>Compute correlation matrix among numerical columns.</li>
+<li>Visualize relationship between each column to the target <code>TenYearCHD</code>.</li>
+<li>Draft a list of columns that you think is most related to the target.</li>
+</ul>
+<div id="cell-19" class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># To do</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="build-logistic-regression-models" class="level2">
+<h2 class="anchored" data-anchor-id="build-logistic-regression-models"><strong>2. Build logistic regression models</strong></h2>
+<p><strong>A. Simple Logistic Regression Model</strong></p>
+<ul>
+<li>Split the data into <span class="math inline">\(80\%-20\%\)</span> of training and testing data using <code>train_test_split</code> from <code>sklearn.preprocessing</code> module.</li>
+<li>Build a logistic regression model called <code>lg0</code> using only one selected input to predict the target <code>TenYearCHD</code>.</li>
+<li>Evaluate performance of the model built in the previous step using metrics such as <code>accuracy</code>, <code>precision</code>, <code>recall</code> and <code>f1_score</code> (from <code>sklearn.metrics</code> module).</li>
+<li>Write down explicit formula of your model.</li>
+</ul>
+<div id="cell-21" class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># To do</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>B. Multiple Logistic Regression Model</strong></p>
+<ul>
+<li>Build a logistic regression model (called <code>lg1</code>) to predict the target using just the columns drafted in part <strong>1.B</strong>.</li>
+<li>Measure its performance on the test data using all metrics.</li>
+<li>Build another logistic regression model using all the columns (called <code>lg2</code>).</li>
+<li>Compute its performance on the test data using all the metrics.</li>
+<li>Conclude.</li>
+</ul>
 </section>
 </section>
 <section id="further-readings" class="level1">
@@ -208,6 +255,9 @@ window.Quarto = {
 <li><a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html">Linear Regression Module, sklearn</a></li>
 <li><a href="https://www.geeksforgeeks.org/ml-linear-regression/">Linear Regression in Machine learning, geeks for geeks</a>.</li>
 <li><a href="https://en.wikipedia.org/wiki/Linear_regression">Linear Regression, wiki</a>.</li>
+<li><a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html">Logistic Regression, sklearn</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Logistic_regression">Logistic Regression, wiki</a></li>
+<li><a href="https://www.statlearning.com/">Introduction to statistical learning, James et al.&nbsp;(2021)</a>.</li>
 </ul>
 </section>
 
