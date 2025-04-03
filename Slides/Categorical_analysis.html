@@ -1,0 +1,2585 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="Categorical_analysis_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Categorical_analysis_files/libs/quarto-html/tabby.min.js"></script>
+<script src="Categorical_analysis_files/libs/quarto-html/popper.min.js"></script>
+<script src="Categorical_analysis_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="Categorical_analysis_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Categorical_analysis_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="Categorical_analysis_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="Categorical_analysis_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="Categorical_analysis_files/libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
+<link href="Categorical_analysis_files/libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.5.56">
+
+  <meta name="author" content="Lecturer: Dr.&nbsp;Sothea HAS">
+  <title>Categorical Analysis &amp; \chi^2-test</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="Categorical_analysis_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="Categorical_analysis_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="Categorical_analysis_files/libs/revealjs/dist/theme/quarto.css">
+  <link rel="stylesheet" href="styles.css">
+  <link href="Categorical_analysis_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="Categorical_analysis_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="Categorical_analysis_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="Categorical_analysis_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-titled.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-titled) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-titled .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-titled .callout-title  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-titled.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-titled.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-title {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-title {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-title {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-titled .callout-body > .callout-content > :last-child {
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
+  }
+
+  .callout.callout-titled .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-titled) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-title {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-title {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-title {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-title {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-title {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+  
+  <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+  <script type="text/javascript">
+  window.PlotlyConfig = {MathJaxConfig: 'local'};
+  if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}
+  if (typeof require !== 'undefined') {
+  require.undef("plotly");
+  requirejs.config({
+      paths: {
+          'plotly': ['https://cdn.plot.ly/plotly-2.35.2.min']
+      }
+  });
+  require(['plotly'], function(Plotly) {
+      window._Plotly = Plotly;
+  });
+  }
+  </script>
+
+  <style>
+  #title-slide .title {
+      font-size: 2em;
+  }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Categorical Analysis &amp; <span class="math inline">\(\chi^2\)</span>-test</h1>
+  <p class="subtitle"><br> <span class="blue">INF-604: Data Analysis</span> <br> <a href="https://www.aupp.edu.kh/" target="_blank"><img data-src="./img/AUPP_Logo.png" width="150"></a> <br></p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+<span class="blue">Lecturer: Dr.&nbsp;Sothea HAS</span> 
+</div>
+</div>
+</div>
+
+</section>
+<section id="outline" class="slide level2">
+<h2><i class="fa-solid fa-address-book" aria-label="address-book"></i> Outline</h2>
+<ul>
+<li><p><span class="section secbr"><strong>Motivation</strong></span> <br></p></li>
+<li><p><span class="section secbr"><strong>Contingency Table</strong></span> <br></p></li>
+<li><p><span class="section secbr"><strong><span class="math inline">\(\chi^2\)</span>-Distance</strong></span> <br></p></li>
+<li><p><span class="section secbr"><strong><span class="math inline">\(\chi^2\)</span>-Test</strong></span> <br></p></li>
+<li><p><span class="section secbr"><strong>Application</strong></span> <br></p></li>
+</ul>
+</section>
+<section>
+<section id="motivation" class="title-slide slide level1 center" data-background-color="#345a8b">
+<h1>Motivation</h1>
+
+</section>
+<section id="motivation-1" class="slide level2 scrollable">
+<h2>Motivation</h2>
+<h3 id="hair-eye-color-dataset"><a href="https://www.kaggle.com/datasets/jasleensondhi/hair-eye-color" target="_blank">Hair-Eye Color Dataset</a></h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div style="font-size: 75%">
+<ul>
+<li>Frequency table:</li>
+</ul>
+<div id="6872b5fb" class="cell" data-execution_count="3">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href=""></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href=""></a>data <span class="op">=</span> pd.read_csv(</span>
+<span id="cb1-3"><a href=""></a>    path_eye <span class="op">+</span> <span class="st">"HairEyeColor.csv"</span>)<span class="op">\</span></span>
+<span id="cb1-4"><a href=""></a>    .drop(columns <span class="op">=</span> [<span class="st">'Unnamed: 0'</span>])</span>
+<span id="cb1-5"><a href=""></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="135">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe caption-top" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Hair</th>
+<th data-quarto-table-cell-role="th">Eye</th>
+<th data-quarto-table-cell-role="th">Sex</th>
+<th data-quarto-table-cell-role="th">Freq</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Black</td>
+<td>Brown</td>
+<td>Male</td>
+<td>32</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Brown</td>
+<td>Brown</td>
+<td>Male</td>
+<td>53</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Red</td>
+<td>Brown</td>
+<td>Male</td>
+<td>10</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Blond</td>
+<td>Brown</td>
+<td>Male</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Black</td>
+<td>Blue</td>
+<td>Male</td>
+<td>11</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>Brown</td>
+<td>Blue</td>
+<td>Male</td>
+<td>50</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>Red</td>
+<td>Blue</td>
+<td>Male</td>
+<td>10</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>Blond</td>
+<td>Blue</td>
+<td>Male</td>
+<td>30</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>Black</td>
+<td>Hazel</td>
+<td>Male</td>
+<td>10</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
+<td>Brown</td>
+<td>Hazel</td>
+<td>Male</td>
+<td>25</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">10</td>
+<td>Red</td>
+<td>Hazel</td>
+<td>Male</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">11</td>
+<td>Blond</td>
+<td>Hazel</td>
+<td>Male</td>
+<td>5</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">12</td>
+<td>Black</td>
+<td>Green</td>
+<td>Male</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">13</td>
+<td>Brown</td>
+<td>Green</td>
+<td>Male</td>
+<td>15</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">14</td>
+<td>Red</td>
+<td>Green</td>
+<td>Male</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">15</td>
+<td>Blond</td>
+<td>Green</td>
+<td>Male</td>
+<td>8</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">16</td>
+<td>Black</td>
+<td>Brown</td>
+<td>Female</td>
+<td>36</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">17</td>
+<td>Brown</td>
+<td>Brown</td>
+<td>Female</td>
+<td>66</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">18</td>
+<td>Red</td>
+<td>Brown</td>
+<td>Female</td>
+<td>16</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">19</td>
+<td>Blond</td>
+<td>Brown</td>
+<td>Female</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">20</td>
+<td>Black</td>
+<td>Blue</td>
+<td>Female</td>
+<td>9</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">21</td>
+<td>Brown</td>
+<td>Blue</td>
+<td>Female</td>
+<td>34</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">22</td>
+<td>Red</td>
+<td>Blue</td>
+<td>Female</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">23</td>
+<td>Blond</td>
+<td>Blue</td>
+<td>Female</td>
+<td>64</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">24</td>
+<td>Black</td>
+<td>Hazel</td>
+<td>Female</td>
+<td>5</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">25</td>
+<td>Brown</td>
+<td>Hazel</td>
+<td>Female</td>
+<td>29</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">26</td>
+<td>Red</td>
+<td>Hazel</td>
+<td>Female</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">27</td>
+<td>Blond</td>
+<td>Hazel</td>
+<td>Female</td>
+<td>5</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">28</td>
+<td>Black</td>
+<td>Green</td>
+<td>Female</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">29</td>
+<td>Brown</td>
+<td>Green</td>
+<td>Female</td>
+<td>14</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">30</td>
+<td>Red</td>
+<td>Green</td>
+<td>Female</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">31</td>
+<td>Blond</td>
+<td>Green</td>
+<td>Female</td>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div style="font-size: 90%">
+<ul>
+<li class="fragment">Possible investigation:
+<ul>
+<li class="fragment"><code>Hair</code> color vs <code>Eye</code> color</li>
+<li class="fragment"><code>Gender</code> vs <code>Hair</code> color</li>
+<li class="fragment"><code>Gender</code> vs <code>Eye</code> color</li>
+</ul></li>
+<li class="fragment">Let’s analyze <code>Hair</code> vs <code>Eye</code> color!</li>
+<li class="fragment"><span class="light-red"><strong>Q1:</strong></span> How to work with such a dataset?</li>
+<li class="fragment"><span class="green"><strong>A1:</strong></span> To analyze relationship between categorical variables, we often use <code>contingency table</code>.</li>
+</ul>
+</div>
+</div></div>
+</section></section>
+<section>
+<section id="contingency-table" class="title-slide slide level1 center" data-background-color="#345a8b">
+<h1>Contingency Table</h1>
+
+</section>
+<section id="contingency-table-1" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Contingency Table</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div style="font-size: 75%">
+<ul>
+<li class="fragment">To obtain a two-way contingency table (<code>Hair</code> vs <code>Eye</code>) from a three-way one, we sum over the <code>Gender</code> because: <span class="math display">\[n(\text{H, E})=\sum_{x\in\{M,F\}}n(\text{H, E, G}=x).\]</span></li>
+</ul>
+<div class="fragment" data-id="table" style="font-size: 95%">
+<div id="c7273c33" class="cell" data-execution_count="4">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href=""></a>df_hair_eye <span class="op">=</span> data.pivot_table(</span>
+<span id="cb2-2"><a href=""></a>    values<span class="op">=</span><span class="st">"Freq"</span>, </span>
+<span id="cb2-3"><a href=""></a>    index<span class="op">=</span><span class="st">"Hair"</span>, </span>
+<span id="cb2-4"><a href=""></a>    columns<span class="op">=</span><span class="st">"Eye"</span>, </span>
+<span id="cb2-5"><a href=""></a>    aggfunc<span class="op">=</span><span class="st">"sum"</span>, </span>
+<span id="cb2-6"><a href=""></a>    fill_value<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb2-7"><a href=""></a>Observed <span class="op">=</span> df_hair_eye.copy()</span>
+<span id="cb2-8"><a href=""></a>n <span class="op">=</span> df_hair_eye.<span class="bu">sum</span>().<span class="bu">sum</span>()</span>
+<span id="cb2-9"><a href=""></a>df_hair_eye</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="136">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe caption-top" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th">Eye</th>
+<th data-quarto-table-cell-role="th">Blue</th>
+<th data-quarto-table-cell-role="th">Brown</th>
+<th data-quarto-table-cell-role="th">Green</th>
+<th data-quarto-table-cell-role="th">Hazel</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Hair</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Black</td>
+<td>20</td>
+<td>68</td>
+<td>5</td>
+<td>15</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Blond</td>
+<td>94</td>
+<td>7</td>
+<td>16</td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Brown</td>
+<td>84</td>
+<td>119</td>
+<td>29</td>
+<td>54</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Red</td>
+<td>17</td>
+<td>26</td>
+<td>14</td>
+<td>14</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li class="fragment">Does it look like there’s a relationship between <code>Hair</code> and <code>Eye</code> color?</li>
+</ul>
+</div>
+</div><div class="column" style="width:50%;">
+<div style="font-size: 75%">
+<ul>
+<li class="fragment">Visualization:</li>
+</ul>
+<div class="fragment">
+<div id="07169e0f" class="cell" data-execution_count="5">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href=""></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-2"><a href=""></a>df_hair_eye.plot(kind<span class="op">=</span><span class="st">"bar"</span>, figsize<span class="op">=</span>(<span class="dv">5</span>, <span class="dv">3</span>), width<span class="op">=</span><span class="fl">0.8</span>)</span>
+<span id="cb3-3"><a href=""></a>plt.title(<span class="st">"Grouped Bar Chart of Hair vs. Eye Color"</span>)</span>
+<span id="cb3-4"><a href=""></a>plt.xlabel(<span class="st">"Hair Color"</span>)</span>
+<span id="cb3-5"><a href=""></a>plt.ylabel(<span class="st">"Frequency"</span>)</span>
+<span id="cb3-6"><a href=""></a>plt.legend(title<span class="op">=</span><span class="st">"Eye Color"</span>)</span>
+<span id="cb3-7"><a href=""></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="Categorical_analysis_files/figure-revealjs/cell-6-output-1.png" width="444" height="330"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li class="fragment">How about now?</li>
+<li class="fragment"><span class="blue"><strong>Goal:</strong></span> Establish statistical evidence to determine whether an association exists between 2 categorical variables.</li>
+</ul>
+</div>
+</div></div>
+</section>
+<section id="contingency-table-2" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Contingency Table</h2>
+<h3 id="marginal-frequency-relative-frequency">Marginal Frequency/ Relative Frequency</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div style="font-size:80%">
+<div data-id="table" style="font-size:90%">
+<div id="c974724b" class="cell" data-execution_count="6">
+<div class="cell-output cell-output-display" data-execution_count="138">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe caption-top" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th">Eye</th>
+<th data-quarto-table-cell-role="th">Blue</th>
+<th data-quarto-table-cell-role="th">Brown</th>
+<th data-quarto-table-cell-role="th">Green</th>
+<th data-quarto-table-cell-role="th">Hazel</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Hair</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Black</td>
+<td>20</td>
+<td>68</td>
+<td>5</td>
+<td>15</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Blond</td>
+<td>94</td>
+<td>7</td>
+<td>16</td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Brown</td>
+<td>84</td>
+<td>119</td>
+<td>29</td>
+<td>54</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Red</td>
+<td>17</td>
+<td>26</td>
+<td>14</td>
+<td>14</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li class="fragment">Let <span class="math inline">\(n_{i,j}\)</span> be the joint frequency.</li>
+<li class="fragment"><strong>Marginal frequency:</strong>
+<ul>
+<li class="fragment"><span class="light-blue"><strong>Row freq:</strong></span> <span class="math inline">\(\color{blue}{n_{i,.}=\sum_{j=1}^Jn_{i,j}}.\)</span></li>
+<li class="fragment"><span class="light-red"><strong>Column freq:</strong></span> <span class="math inline">\(\color{red}{n_{.,j}=\sum_{i=1}^In_{i,j}}.\)</span></li>
+</ul></li>
+</ul>
+</div>
+</div></div>
+</section>
+<section id="contingency-table-3" class="slide level2">
+<h2>Contingency Table</h2>
+<h3 id="marginal-frequency-relative-frequency-1">Marginal Frequency/ Relative Frequency</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div style="font-size:80%">
+<div data-id="table" style="font-size:78%">
+<div id="96293736" class="cell" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="139">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe caption-top" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th">Eye</th>
+<th data-quarto-table-cell-role="th">Blue</th>
+<th data-quarto-table-cell-role="th">Brown</th>
+<th data-quarto-table-cell-role="th">Green</th>
+<th data-quarto-table-cell-role="th">Hazel</th>
+<th data-quarto-table-cell-role="th">n_i</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Hair</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Black</td>
+<td>20</td>
+<td>68</td>
+<td>5</td>
+<td>15</td>
+<td>108</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Blond</td>
+<td>94</td>
+<td>7</td>
+<td>16</td>
+<td>10</td>
+<td>127</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Brown</td>
+<td>84</td>
+<td>119</td>
+<td>29</td>
+<td>54</td>
+<td>286</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Red</td>
+<td>17</td>
+<td>26</td>
+<td>14</td>
+<td>14</td>
+<td>71</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">n_j</td>
+<td>215</td>
+<td>220</td>
+<td>64</td>
+<td>93</td>
+<td>592</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li>Let <span class="math inline">\(n_{i,j}\)</span> be the joint frequency.</li>
+<li><strong>Marginal frequency:</strong>
+<ul>
+<li><span class="light-blue"><strong>Row freq:</strong></span> <span class="math inline">\(\color{blue}{n_{i,.}=\sum_{j=1}^Jn_{i,j}}.\)</span></li>
+<li><span class="light-red"><strong>Column freq:</strong></span> <span class="math inline">\(\color{red}{n_{.,j}=\sum_{i=1}^In_{i,j}}.\)</span></li>
+</ul></li>
+</ul>
+</div>
+</div></div>
+</section>
+<section id="contingency-table-4" class="slide level2">
+<h2>Contingency Table</h2>
+<h3 id="marginal-frequency-relative-frequency-2">Marginal Frequency/ Relative Frequency</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div style="font-size:80%">
+<div data-id="table" style="font-size:78%">
+<div id="df2d31fb" class="cell" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="140">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe caption-top" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th">Eye</th>
+<th data-quarto-table-cell-role="th">Blue</th>
+<th data-quarto-table-cell-role="th">Brown</th>
+<th data-quarto-table-cell-role="th">Green</th>
+<th data-quarto-table-cell-role="th">Hazel</th>
+<th data-quarto-table-cell-role="th">n_i</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Hair</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Black</td>
+<td>20</td>
+<td>68</td>
+<td>5</td>
+<td>15</td>
+<td>108</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Blond</td>
+<td>94</td>
+<td>7</td>
+<td>16</td>
+<td>10</td>
+<td>127</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Brown</td>
+<td>84</td>
+<td>119</td>
+<td>29</td>
+<td>54</td>
+<td>286</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Red</td>
+<td>17</td>
+<td>26</td>
+<td>14</td>
+<td>14</td>
+<td>71</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">n_j</td>
+<td>215</td>
+<td>220</td>
+<td>64</td>
+<td>93</td>
+<td>592</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li>Let <span class="math inline">\(n_{i,j}\)</span> be the joint frequency.</li>
+<li><strong>Marginal frequency:</strong>
+<ul>
+<li><span class="light-blue"><strong>Row freq:</strong></span> <span class="math inline">\(\color{blue}{n_{i,.}=\sum_{j=1}^Jn_{i,j}}.\)</span></li>
+<li><span class="light-red"><strong>Column freq:</strong></span> <span class="math inline">\(\color{red}{n_{.,j}=\sum_{i=1}^In_{i,j}}.\)</span></li>
+</ul></li>
+</ul>
+</div>
+</div><div class="column" style="width:50%;">
+<div style="font-size:80%">
+<ul>
+<li><strong>Joint relative frequency (JRF):</strong> <span class="math inline">\(\color{green}{p_{i,j}=n_{i,j}/N}\)</span> with <span class="math inline">\(\color{green}{N=\sum_{i,j}n_{i,j}}\)</span>.</li>
+<li><strong>Marginal relative frequency (MRF):</strong>
+<ul>
+<li><span class="light-blue"><strong>Row RF:</strong></span> <span class="math inline">\(\color{blue}{p_{i,.}=n_{i,.}/N}\)</span>.</li>
+<li><span class="light-red"><strong>Column RF:</strong></span> <span class="math inline">\(\color{red}{p_{.,j}=n_{.,j}/N}\)</span>.</li>
+</ul></li>
+</ul>
+</div>
+</div></div>
+</section>
+<section id="contingency-table-5" class="slide level2">
+<h2>Contingency Table</h2>
+<h3 id="marginal-frequency-relative-frequency-3">Marginal Frequency/ Relative Frequency</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div style="font-size:80%">
+<div data-id="table" style="font-size:64%">
+<div id="99eea70e" class="cell" data-execution_count="9">
+<div class="cell-output cell-output-display" data-execution_count="141">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe caption-top" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th">Eye</th>
+<th data-quarto-table-cell-role="th">Blue</th>
+<th data-quarto-table-cell-role="th">Brown</th>
+<th data-quarto-table-cell-role="th">Green</th>
+<th data-quarto-table-cell-role="th">Hazel</th>
+<th data-quarto-table-cell-role="th">n_i</th>
+<th data-quarto-table-cell-role="th">p_i</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Hair</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Black</td>
+<td>20.00</td>
+<td>68.00</td>
+<td>5.00</td>
+<td>15.00</td>
+<td>108.0</td>
+<td>0.18</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Blond</td>
+<td>94.00</td>
+<td>7.00</td>
+<td>16.00</td>
+<td>10.00</td>
+<td>127.0</td>
+<td>0.21</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Brown</td>
+<td>84.00</td>
+<td>119.00</td>
+<td>29.00</td>
+<td>54.00</td>
+<td>286.0</td>
+<td>0.48</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Red</td>
+<td>17.00</td>
+<td>26.00</td>
+<td>14.00</td>
+<td>14.00</td>
+<td>71.0</td>
+<td>0.12</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">n_j</td>
+<td>215.00</td>
+<td>220.00</td>
+<td>64.00</td>
+<td>93.00</td>
+<td>592.0</td>
+<td>1.00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">p_j</td>
+<td>0.18</td>
+<td>0.21</td>
+<td>0.48</td>
+<td>0.12</td>
+<td>1.0</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li>Let <span class="math inline">\(n_{i,j}\)</span> be the <strong>joint frequency</strong>.</li>
+<li><strong>Marginal frequency:</strong>
+<ul>
+<li><span class="light-blue"><strong>Row freq:</strong></span> <span class="math inline">\(\color{blue}{n_{i,.}=\sum_{j=1}^Jn_{i,j}}.\)</span></li>
+<li><span class="light-red"><strong>Column freq:</strong></span> <span class="math inline">\(\color{red}{n_{.,j}=\sum_{i=1}^In_{i,j}}.\)</span></li>
+</ul></li>
+</ul>
+</div>
+</div><div class="column" style="width:50%;">
+<div style="font-size:80%">
+<ul>
+<li><strong>Joint relative frequency (JRF):</strong> <span class="math inline">\(\color{green}{p_{i,j}=n_{i,j}/N}\)</span> with <span class="math inline">\(\color{green}{N=\sum_{i,j}n_{i,j}}\)</span>.</li>
+<li><strong>Marginal relative frequency (MRF):</strong>
+<ul>
+<li><span class="light-blue"><strong>Row RF:</strong></span> <span class="math inline">\(\color{blue}{p_{i,.}=n_{i,.}/N}\)</span>.</li>
+<li><span class="light-red"><strong>Column RF:</strong></span> <span class="math inline">\(\color{red}{p_{.,j}=n_{.,j}/N}\)</span>.</li>
+</ul></li>
+<li><span class="green"><strong>Some key questions:</strong></span>
+<ul>
+<li>By assuming <code>Hair</code> <span class="math inline">\(\!\perp\!\!\!\perp\)</span> <code>Eye</code>, compute:
+<ul>
+<li><span class="math inline">\(\mathbb{P}(\text{Hair='Black', Eye='Brown'})\)</span>?</li>
+<li><span class="math inline">\(\mathbb{P}(\text{Hair='Red', Eye='Blue'})\)</span>?</li>
+<li><span class="math inline">\(\mathbb{P}(\text{Hair='Blond', Eye='Hazel'})\)</span>?</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div></div>
+</section>
+<section id="contingency-table-6" class="slide level2">
+<h2>Contingency Table</h2>
+<h3 id="expected-vs-observed-contingency-table">Expected vs Observed Contingency Table</h3>
+<div style="font-size: 80%">
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>If <code>hair</code> and <code>eye</code> are truly <span class="light-red"><strong>independent</strong></span>, then we <strong>expect</strong> the following contingency table: <span class="math display">\[E_{ij}=p_{i,.}p_{.,j}N\]</span></li>
+</ul>
+<div style="font-size:80%">
+<div id="23dcd396" class="cell" data-execution_count="10">
+<div class="cell-output cell-output-display" data-execution_count="142">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe caption-top" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th">Eye</th>
+<th data-quarto-table-cell-role="th">Blue</th>
+<th data-quarto-table-cell-role="th">Brown</th>
+<th data-quarto-table-cell-role="th">Green</th>
+<th data-quarto-table-cell-role="th">Hazel</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Hair</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Black</td>
+<td>17.76</td>
+<td>23.68</td>
+<td>53.28</td>
+<td>11.84</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Blond</td>
+<td>23.68</td>
+<td>23.68</td>
+<td>59.20</td>
+<td>17.76</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Brown</td>
+<td>53.28</td>
+<td>59.20</td>
+<td>136.16</td>
+<td>35.52</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Red</td>
+<td>11.84</td>
+<td>17.76</td>
+<td>35.52</td>
+<td>5.92</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="fragment">
+<ul>
+<li>This’s called <span class="light-blue"><strong>‘Expected contingency table’</strong></span>.</li>
+</ul>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<ul>
+<li class="fragment">In reality, we <strong>observed</strong>:</li>
+</ul>
+<div class="fragment" style="font-size:75%">
+<div id="a5d63807" class="cell" data-execution_count="11">
+<div class="cell-output cell-output-display" data-execution_count="143">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe caption-top" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th">Eye</th>
+<th data-quarto-table-cell-role="th">Blue</th>
+<th data-quarto-table-cell-role="th">Brown</th>
+<th data-quarto-table-cell-role="th">Green</th>
+<th data-quarto-table-cell-role="th">Hazel</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Hair</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Black</td>
+<td>20</td>
+<td>68</td>
+<td>5</td>
+<td>15</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Blond</td>
+<td>94</td>
+<td>7</td>
+<td>16</td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Brown</td>
+<td>84</td>
+<td>119</td>
+<td>29</td>
+<td>54</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Red</td>
+<td>17</td>
+<td>26</td>
+<td>14</td>
+<td>14</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<div style="font-size: 80%">
+<ul>
+<li class="fragment">It’s called <span class="light-red"><strong>‘Observed contingency table’</strong></span>.</li>
+<li class="fragment"><span class="light-red"><strong>Q2:</strong></span> If <code>Hair</code> and <code>Eye</code> are independent, what can we say about these two table?</li>
+<li class="fragment"><span class="green"><strong>A2:</strong></span> They should be very <strong>similar</strong>!</li>
+<li class="fragment">We need a tool to measure the <strong>similarity</strong> between these two tables.</li>
+</ul>
+</div>
+</div></div>
+</div>
+</section></section>
+<section>
+<section id="chi2-distance" class="title-slide slide level1 center" data-background-color="#345a8b">
+<h1><span class="math inline">\(\chi^2\)</span>-Distance</h1>
+
+</section>
+<section id="chi2-distance-1" class="slide level2">
+<h2><span class="math inline">\(\chi^2\)</span>-Distance</h2>
+<h3 id="measurement-of-similarity">Measurement of similarity</h3>
+<div style="font-size: 80%">
+<div class="columns">
+<div class="column" style="font-size: 70%">
+<ul>
+<li><span class="light-blue"><strong>Expected</strong></span> table:</li>
+</ul>
+<div id="28287fbc" class="cell" data-execution_count="12">
+<div class="cell-output cell-output-display" data-execution_count="144">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe caption-top" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th">Eye</th>
+<th data-quarto-table-cell-role="th">Blue</th>
+<th data-quarto-table-cell-role="th">Brown</th>
+<th data-quarto-table-cell-role="th">Green</th>
+<th data-quarto-table-cell-role="th">Hazel</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Hair</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Black</td>
+<td>17.76</td>
+<td>23.68</td>
+<td>53.28</td>
+<td>11.84</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Blond</td>
+<td>23.68</td>
+<td>23.68</td>
+<td>59.20</td>
+<td>17.76</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Brown</td>
+<td>53.28</td>
+<td>59.20</td>
+<td>136.16</td>
+<td>35.52</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Red</td>
+<td>11.84</td>
+<td>17.76</td>
+<td>35.52</td>
+<td>5.92</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<ul>
+<li><span class="light-red"><strong>Observed</strong></span> table:</li>
+</ul>
+<div id="ab3085d0" class="cell" data-execution_count="13">
+<div class="cell-output cell-output-display" data-execution_count="145">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe caption-top" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th">Eye</th>
+<th data-quarto-table-cell-role="th">Blue</th>
+<th data-quarto-table-cell-role="th">Brown</th>
+<th data-quarto-table-cell-role="th">Green</th>
+<th data-quarto-table-cell-role="th">Hazel</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Hair</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Black</td>
+<td>20</td>
+<td>68</td>
+<td>5</td>
+<td>15</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Blond</td>
+<td>94</td>
+<td>7</td>
+<td>16</td>
+<td>10</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Brown</td>
+<td>84</td>
+<td>119</td>
+<td>29</td>
+<td>54</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Red</td>
+<td>17</td>
+<td>26</td>
+<td>14</td>
+<td>14</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div><div class="column" style="font-size: 90%">
+<ul>
+<li class="fragment"><span class="math inline">\(\chi^2\)</span>-distance between an <span class="light-blue"><strong>Expected</strong></span> and an <span class="light-red"><strong>Observed</strong></span> table is defined by <span class="math display">\[\chi^2=\sum_{i,j}\frac{(\color{blue}{E_{ij}}-\color{red}{O_{ij}})^2}{\color{blue}{E_{ij}}},\]</span>
+<ul>
+<li class="fragment"><span class="math inline">\(\color{blue}{E_{ij}}:\)</span> <span class="light-blue"><strong>expected</strong></span> frequency,</li>
+<li class="fragment"><span class="math inline">\(\color{red}{O_{ij}}:\)</span> <span class="light-red"><strong>observed</strong></span> frequency.</li>
+</ul></li>
+<li class="fragment">For <code>Hair</code> and <code>Eye</code> example:</li>
+</ul>
+<div class="fragment" style="font-size: 85%">
+<div id="d88507ca" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href=""></a>chi2_val <span class="op">=</span> ((expect <span class="op">-</span> Observed) <span class="op">**</span> <span class="dv">2</span><span class="op">/</span>expect).<span class="bu">sum</span>().<span class="bu">sum</span>()</span>
+<span id="cb4-2"><a href=""></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Chi-squared distance: </span><span class="sc">{</span>np<span class="sc">.</span><span class="bu">round</span>(chi2_val, <span class="dv">3</span>)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Chi-squared distance: 585.519</code></pre>
+</div>
+</div>
+</div>
+<ul>
+<li class="fragment">Now, is this small or large?</li>
+</ul>
+</div></div>
+</div>
+</section></section>
+<section>
+<section id="chi2-test" class="title-slide slide level1 center" data-background-color="#345a8b">
+<h1><span class="math inline">\(\chi^2\)</span>-Test</h1>
+
+</section>
+<section id="chi2-test-1" class="slide level2">
+<h2><span class="math inline">\(\chi^2\)</span>-Test</h2>
+<h3 id="test-of-independence">Test of independence</h3>
+<div style="font-size: 80%">
+<ul>
+<li class="fragment">Just like <span class="math inline">\(\color{blue}{z}\)</span>-value and <span class="math inline">\(\color{red}{t}\)</span>-value, <span class="math inline">\(\chi^2\)</span>-distance follows a certain pattern if the two tables are independent.</li>
+<li class="fragment">This leads to the following hypothesis testing.</li>
+</ul>
+<div class="fragment">
+<div class="callout callout-tip no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong><span class="math inline">\(\chi^2\)</span>-test</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li class="fragment">Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be two categorical variables (<code>Hair</code> and <code>Eye</code>, for example).</li>
+<li class="fragment"><span class="blue"><strong>Goal:</strong></span> Testing <span class="math inline">\(H_0: X\!\perp\!\!\!\perp Y\)</span> against <span class="math inline">\(H_1: X\not\!\perp\!\!\!\perp Y\)</span> at significance level <span class="math inline">\(\alpha\)</span>.</li>
+</ul>
+<div class="columns">
+<div class="column fragment" style="width:75%;">
+<ul>
+<li class="fragment"><strong>Assumptions:</strong>
+<ul>
+<li class="fragment">Observations are independent</li>
+<li class="fragment">Expected frequencies <span class="math inline">\(E_{ij}\geq 1\)</span> and more than <span class="math inline">\(20\%\)</span> are larger than <span class="math inline">\(5\)</span>.</li>
+</ul></li>
+<li class="fragment"><span class="light-blue"><strong>Key result:</strong></span> Under <span class="math inline">\(H_0\)</span> is <strong>true</strong>, then <span class="math inline">\(\chi^2\sim\color{blue}{\chi^2((I-1)(J-1))}\)</span>, the chi-squared distribution of DF <span class="math inline">\(=(I-1)(J-1)\)</span>.</li>
+<li class="fragment">We <span class="light-red"><strong>reject</strong></span> <span class="math inline">\(H_0\)</span> if <span class="math inline">\(\chi^2\geq \color{red}{c_{\alpha}}\)</span> where <span class="math inline">\(\color{red}{c_{\alpha}}\)</span> s.t: <span class="math inline">\(\mathbb{P}(\color{blue}{\chi^2((I-1)(J-1))}\geq \color{red}{c_{\alpha}})=\color{red}{\alpha}\)</span>.</li>
+</ul>
+</div><div class="column fragment" style="width:25%;">
+<div id="1f5ac2e2" class="cell" data-execution_count="15">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href=""></a><span class="im">import</span> plotly.graph_objects <span class="im">as</span> go</span>
+<span id="cb6-2"><a href=""></a><span class="im">from</span> scipy.stats <span class="im">import</span> chi2</span>
+<span id="cb6-3"><a href=""></a></span>
+<span id="cb6-4"><a href=""></a><span class="co"># Create x-axis values (domain for chi-squared)</span></span>
+<span id="cb6-5"><a href=""></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">50</span>, <span class="dv">100</span>)</span>
+<span id="cb6-6"><a href=""></a></span>
+<span id="cb6-7"><a href=""></a><span class="co"># Degrees of freedom to display</span></span>
+<span id="cb6-8"><a href=""></a>dfs <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">20</span>, <span class="dv">30</span>]</span>
+<span id="cb6-9"><a href=""></a></span>
+<span id="cb6-10"><a href=""></a><span class="co"># Create figure</span></span>
+<span id="cb6-11"><a href=""></a>fig <span class="op">=</span> go.Figure()</span>
+<span id="cb6-12"><a href=""></a></span>
+<span id="cb6-13"><a href=""></a><span class="co"># Add trace for each degree of freedom</span></span>
+<span id="cb6-14"><a href=""></a><span class="cf">for</span> df <span class="kw">in</span> dfs:</span>
+<span id="cb6-15"><a href=""></a>    y <span class="op">=</span> chi2.pdf(x, df)</span>
+<span id="cb6-16"><a href=""></a>    </span>
+<span id="cb6-17"><a href=""></a>    <span class="co"># Add line to plot</span></span>
+<span id="cb6-18"><a href=""></a>    fig.add_trace(</span>
+<span id="cb6-19"><a href=""></a>        go.Scatter(</span>
+<span id="cb6-20"><a href=""></a>            x<span class="op">=</span>x,</span>
+<span id="cb6-21"><a href=""></a>            y<span class="op">=</span>y,</span>
+<span id="cb6-22"><a href=""></a>            mode<span class="op">=</span><span class="st">'lines'</span>,</span>
+<span id="cb6-23"><a href=""></a>            name<span class="op">=</span><span class="ss">f'df = </span><span class="sc">{</span>df<span class="sc">}</span><span class="ss">'</span>,</span>
+<span id="cb6-24"><a href=""></a>            line<span class="op">=</span><span class="bu">dict</span>(width<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb6-25"><a href=""></a>        )</span>
+<span id="cb6-26"><a href=""></a>    )</span>
+<span id="cb6-27"><a href=""></a></span>
+<span id="cb6-28"><a href=""></a><span class="co"># Update layout</span></span>
+<span id="cb6-29"><a href=""></a>fig.update_layout(</span>
+<span id="cb6-30"><a href=""></a>    title<span class="op">=</span><span class="vs">r'$\chi^2(\text</span><span class="sc">{df}</span><span class="vs">)$'</span>,</span>
+<span id="cb6-31"><a href=""></a>    xaxis_title<span class="op">=</span><span class="st">'x'</span>,</span>
+<span id="cb6-32"><a href=""></a>    yaxis_title<span class="op">=</span><span class="st">'Density'</span>,</span>
+<span id="cb6-33"><a href=""></a>    legend_title<span class="op">=</span><span class="st">'DFs'</span>,</span>
+<span id="cb6-34"><a href=""></a>    template<span class="op">=</span><span class="st">'plotly_white'</span>,</span>
+<span id="cb6-35"><a href=""></a>    hovermode<span class="op">=</span><span class="st">'closest'</span>,</span>
+<span id="cb6-36"><a href=""></a>    width<span class="op">=</span><span class="dv">240</span>,</span>
+<span id="cb6-37"><a href=""></a>    height<span class="op">=</span><span class="dv">180</span></span>
+<span id="cb6-38"><a href=""></a>)</span>
+<span id="cb6-39"><a href=""></a></span>
+<span id="cb6-40"><a href=""></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>                            <div id="0f8d1ecf-61ac-4fa3-aa1d-8287ddd865ba" class="plotly-graph-div" style="height:180px; width:240px;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("0f8d1ecf-61ac-4fa3-aa1d-8287ddd865ba")) {                    Plotly.newPlot(                        "0f8d1ecf-61ac-4fa3-aa1d-8287ddd865ba",                        [{"line":{"width":2},"mode":"lines","name":"df = 1","x":[0.0,0.5050505050505051,1.0101010101010102,1.5151515151515151,2.0202020202020203,2.5252525252525255,3.0303030303030303,3.5353535353535355,4.040404040404041,4.545454545454546,5.050505050505051,5.555555555555556,6.0606060606060606,6.565656565656566,7.070707070707071,7.575757575757576,8.080808080808081,8.585858585858587,9.090909090909092,9.595959595959597,10.101010101010102,10.606060606060607,11.111111111111112,11.616161616161618,12.121212121212121,12.626262626262626,13.131313131313131,13.636363636363637,14.141414141414142,14.646464646464647,15.151515151515152,15.656565656565657,16.161616161616163,16.666666666666668,17.171717171717173,17.67676767676768,18.181818181818183,18.68686868686869,19.191919191919194,19.6969696969697,20.202020202020204,20.70707070707071,21.212121212121215,21.71717171717172,22.222222222222225,22.72727272727273,23.232323232323235,23.73737373737374,24.242424242424242,24.747474747474747,25.252525252525253,25.757575757575758,26.262626262626263,26.767676767676768,27.272727272727273,27.77777777777778,28.282828282828284,28.78787878787879,29.292929292929294,29.7979797979798,30.303030303030305,30.80808080808081,31.313131313131315,31.81818181818182,32.323232323232325,32.82828282828283,33.333333333333336,33.83838383838384,34.343434343434346,34.84848484848485,35.35353535353536,35.85858585858586,36.36363636363637,36.86868686868687,37.37373737373738,37.87878787878788,38.38383838383839,38.88888888888889,39.3939393939394,39.8989898989899,40.40404040404041,40.909090909090914,41.41414141414142,41.919191919191924,42.42424242424243,42.929292929292934,43.43434343434344,43.939393939393945,44.44444444444445,44.949494949494955,45.45454545454546,45.959595959595966,46.46464646464647,46.969696969696976,47.47474747474748,47.979797979797986,48.484848484848484,48.98989898989899,49.494949494949495,50.0],"y":[null,0.43608619362255346,0.23954494781707342,0.15193962928900484,0.10221893938402984,0.07102414923547974,0.0503668851453785,0.036224414526120775,0.026322981451876826,0.01927917709998181,0.014208211844725167,0.010523804158345458,0.007827231041664382,0.005841935753578021,0.00437314735307346,0.0032820271981546557,0.002468638456839243,0.0018604701101331488,0.0014045609231462992,0.0010620126992042182,0.0008041206015283798,0.0006096158015539608,0.0004626836988873318,0.0003515291123711013,0.00026733096801438987,0.0002034766429318057,0.00015499852681357277,0.00011815770272083976,0.00009013523208567903,0.00006880250876535947,0.000052549951822245615,0.00004015889726989048,0.00003070558054871579,0.000023489025992672873,0.000017976792113050525,0.00001376408382369028,0.000010542891980990824,8.078669130189663e-6,6.192678897150916e-6,4.74862344770516e-6,3.6425013111491825e-6,2.794907636889157e-6,2.145183361429746e-6,1.6469655442716848e-6,1.2648006477415001e-6,9.715649457371429e-7,7.464983537524943e-7,5.737048448855391e-7,4.410080368493145e-7,3.390773333368723e-7,2.6076030067260037e-7,2.0057235028239271e-7,1.5430647705156455e-7,1.1873467541858158e-7,9.137939966407088e-8,7.033856631265587e-8,5.4151503542530636e-8,4.169622921587795e-8,3.211070855528745e-8,2.4732473707807284e-8,1.905230884552354e-8,1.4678713600719333e-8,1.1310628705072111e-8,8.716497146280687e-9,6.718184959894428e-9,5.1786306964195654e-9,3.992356621151963e-9,3.0781768724739505e-9,2.373592669848539e-9,1.8304833351594682e-9,1.411792859590184e-9,1.088981502763059e-9,8.400654149543237e-10,6.481083247202523e-10,5.000608402933067e-10,3.858670997118868e-10,2.9777707706164917e-10,2.298171171275775e-10,1.7738222982505478e-10,1.3692209703987473e-10,1.0569921706648504e-10,8.160258767701822e-11,6.300415485991268e-11,4.864819672147872e-11,3.7566075415435916e-11,2.9010531295518156e-11,2.2405033417990214e-11,1.7304731756677416e-11,1.3366350281028234e-11,1.0324971158355164e-11,7.976130887071969e-12,6.1620115343271626e-12,4.7607893495349944e-12,3.678418019147078e-12,2.8422894636114013e-12,2.196342703162271e-12,1.6972896698114512e-12,1.3117026431266244e-12,1.013766414589986e-12,7.835433265508656e-13],"type":"scatter"},{"line":{"width":2},"mode":"lines","name":"df = 5","x":[0.0,0.5050505050505051,1.0101010101010102,1.5151515151515151,2.0202020202020203,2.5252525252525255,3.0303030303030303,3.5353535353535355,4.040404040404041,4.545454545454546,5.050505050505051,5.555555555555556,6.0606060606060606,6.565656565656566,7.070707070707071,7.575757575757576,8.080808080808081,8.585858585858587,9.090909090909092,9.595959595959597,10.101010101010102,10.606060606060607,11.111111111111112,11.616161616161618,12.121212121212121,12.626262626262626,13.131313131313131,13.636363636363637,14.141414141414142,14.646464646464647,15.151515151515152,15.656565656565657,16.161616161616163,16.666666666666668,17.171717171717173,17.67676767676768,18.181818181818183,18.68686868686869,19.191919191919194,19.6969696969697,20.202020202020204,20.70707070707071,21.212121212121215,21.71717171717172,22.222222222222225,22.72727272727273,23.232323232323235,23.73737373737374,24.242424242424242,24.747474747474747,25.252525252525253,25.757575757575758,26.262626262626263,26.767676767676768,27.272727272727273,27.77777777777778,28.282828282828284,28.78787878787879,29.292929292929294,29.7979797979798,30.303030303030305,30.80808080808081,31.313131313131315,31.81818181818182,32.323232323232325,32.82828282828283,33.333333333333336,33.83838383838384,34.343434343434346,34.84848484848485,35.35353535353536,35.85858585858586,36.36363636363637,36.86868686868687,37.37373737373738,37.87878787878788,38.38383838383839,38.88888888888889,39.3939393939394,39.8989898989899,40.40404040404041,40.909090909090914,41.41414141414142,41.919191919191924,42.42424242424243,42.929292929292934,43.43434343434344,43.939393939393945,44.44444444444445,44.949494949494955,45.45454545454546,45.959595959595966,46.46464646464647,46.969696969696976,47.47474747474748,47.979797979797986,48.484848484848484,48.98989898989899,49.494949494949495,50.0],"y":[0.0,0.03707837581390958,0.0814695601867406,0.1162684644084824,0.1390591972030471,0.15097130657475374,0.15416861079087388,0.15091966056013992,0.14323970453015994,0.13277670179050832,0.12080580080880486,0.10826959010643476,0.0958338664421718,0.08394442253806467,0.07287835265129389,0.06278748083399631,0.05373358542927983,0.045716071644770984,0.03869313837868594,0.03259757375205956,0.02734825023053362,0.0228582600827549,0.01904048143569267,0.01581121828081425,0.0130924257368541,0.010812918905586028,0.008908870194025711,0.007323824548812381,0.006008402370095931,0.0049198134434978846,0.0040212696527583145,0.00328135736798666,0.0026734104072615853,0.0021749098141363764,0.0017669261370171743,0.0014336124446502553,0.0011617511824783262,0.0009403545589930998,0.0007603159819989381,0.0006141087868550435,0.0004955278456142817,0.0003994694195839429,0.00032174467312536773,0.00025892249867006317,0.00020819763748831322,0.00016728046586383336,0.00013430521686054827,0.00010775380083258149,0.00008639275897874552,0.0000692212254992544,0.00005542808146120304,0.00004435675637558274,0.000035476372644579714,0.000028358135500696863,0.00002265604950348869,0.00001809119503926338,0.00001443892758471722,0.000011518471645953469,9.18447297724614e-6,7.320149387552077e-6,5.831744366551452e-6,4.644040855378425e-6,3.696736450557541e-6,2.941517632009332e-6,2.3397005063877536e-6,1.8603301272295958e-6,1.478650600426654e-6,1.1748746709974833e-6,9.331949550538795e-7,7.409899634981334e-7,5.881870057470266e-7,4.6675133110810113e-7,3.702767669220159e-7,2.936578973603228e-7,2.3282770137793374e-7,1.8454770226502133e-7,1.462402133377624e-7,1.158543080169889e-7,9.17587904512836e-8,7.26567703657672e-8,5.7517514303430326e-8,4.5522104695857295e-8,3.6020128666977256e-8,2.849517287472942e-8,2.2537345520126864e-8,1.7821403310046515e-8,1.4089346933940002e-8,1.1136577446713864e-8,8.800889073928045e-9,6.953720415036821e-9,5.493203090269959e-9,4.33864040368016e-9,3.4261232743652116e-9,2.705050288032091e-9,2.1353662636865568e-9,1.685371636911156e-9,1.3299851713245547e-9,1.049366575619701e-9,8.278247666668549e-10,6.52952772125721e-10],"type":"scatter"},{"line":{"width":2},"mode":"lines","name":"df = 10","x":[0.0,0.5050505050505051,1.0101010101010102,1.5151515151515151,2.0202020202020203,2.5252525252525255,3.0303030303030303,3.5353535353535355,4.040404040404041,4.545454545454546,5.050505050505051,5.555555555555556,6.0606060606060606,6.565656565656566,7.070707070707071,7.575757575757576,8.080808080808081,8.585858585858587,9.090909090909092,9.595959595959597,10.101010101010102,10.606060606060607,11.111111111111112,11.616161616161618,12.121212121212121,12.626262626262626,13.131313131313131,13.636363636363637,14.141414141414142,14.646464646464647,15.151515151515152,15.656565656565657,16.161616161616163,16.666666666666668,17.171717171717173,17.67676767676768,18.181818181818183,18.68686868686869,19.191919191919194,19.6969696969697,20.202020202020204,20.70707070707071,21.212121212121215,21.71717171717172,22.222222222222225,22.72727272727273,23.232323232323235,23.73737373737374,24.242424242424242,24.747474747474747,25.252525252525253,25.757575757575758,26.262626262626263,26.767676767676768,27.272727272727273,27.77777777777778,28.282828282828284,28.78787878787879,29.292929292929294,29.7979797979798,30.303030303030305,30.80808080808081,31.313131313131315,31.81818181818182,32.323232323232325,32.82828282828283,33.333333333333336,33.83838383838384,34.343434343434346,34.84848484848485,35.35353535353536,35.85858585858586,36.36363636363637,36.86868686868687,37.37373737373738,37.87878787878788,38.38383838383839,38.88888888888889,39.3939393939394,39.8989898989899,40.40404040404041,40.909090909090914,41.41414141414142,41.919191919191924,42.42424242424243,42.929292929292934,43.43434343434344,43.939393939393945,44.44444444444445,44.949494949494955,45.45454545454546,45.959595959595966,46.46464646464647,46.969696969696976,47.47474747474748,47.979797979797986,48.484848484848484,48.98989898989899,49.494949494949495,50.0],"y":[0.0,0.00006581239493512529,0.000818007629175854,0.003217007450093189,0.007898355722263495,0.014979813890081845,0.024130208704468664,0.03472785127959912,0.04602304795577315,0.05726841233842693,0.06780703927908896,0.07712145219268905,0.0848514207553492,0.09078983354966036,0.09486491668960227,0.09711542150474461,0.09766360928050266,0.09668925218394521,0.09440656857932388,0.09104503604571022,0.0868343439224182,0.08199330641705194,0.07672230119806764,0.07119867599324081,0.06557453455302155,0.05997634013382194,0.05450583463370089,0.04924184710227911,0.04424264473688692,0.03954855524545407,0.03518465738706993,0.031163394620181317,0.02748701461677905,0.024149775392585567,0.021139887940806984,0.018441186771200588,0.01603453494009412,0.013898980250210823,0.012012685422275474,0.010353658163805323,0.008900307996203704,0.0076318561087319004,0.006528622908105485,0.005572215725713398,0.004745636629572932,0.00403332768069733,0.0034211684227398744,0.0028964379970477933,0.002447752090810411,0.002064982983026321,0.001739169260040085,0.0014624203236995167,0.001227819595856664,0.0010293293126461675,0.0008616989777129594,0.0007203788815890532,0.0006014395715952908,0.0005014977512728446,0.0004176487806767573,0.00034740572131406757,0.00028864470674359644,0.00023955630870766762,0.00019860249800541035,0.00016447875985824728,0.0001360809076193062,0.00011247614013164244,0.00009287790186823455,0.00007662412725437279,0.00006315847821543803,0.00005201421466341101,0.00004280036957244084,0.000035189932207574166,0.00002890977404635391,0.000023732081349746508,0.000019467085803554927,0.000015956909943954026,0.000013070367109836989,0.000010698576432884526,8.751271952277581e-6,7.153701437811334e-6,5.8440250636706005e-6,4.771136851423794e-6,3.892842957012554e-6,3.1743405741148245e-6,2.586949621353366e-6,2.1070566210836617e-6,1.7152364002556568e-6,1.395522575071595e-6,1.134802335113122e-6,9.223149219315917e-7,7.492364932605168e-7,6.083368579623328e-7,4.936959297471541e-7,4.004697418578213e-7,3.2469754448840605e-7,2.6314291864361154e-7,2.1316302497320843e-7,1.7260109866940898e-7,1.396981316531807e-7,1.13020376505241e-7],"type":"scatter"},{"line":{"width":2},"mode":"lines","name":"df = 15","x":[0.0,0.5050505050505051,1.0101010101010102,1.5151515151515151,2.0202020202020203,2.5252525252525255,3.0303030303030303,3.5353535353535355,4.040404040404041,4.545454545454546,5.050505050505051,5.555555555555556,6.0606060606060606,6.565656565656566,7.070707070707071,7.575757575757576,8.080808080808081,8.585858585858587,9.090909090909092,9.595959595959597,10.101010101010102,10.606060606060607,11.111111111111112,11.616161616161618,12.121212121212121,12.626262626262626,13.131313131313131,13.636363636363637,14.141414141414142,14.646464646464647,15.151515151515152,15.656565656565657,16.161616161616163,16.666666666666668,17.171717171717173,17.67676767676768,18.181818181818183,18.68686868686869,19.191919191919194,19.6969696969697,20.202020202020204,20.70707070707071,21.212121212121215,21.71717171717172,22.222222222222225,22.72727272727273,23.232323232323235,23.73737373737374,24.242424242424242,24.747474747474747,25.252525252525253,25.757575757575758,26.262626262626263,26.767676767676768,27.272727272727273,27.77777777777778,28.282828282828284,28.78787878787879,29.292929292929294,29.7979797979798,30.303030303030305,30.80808080808081,31.313131313131315,31.81818181818182,32.323232323232325,32.82828282828283,33.333333333333336,33.83838383838384,34.343434343434346,34.84848484848485,35.35353535353536,35.85858585858586,36.36363636363637,36.86868686868687,37.37373737373738,37.87878787878788,38.38383838383839,38.88888888888889,39.3939393939394,39.8989898989899,40.40404040404041,40.909090909090914,41.41414141414142,41.919191919191924,42.42424242424243,42.929292929292934,43.43434343434344,43.939393939393945,44.44444444444445,44.949494949494955,45.45454545454546,45.959595959595966,46.46464646464647,46.969696969696976,47.47474747474748,47.979797979797986,48.484848484848484,48.98989898989899,49.494949494949495,50.0],"y":[0.0,2.704880976068421e-8,1.9018348772017854e-6,0.000020610838849813638,0.0001038788497221238,0.0003441691131642803,0.0008745399802434532,0.0018503908714064563,0.003424055605764154,0.005719550265511801,0.0088128270247443,0.01272030063988253,0.017396132140787657,0.02273715198838624,0.028593425236942117,0.034782181045367414,0.04110296876367955,0.04735228806580309,0.053336429515827836,0.05888175403856139,0.06384207303887664,0.0681031344732703,0.07158446554073532,0.07423897582265968,0.07605079969902204,0.07703187104899732,0.07721769409688274,0.07666271751682431,0.0754356475799417,0.07361496023276941,0.07128479868235103,0.06853137696689457,0.06543995370302107,0.06209239474906591,0.05856530881737129,0.05492871527783887,0.05124518726002744,0.04756940422472322,0.04394804495246354,0.04041995298406154,0.03701651069690328,0.033762164346907625,0.030675049681768447,0.027767675457696893,0.025047629862562877,0.02251828210550803,0.02017945804359119,0.018028074546511737,0.016058722294784562,0.01426419086576114,0.012635933326478726,0.011164470189331336,0.009839734577785518,0.008651361883086765,0.007588928157662283,0.006642142071239585,0.0058009955292425575,0.005055878089036629,0.004397660168175573,0.003817749770851208,0.0033081271063841516,0.0028613610708261086,0.0024706111363504346,0.002129617763551679,0.0018326840341588374,0.0015746508066174993,0.0013508673315040277,0.0011571589318875785,0.000989793057392745,0.000845444759975801,0.0007211624132168568,0.00061433430329761,0.0005226565562785028,0.000444102729996395,0.0003768952869324293,0.00031947907381507103,0.0002704968616960021,0.00022876694410866287,0.0001932627482454542,0.00016309438265999762,0.0001374920228481856,0.00011579102145933846,0.0000974186213397047,0.0000818821458329511,0.00006875854067110627,0.00005768514447661321,0.000048351569611084305,0.00004049258123587076,0.00003388186949971093,0.00002832661734734696,0.000023662774244110486,0.00001975095390119786,0.000016472881690428706,0.00001372832473029254,0.000011432444521016247,9.51351845069262e-6,7.910982457309692e-6,6.573752601990302e-6,5.458788290429193e-6,4.529864386486577e-6],"type":"scatter"},{"line":{"width":2},"mode":"lines","name":"df = 20","x":[0.0,0.5050505050505051,1.0101010101010102,1.5151515151515151,2.0202020202020203,2.5252525252525255,3.0303030303030303,3.5353535353535355,4.040404040404041,4.545454545454546,5.050505050505051,5.555555555555556,6.0606060606060606,6.565656565656566,7.070707070707071,7.575757575757576,8.080808080808081,8.585858585858587,9.090909090909092,9.595959595959597,10.101010101010102,10.606060606060607,11.111111111111112,11.616161616161618,12.121212121212121,12.626262626262626,13.131313131313131,13.636363636363637,14.141414141414142,14.646464646464647,15.151515151515152,15.656565656565657,16.161616161616163,16.666666666666668,17.171717171717173,17.67676767676768,18.181818181818183,18.68686868686869,19.191919191919194,19.6969696969697,20.202020202020204,20.70707070707071,21.212121212121215,21.71717171717172,22.222222222222225,22.72727272727273,23.232323232323235,23.73737373737374,24.242424242424242,24.747474747474747,25.252525252525253,25.757575757575758,26.262626262626263,26.767676767676768,27.272727272727273,27.77777777777778,28.282828282828284,28.78787878787879,29.292929292929294,29.7979797979798,30.303030303030305,30.80808080808081,31.313131313131315,31.81818181818182,32.323232323232325,32.82828282828283,33.333333333333336,33.83838383838384,34.343434343434346,34.84848484848485,35.35353535353536,35.85858585858586,36.36363636363637,36.86868686868687,37.37373737373738,37.87878787878788,38.38383838383839,38.88888888888889,39.3939393939394,39.8989898989899,40.40404040404041,40.909090909090914,41.41414141414142,41.919191919191924,42.42424242424243,42.929292929292934,43.43434343434344,43.939393939393945,44.44444444444445,44.949494949494955,45.45454545454546,45.959595959595966,46.46464646464647,46.969696969696976,47.47474747474748,47.979797979797986,48.484848484848484,48.98989898989899,49.494949494949495,50.0],"y":[0.0,4.469716462315831e-12,1.7777865315645468e-9,5.309218749901726e-8,5.492991477819941e-7,3.179279564896549e-6,0.000012743525998520945,0.00003964061578382528,0.00010242302336088252,0.00022966772563420593,0.0004605184783586757,0.0008435501436404913,0.001433961951544313,0.002289424155052315,0.003465118468591212,0.005008604898694966,0.006955125367243029,0.009323845906754785,0.012115379354280077,0.01531075320609953,0.018871819967993447,0.022742968652922718,0.02685389607420041,0.03112313789177062,0.03546203910871634,0.03977885547425659,0.04398271287356907,0.047987202789064876,0.051713450485801234,0.05509255216421461,0.05806733295034425,0.0605934258596781,0.0626397108325114,0.06418818187510038,0.06523332947779356,0.06578113571487006,0.06584778207434831,0.06545816663730301,0.06464431927974754,0.06344379257550253,0.06189809334025432,0.06005120636981711,0.05794824875701527,0.055634280866068024,0.05315328904015952,0.050547345677728166,0.04785594454908708,0.04511550313432721,0.04235901925742861,0.03961586622251452,0.03691170884307616,0.03426852199376924,0.031704693404967815,0.029235193169330712,0.026871793660057385,0.02462332511588895,0.022495953894881432,0.020493472227626673,0.018617590123694544,0.01686822183624576,0.01524376092131059,0.013741339408444141,0.012357067910073722,0.011086254630368164,0.009923602191875054,0.008863381986747333,0.007899586390854878,0.007026059668040957,0.006236608754453285,0.005525095366037564,0.0048855110325341225,0.0043120367444998975,0.003799088920677951,0.003341353374743004,0.0029338088948272405,0.0025717419564711586,0.00225075397841696,0.0019667624081758355,0.0017159967964267427,0.0014949908907069224,0.0013005716531271853,0.00112984598666635,0.0009801858418557372,0.0008492122715973555,0.0007347789071728874,0.0006349552434747493,0.0005480100460758623,0.0004723951266505703,0.00040672967598629693,0.0003497852947809907,0.0003004718209270642,0.00025782401732170985,0.00022098915569125784,0.0001892155087614184,0.00016184174466437435,0.00013828720310676395,0.00011804302193786152,0.00010066407481518783,0.00008576167518044257,0.00007299699830085925],"type":"scatter"},{"line":{"width":2},"mode":"lines","name":"df = 30","x":[0.0,0.5050505050505051,1.0101010101010102,1.5151515151515151,2.0202020202020203,2.5252525252525255,3.0303030303030303,3.5353535353535355,4.040404040404041,4.545454545454546,5.050505050505051,5.555555555555556,6.0606060606060606,6.565656565656566,7.070707070707071,7.575757575757576,8.080808080808081,8.585858585858587,9.090909090909092,9.595959595959597,10.101010101010102,10.606060606060607,11.111111111111112,11.616161616161618,12.121212121212121,12.626262626262626,13.131313131313131,13.636363636363637,14.141414141414142,14.646464646464647,15.151515151515152,15.656565656565657,16.161616161616163,16.666666666666668,17.171717171717173,17.67676767676768,18.181818181818183,18.68686868686869,19.191919191919194,19.6969696969697,20.202020202020204,20.70707070707071,21.212121212121215,21.71717171717172,22.222222222222225,22.72727272727273,23.232323232323235,23.73737373737374,24.242424242424242,24.747474747474747,25.252525252525253,25.757575757575758,26.262626262626263,26.767676767676768,27.272727272727273,27.77777777777778,28.282828282828284,28.78787878787879,29.292929292929294,29.7979797979798,30.303030303030305,30.80808080808081,31.313131313131315,31.81818181818182,32.323232323232325,32.82828282828283,33.333333333333336,33.83838383838384,34.343434343434346,34.84848484848485,35.35353535353536,35.85858585858586,36.36363636363637,36.86868686868687,37.37373737373738,37.87878787878788,38.38383838383839,38.88888888888889,39.3939393939394,39.8989898989899,40.40404040404041,40.909090909090914,41.41414141414142,41.919191919191924,42.42424242424243,42.929292929292934,43.43434343434344,43.939393939393945,44.44444444444445,44.949494949494955,45.45454545454546,45.959595959595966,46.46464646464647,46.969696969696976,47.47474747474748,47.979797979797986,48.484848484848484,48.98989898989899,49.494949494949495,50.0],"y":[0.0,1.9105513977700648e-20,2.431690741158192e-16,5.5146206690703345e-14,2.404294334460139e-12,4.2467577836216184e-11,4.235694337941046e-10,2.8477990677762265e-9,1.434584973403714e-8,5.7968393937108505e-8,1.968456455672451e-7,5.807016776097317e-7,1.5251852951050653e-6,3.6334716279074066e-6,7.965939740917708e-6,0.000016257427292187215,0.00003117336087166208,0.00005658723132499027,0.00009785393484150167,0.00016204786447039597,0.00025813239705774964,0.00039702913505164074,0.0005915608974554684,0.0008562514267594748,0.0012069760824503172,0.0016604701696227124,0.0022337136819924283,0.0029432219063910033,0.0038042795624917644,0.004830161280584554,0.006031382950489403,0.007415026848824761,0.00898417880948701,0.01073750860977201,0.01266901591356392,0.01476795431764785,0.017018936049831564,0.019402210357619732,0.021894100175821066,0.024467574698569892,0.02709293027902559,0.02973854876049558,0.032371700891455225,0.03495936276509194,0.03746901503504702,0.039869397716723085,0.04213119737895089,0.044227648146777675,0.04613503286759567,0.0478330757627148,0.04930522265701088,0.05053880925860911,0.05152512180547019,0.05225935761111607,0.05274049557717282,0.052971088585119085,0.05295699085609636,0.05270703392473177,0.052232664878676505,0.05154756005093925,0.05066722650451388,0.04960860250732604,0.048389666846374677,0.04702906535329841,0.04554576148126065,0.04395871624678304,0.04228660138116596,0.040547548164618405,0.038758933172031704,0.03693720106258511,0.035097723607356635,0.033254693373791486,0.03142104987075212,0.02960843549555722,0.027827178303673723,0.026086298428687208,0.02439353489922002,0.022755389614276814,0.02117718533253787,0.019663134688471747,0.01821641745369209,0.016839263502010055,0.015533039198773035,0.014298335208612003,0.013135053991551297,0.012042495528015873,0.011019440072671076,0.010064226980612963,0.009174828873955777,0.008348920620128191,0.007583942774023908,0.0068771592941691455,0.006225709478569657,0.005626654179708699,0.0050770164515126755,0.00457381685550169,0.0041141037105110025,0.0036949786121151583,0.0033136175760706842,0.0029672881765394096],"type":"scatter"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmapgl":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmapgl"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"white","showlakes":true,"showland":true,"subunitcolor":"#C8D4E3"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30},"paper_bgcolor":"white","plot_bgcolor":"white","polar":{"angularaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""},"bgcolor":"white","radialaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"yaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"zaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"baxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"bgcolor":"white","caxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2}}},"title":{"text":"$\\chi^2(\\text{df})$"},"xaxis":{"title":{"text":"x"}},"yaxis":{"title":{"text":"Density"}},"legend":{"title":{"text":"DFs"}},"hovermode":"closest","width":240,"height":180},                        {"responsive": true}                    ).then(function(){
+                            
+var gd = document.getElementById('0f8d1ecf-61ac-4fa3-aa1d-8287ddd865ba');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                });            </script>        </div>
+</div>
+</div>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="chi2-test-3" class="slide level2">
+<h2><span class="math inline">\(\chi^2\)</span>-Test</h2>
+<h3 id="test-of-independence-1">Test of independence</h3>
+<div style="font-size: 80%">
+<div class="fragment">
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Summary <span class="math inline">\(\chi^2\)</span>-test</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li class="fragment">Compute <span class="math inline">\(\chi^2\)</span>-distance value <span class="math inline">\(\chi^2\)</span>.</li>
+<li class="fragment">For a given significance level <span class="math inline">\(\color{red}{\alpha}\)</span> (for example, <span class="math inline">\(0.05\)</span>), compute <span class="math inline">\(\color{blue}{\text{df}=(I-1)(J-1)}\)</span>, then:
+<ul>
+<li class="fragment"><strong>Critical value method:</strong> Look at the table of <span class="math inline">\(\color{blue}{\chi^2(\text{df})}\)</span> to find <span class="math inline">\(\color{red}{c_{\alpha}}\)</span>. <span class="light-red"><strong>Decision:</strong></span> Reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(\chi^2\geq \color{red}{c_{\alpha}}\)</span>.</li>
+<li class="fragment"><strong>P-value method:</strong> Compute <span class="math inline">\(\text{p-value}=\mathbb{P}(\color{blue}{\chi^2(\text{df})}\geq \chi^2)\)</span>. <span class="light-red"><strong>Decision:</strong></span> Reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(\text{p-value}&lt; \color{red}{\alpha}\)</span>.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:30%;">
+<p><br></p>
+<div id="bed2a539" class="cell" data-execution_count="16">
+<div class="cell-output cell-output-display">
+<div>                            <div id="5a296c6c-cfde-41f2-975e-d258c6a0d081" class="plotly-graph-div" style="height:220px; width:290px;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("5a296c6c-cfde-41f2-975e-d258c6a0d081")) {                    Plotly.newPlot(                        "5a296c6c-cfde-41f2-975e-d258c6a0d081",                        [{"line":{"color":"blue","width":2},"mode":"lines","name":"χ² (df = 9)","x":[0.0,0.25252525252525254,0.5050505050505051,0.7575757575757576,1.0101010101010102,1.2626262626262628,1.5151515151515151,1.7676767676767677,2.0202020202020203,2.272727272727273,2.5252525252525255,2.777777777777778,3.0303030303030303,3.282828282828283,3.5353535353535355,3.787878787878788,4.040404040404041,4.292929292929293,4.545454545454546,4.7979797979797985,5.050505050505051,5.303030303030304,5.555555555555556,5.808080808080809,6.0606060606060606,6.313131313131313,6.565656565656566,6.818181818181818,7.070707070707071,7.3232323232323235,7.575757575757576,7.828282828282829,8.080808080808081,8.333333333333334,8.585858585858587,8.83838383838384,9.090909090909092,9.343434343434344,9.595959595959597,9.84848484848485,10.101010101010102,10.353535353535355,10.606060606060607,10.85858585858586,11.111111111111112,11.363636363636365,11.616161616161618,11.86868686868687,12.121212121212121,12.373737373737374,12.626262626262626,12.878787878787879,13.131313131313131,13.383838383838384,13.636363636363637,13.88888888888889,14.141414141414142,14.393939393939394,14.646464646464647,14.8989898989899,15.151515151515152,15.404040404040405,15.656565656565657,15.90909090909091,16.161616161616163,16.414141414141415,16.666666666666668,16.91919191919192,17.171717171717173,17.424242424242426,17.67676767676768,17.92929292929293,18.181818181818183,18.434343434343436,18.68686868686869,18.93939393939394,19.191919191919194,19.444444444444446,19.6969696969697,19.94949494949495,20.202020202020204,20.454545454545457,20.70707070707071,20.959595959595962,21.212121212121215,21.464646464646467,21.71717171717172,21.969696969696972,22.222222222222225,22.474747474747478,22.72727272727273,22.979797979797983,23.232323232323235,23.484848484848488,23.73737373737374,23.989898989898993,24.242424242424242,24.494949494949495,24.747474747474747,25.0],"y":[0.0,0.00002709894940814569,0.0002702229788061684,0.0009844791481574298,0.002374963493134536,0.0045709536962065265,0.007626161905318274,0.011528813748111155,0.016215161392050047,0.02158340411791572,0.027506542075654408,0.03384349715062378,0.0404482777885016,0.04717720905101315,0.05389437934501476,0.06047551770509533,0.06681053748108966,0.07280498039775295,0.07838057956936735,0.08347513768799437,0.08804189135861125,0.09204850696343933,0.09547582901802013,0.09831647958185144,0.10057338731960833,0.10225830740738492,0.10339037859790501,0.1039947512493801,0.10410130977636105,0.10374350456246383,0.10295730164304784,0.10178025318656246,0.10025068775704835,0.0984070163271205,0.09628714785181405,0.09392800675161034,0.09136514375132457,0.08863243106338481,0.08576183279033849,0.08278324156919072,0.07972437282065571,0.07661070844323793,0.07346548235963471,0.07030970094485868,0.06716219201302531,0.06403967669084178,0.06095685914375163,0.057926529733193385,0.05495967776194826,0.05206561050341112,0.04925207570649684,0.04652538521931135,0.04389053778157754,0.0413513393990988,0.03891052003501264,0.036569845634534005,0.03433022474496191,0.03219180920378148,0.030154088547682603,0.028215977947198365,0.02637589959830984,0.024631857606557887,0.02298150648355986,0.021422213442803192,0.019951114733451892,0.018565166289725026,0.01726118900108235,0.01603590892667892,0.014885992787848584,0.013808079076097657,0.012798805112427026,0.01185483038779662,0.010972856505108163,0.010149644030998672,0.009382026551675143,0.008666922211558209,0.0080013429971174,0.007382402011379092,0.00680731896749983,0.006273424112796862,0.005778160777929734,0.005319086729705239,0.0048938744903625625,0.004500310771286862,0.004136295154963401,0.0037998381456698796,0.0034890586969328658,0.0032021813121572472,0.0029375328040679074,0.0026935387886667696,0.002468719980280888,0.002261688345928547,0.0020711431696249626,0.0018958670703493488,0.00173472201115901,0.0015866453313235285,0.0014506458283194805,0.0013257999120325316,0.0012112478495176116,0.0011061901151296857],"type":"scatter"},{"line":{"color":"red","dash":"dash","width":2},"mode":"lines","name":"c = 21.666","x":[21.665994333461924,21.665994333461924],"y":[0,0.0035500548491354767],"type":"scatter"},{"fill":"tozeroy","fillcolor":"rgba(255, 0, 0, 0.2)","line":{"width":0},"name":"RR (α = 0.01)","x":[21.665994333461924,21.780960046101168,21.89592575874041,22.010891471379658,22.1258571840189,22.240822896658145,22.355788609297388,22.47075432193663,22.585720034575875,22.700685747215122,22.815651459854365,22.93061717249361,23.045582885132852,23.160548597772095,23.27551431041134,23.390480023050586,23.50544573568983,23.620411448329072,23.735377160968316,23.85034287360756,23.965308586246806,24.08027429888605,24.195240011525293,24.310205724164536,24.42517143680378,24.540137149443023,24.655102862082266,24.770068574721513,24.885034287360757,25.0],"y":[0.0035500548491354767,0.0034144043557241964,0.0032836169717013483,0.0031575346592995442,0.00303600367147102,0.0029188744812706446,0.00280600170957189,0.002697244051354585,0.0025924642007887576,0.0024915287753250353,0.0023943082389887367,0.002300676825061951,0.0022105124583259015,0.0021236966770240995,0.0020401145546958973,0.001959654622019324,0.001882208788792208,0.0018076722661708032,0.0017359434892763104,0.0016669240402708548,0.0016005185719963322,0.0015366347322618224,0.0014751830888578069,0.0014160770553685964,0.0013592328178476346,0.0013045692624141915,0.0012520079038241462,0.001201472815061857,0.001152890557995059,0.0011061901151296857],"type":"scatter"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmapgl":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmapgl"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"white","showlakes":true,"showland":true,"subunitcolor":"#C8D4E3"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30},"paper_bgcolor":"white","plot_bgcolor":"white","polar":{"angularaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""},"bgcolor":"white","radialaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"yaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"zaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"baxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"bgcolor":"white","caxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2}}},"title":{"text":"$\\chi^2(9) \\text{ and critical value at 0.01}$"},"xaxis":{"title":{"text":"x"}},"yaxis":{"title":{"text":"Density"}},"hovermode":"closest","width":290,"height":220},                        {"responsive": true}                    ).then(function(){
+                            
+var gd = document.getElementById('5a296c6c-cfde-41f2-975e-d258c6a0d081');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };                });            </script>        </div>
+</div>
+</div>
+</div><div class="column" style="width:70%;">
+<div style="font-size: 80%">
+<ul>
+<li class="fragment">For our example: <span class="math inline">\(\chi^2=\)</span> 585.519, let’s take <span class="math inline">\(\color{red}{\alpha=0.01}\)</span>.</li>
+<li class="fragment">DF = <span class="math inline">\((I-1)(J-1)=(4-1)(4-1)=9\)</span></li>
+<li class="fragment"><strong>Critical value:</strong> if <span class="math inline">\(\mathbb{P}(\color{blue}{\chi^2(9)}\geq \color{red}{c_{0.05}})=0.01\Rightarrow \color{red}{c_{0.01}}=\)</span> <span class="light-red">21.67</span>.</li>
+<li class="fragment">Or we can compute <strong>p-value</strong> <span class="math inline">\(=\mathbb{P}(\color{blue}{\chi^2(9)}\geq 585.519)\approx\)</span> 0.0.</li>
+<li class="fragment">Both leads to <span class="light-red"><strong>rejection</strong></span> of <span class="math inline">\(H_0\)</span>. <span class="light-blue"><strong>Conclusion:</strong></span> With confidence level <span class="math inline">\(&gt;99.99\%\)</span>, <code>Hair</code> and <code>Eye</code> colors are <span class="light-blue"><strong>related</strong></span>.</li>
+</ul>
+</div>
+</div></div>
+</div>
+</section></section>
+<section>
+<section id="applications" class="title-slide slide level1 center" data-background-color="#345a8b">
+<h1>Applications</h1>
+
+</section>
+<section id="applications-1" class="slide level2">
+<h2>Applications</h2>
+<h3 id="detecting-informative-inputs">Detecting informative inputs</h3>
+<div style="font-size:80%">
+<ul>
+<li class="fragment">Consider our <a href="https://www.kaggle.com/datasets/dileep070/heart-disease-prediction-using-logistic-regression" target="_blank">heart disease dataset</a> of <a href="https://hassothea.github.io/Data_Analysis_AUPP/Labs/Lab7_Linear_Logistic_Regression.html" target="_blank">Lab7</a>.</li>
+</ul>
+<div class="fragment" style="font-size: 80%">
+<div id="35f01f19" class="cell" data-execution_count="17">
+<div class="cell-output cell-output-display" data-execution_count="149">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe caption-top" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">male</th>
+<th data-quarto-table-cell-role="th">age</th>
+<th data-quarto-table-cell-role="th">education</th>
+<th data-quarto-table-cell-role="th">currentSmoker</th>
+<th data-quarto-table-cell-role="th">cigsPerDay</th>
+<th data-quarto-table-cell-role="th">BPMeds</th>
+<th data-quarto-table-cell-role="th">prevalentStroke</th>
+<th data-quarto-table-cell-role="th">prevalentHyp</th>
+<th data-quarto-table-cell-role="th">diabetes</th>
+<th data-quarto-table-cell-role="th">totChol</th>
+<th data-quarto-table-cell-role="th">sysBP</th>
+<th data-quarto-table-cell-role="th">diaBP</th>
+<th data-quarto-table-cell-role="th">BMI</th>
+<th data-quarto-table-cell-role="th">heartRate</th>
+<th data-quarto-table-cell-role="th">glucose</th>
+<th data-quarto-table-cell-role="th">TenYearCHD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1</td>
+<td>39</td>
+<td>4.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>195.0</td>
+<td>106.0</td>
+<td>70.0</td>
+<td>26.97</td>
+<td>80.0</td>
+<td>77.0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>0</td>
+<td>46</td>
+<td>2.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>250.0</td>
+<td>121.0</td>
+<td>81.0</td>
+<td>28.73</td>
+<td>95.0</td>
+<td>76.0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>1</td>
+<td>48</td>
+<td>1.0</td>
+<td>1</td>
+<td>20.0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>245.0</td>
+<td>127.5</td>
+<td>80.0</td>
+<td>25.34</td>
+<td>75.0</td>
+<td>70.0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>0</td>
+<td>61</td>
+<td>3.0</td>
+<td>1</td>
+<td>30.0</td>
+<td>0.0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>225.0</td>
+<td>150.0</td>
+<td>95.0</td>
+<td>28.58</td>
+<td>65.0</td>
+<td>103.0</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>0</td>
+<td>46</td>
+<td>3.0</td>
+<td>1</td>
+<td>23.0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>285.0</td>
+<td>130.0</td>
+<td>84.0</td>
+<td>23.10</td>
+<td>85.0</td>
+<td>85.0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:30%;">
+<ul>
+<li class="fragment">Who ignored the relationship between <span class="light-blue"><strong>qualitative</strong></span> columns with the target <code>TenYearCHD</code> 🤔?</li>
+</ul>
+</div><div class="column fragment" style="width:30%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="./img/answer.jpeg" class="quarto-figure quarto-figure-center" width="500"></p>
+</figure>
+</div>
+</div><div class="column" style="width:40%;">
+<div style="font-size: 95%">
+<ul>
+<li class="fragment">What graph can be used to visualize such relationships?</li>
+<li class="fragment">Yes, <strong>grouped barplots</strong> or <strong>mosaic plots</strong>!</li>
+<li class="fragment"><span class="math inline">\(\chi^2\)</span>-test can be used to detect this type of connection.</li>
+</ul>
+</div>
+</div></div>
+</div>
+</section>
+<section id="applications-2" class="slide level2">
+<h2>Applications</h2>
+<h3 id="detecting-informative-inputs-1">Detecting informative inputs</h3>
+<div style="font-size: 80%">
+<ul>
+<li>Perform <span class="math inline">\(\chi^2\)</span>-test of the target vs all qualitative inputs:</li>
+</ul>
+<div id="2abe8352" class="cell" data-execution_count="19">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href=""></a><span class="kw">def</span> chi2_independence_test(observed_data):</span>
+<span id="cb7-2"><a href=""></a>    <span class="cf">if</span> <span class="bu">isinstance</span>(observed_data, pd.DataFrame):</span>
+<span id="cb7-3"><a href=""></a>        observed_data <span class="op">=</span> observed_data.values</span>
+<span id="cb7-4"><a href=""></a>    </span>
+<span id="cb7-5"><a href=""></a>    observed <span class="op">=</span> np.array(observed_data)</span>
+<span id="cb7-6"><a href=""></a>    </span>
+<span id="cb7-7"><a href=""></a>    row_totals <span class="op">=</span> observed.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>, keepdims<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb7-8"><a href=""></a>    col_totals <span class="op">=</span> observed.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">0</span>, keepdims<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb7-9"><a href=""></a>    total <span class="op">=</span> observed.<span class="bu">sum</span>()</span>
+<span id="cb7-10"><a href=""></a>    expected <span class="op">=</span> np.dot(row_totals, col_totals) <span class="op">/</span> total</span>
+<span id="cb7-11"><a href=""></a>    dof <span class="op">=</span> (observed.shape[<span class="dv">0</span>] <span class="op">-</span> <span class="dv">1</span>) <span class="op">*</span> (observed.shape[<span class="dv">1</span>] <span class="op">-</span> <span class="dv">1</span>)</span>
+<span id="cb7-12"><a href=""></a>    chi2_stat <span class="op">=</span> np.<span class="bu">sum</span>((observed <span class="op">-</span> expected) <span class="op">**</span> <span class="dv">2</span> <span class="op">/</span> expected)</span>
+<span id="cb7-13"><a href=""></a>    p_value <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> chi2.cdf(chi2_stat, dof)</span>
+<span id="cb7-14"><a href=""></a>    <span class="cf">return</span> chi2_stat, p_value, dof, expected</span>
+<span id="cb7-15"><a href=""></a>tab_result <span class="op">=</span> pd.DataFrame([], </span>
+<span id="cb7-16"><a href=""></a>    columns<span class="op">=</span>[<span class="st">'Chi2-stat'</span>, <span class="st">'df'</span>, <span class="st">'p-value'</span>])</span>
+<span id="cb7-17"><a href=""></a><span class="cf">for</span> va <span class="kw">in</span> qual_var[:<span class="op">-</span><span class="dv">1</span>]:</span>
+<span id="cb7-18"><a href=""></a>    tab <span class="op">=</span> pd.crosstab(data_cleaned[va], data_cleaned[<span class="st">'TenYearCHD'</span>])</span>
+<span id="cb7-19"><a href=""></a>    chi2_stat, p_value, dof, expected <span class="op">=</span> chi2_independence_test(tab)</span>
+<span id="cb7-20"><a href=""></a>    tab_result <span class="op">=</span> pd.concat([tab_result, </span>
+<span id="cb7-21"><a href=""></a>                pd.DataFrame({ </span>
+<span id="cb7-22"><a href=""></a>                    <span class="st">'Chi2-stat'</span>: chi2_stat, </span>
+<span id="cb7-23"><a href=""></a>                    <span class="st">'df'</span>: dof, </span>
+<span id="cb7-24"><a href=""></a>                    <span class="st">'p-value'</span>: p_value}, index<span class="op">=</span>[va])], axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb7-25"><a href=""></a>tab_result.index <span class="op">=</span> qual_var[:<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb7-26"><a href=""></a>tab_result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="151">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe caption-top" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Chi2-stat</th>
+<th data-quarto-table-cell-role="th">df</th>
+<th data-quarto-table-cell-role="th">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">male</td>
+<td>30.773005</td>
+<td>1</td>
+<td>2.900448e-08</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">education</td>
+<td>31.062637</td>
+<td>3</td>
+<td>8.246211e-07</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">currentSmoker</td>
+<td>1.344408</td>
+<td>1</td>
+<td>2.462581e-01</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">BPMeds</td>
+<td>29.034521</td>
+<td>1</td>
+<td>7.109993e-08</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">prevalentStroke</td>
+<td>8.546916</td>
+<td>1</td>
+<td>3.461081e-03</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">prevalentHyp</td>
+<td>120.511730</td>
+<td>1</td>
+<td>0.000000e+00</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">diabetes</td>
+<td>31.891572</td>
+<td>1</td>
+<td>1.630230e-08</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="applications-3" class="slide level2">
+<h2>Applications</h2>
+<h3 id="detecting-informative-inputs-2">Detecting informative inputs</h3>
+<div style="font-size: 80%">
+<ul>
+<li>Visualization:</li>
+</ul>
+<div id="c5217e4f" class="cell" data-execution_count="20">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="Categorical_analysis_files/figure-revealjs/cell-21-output-1.png" width="946" height="470"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="summary" class="slide level2">
+<h2>Summary</h2>
+<div>
+<ul>
+<li class="fragment"><span class="math inline">\(\chi^2\)</span>-distance can be used to measure <strong>similarity</strong> between <span class="light-blue"><strong>expected</strong></span> and <span class="light-red"><strong>observed</strong></span> contingency table.</li>
+<li class="fragment"><span class="math inline">\(\chi^2\)</span>-test can be used to detect the relationship between two categorical variables, but make sure the <strong>two assumptions</strong> are satisfied:
+<ul>
+<li class="fragment"><span class="light-blue"><strong>Independency</strong></span> of observations.</li>
+<li class="fragment">Significantly <span class="light-blue"><strong>large expected frequency</strong></span> (&gt; 5).</li>
+</ul></li>
+<li class="fragment">It can be used to summarize the connection between <span class="light-blue"><strong>categorical inputs</strong></span> with <span class="light-blue"><strong>categorical target</strong></span> before building classification models.</li>
+<li class="fragment"><span class="light-blue"><strong>Remark:</strong></span> categorical inputs are as important as the numerical ones, <span class="light-red"><strong>don’t ignore them</strong></span>.</li>
+</ul>
+</div>
+</section>
+<section id="yeahhhh." class="slide level2 center" data-background-image="./img/end_page.jpg" data-background-opacity="0.3">
+<h2>🥳 Yeahhhh….</h2>
+<p><br> <br> <br> <br> <br> <br> <br> <br></p>
+<h3 id="lets-party">Let’s Party… 🥂</h3>
+</section>
+<!--
+<iframe width="100%" height="90%" src="https://forms.office.com/Pages/AnalysisPage.aspx?AnalyzerToken=WA91U0Pvf5bCaVXUdR6X7crGJM6Z7499&id=5lO5wryojkq_zkjrwHUnMWS5zwU1oqlEh9vQjCQRLPdURDdSVU9TM0RZV0NOTFJSUU8xM1VFTExSVi4u" frameborder="0" marginwidth="0" marginheight="0" style="border: none; max-width:100%; max-height:100vh" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen> </iframe>
+bre
+-->
+<div class="quarto-auto-generated-content">
+<p><img src="./img/AUPP_Logo.png" class="slide-logo"></p>
+<div class="footer footer-default">
+
+</div>
+</div></section>
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="Categorical_analysis_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="Categorical_analysis_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="Categorical_analysis_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="Categorical_analysis_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="Categorical_analysis_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="Categorical_analysis_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="Categorical_analysis_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="Categorical_analysis_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="Categorical_analysis_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="Categorical_analysis_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': false,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":false},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const onCopySuccess = function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
+      });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>
