@@ -1,7 +1,6 @@
 # **INF-604: Data Analysis**
 <img src="./Slides/img/AUPP_Logo.png#right" style="width:0.625in" />
 <a href="https://hassothea.github.io/">HAS Sothea, PhD</a>
-2025-01-17
 
 - [**Introduction**](#introduction)
 - [**Course Criteria**](#course-criteria)
@@ -93,7 +92,7 @@ has something for everyone.
   src="./Slides/img/posit_logo.png"
   style="position: relative; bottom: 0px" width="25" /> Posit cloud</a>
 - <a href="https://ggplot2.tidyverse.org/" target="_blank"><img
-  src="./slides/img/ggplot_logo.png"
+  src="./Slides/img/ggplot_logo.png"
   style="position: relative; bottom: 0px" width="27" /> Ggplot2</a>
 - <a href="https://www.tidyverse.org/" target="_blank"><img
   src="./Slides/img/tidyverse_logo.png"
@@ -105,14 +104,7 @@ has something for everyone.
 
 # **Course progress**
 
-**Note**: The following table of contents will be progressively updated
-according to the course advancement.
-
-| Topic | Lab | Solution | Remark |
-|:---|:--:|:--:|:--:|
-| <a
-href="https://hassothea.github.io/Data_Analysis_AUPP/Slides/Intro_Data_Analysis.html"
-target="_blank">Introduction to Data Analysis</a> | Lab1 | Solution1 | …Loading |
+> Visit the webpage: [INF-604: Data Analysis I](https://hassothea.github.io/Data_Analysis_AUPP/)
 
 # **Midterms, Exams and Projects**
 
@@ -210,3 +202,4 @@ Analysis**.
   target="_blank">R for Data Science, Hadley W. and Garrett G.</a>
 
 ------------------------------------------------------------------------
+
