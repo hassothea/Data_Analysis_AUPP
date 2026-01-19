@@ -50,8 +50,8 @@ has something for everyone.
 
 | **`Criteria`**                                | **`Percentage`** |
 |:----------------------------------------------|:----------------:|
-| Attendance                                    |       10%        |
-| Participation & quiz                          |       30%        |
+| Participation & quiz                          |       10%        |
+| Labs                                          |       30%        |
 | Midterm Exam                                  |       30%        |
 | Final Project & Presentation / Practical labs |       30%        |
 
@@ -202,4 +202,5 @@ Analysis**.
   target="_blank">R for Data Science, Hadley W. and Garrett G.</a>
 
 ------------------------------------------------------------------------
+
 
