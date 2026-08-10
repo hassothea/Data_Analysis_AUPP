@@ -1,0 +1,473 @@
+---
+title: "Introduction to Data Analysis"
+subtitle: "<br> [INF-604: Data Analysis]{.blue} <br>
+[![](./img/AUPP_Logo.png){width=150px}](https://www.aupp.edu.kh/){target='_blank'} <br>"
+author: "[Lecturer: Dr. Sothea HAS]{.blue}"
+toc-depth: 2
+format:
+    revealjs:
+        touch: true
+        controls: true
+        slide-number: c/t
+        logo: './img/AUPP_Logo.png'
+        theme: [default, custom.scss]
+        css: styles.css
+        include-in-header:
+            - text: |
+                <style>
+                #title-slide .title {
+                    font-size: 2em;
+                }
+                </style>
+        menu: false
+linestretch: 1em
+font-size: 10pt
+---
+
+## About the course
+:::{style="font-size: 80%"}
+- **Objective:** Equip you with essential `Data Analysis` skills to uncover insights from data and make informed decisions.
+
+- **Grading Criteria**
+
+| **`Criteria`** | **`Percentage`** |
+|:---------|:----------:|
+|Labs| 30% |
+|Participation & quiz| 10% |
+|Midterm Exam| 30% |
+|Final Project & Presentation / Practical labs| 30% |
+|
+
+- **Programming:** 
+
+::: {.panel-tabset}
+## `Python`
+
+- [![](./img/jupyter.png){width=30px style="position: relative; bottom: -15px"} Jupyter Notebook](https://docs.jupyter.org/en/latest/){target="_blank"},  [![](./img/colab.png){width=35px style="position: relative; bottom: -12px"} Google colab](https://colab.research.google.com/){target="_blank"}, [![](./img/plt_logo.png){width=35px style="position: relative; bottom: -18px"} Matplotlib](https://matplotlib.org/){target="_blank"}, [![](./img/sns_logo.svg){width=30px style="position: relative; bottom: -15px"} Seaborn](https://seaborn.pydata.org/){target="_blank"}
+
+## `R`
+
+- [![](./img/quarto_logo.png){width=60px style="position: relative; bottom: -20px"} Rmarkdown/Quarto](https://quarto.org/){target="_blank"}, [![](./img/posit_logo.png){width=25px style="position: relative; bottom: -15px"} Posit cloud](https://ggplot2.tidyverse.org/){target="_blank"}, [![](./img/ggplot_logo.png){width=27px style="position: relative; bottom: -15px"} Ggplot2](https://ggplot2.tidyverse.org/){target="_blank"}, [![](./img/tidyverse_logo.png){width=30px style="position: relative; bottom: -15px"} Tidyverse](https://www.tidyverse.org/){target="_blank"}
+
+:::
+:::
+
+## Where to visit
+:::{.r-fit-text}
+- [**Canvas & Course webpage**]{.blue}: [https://hassothea.github.io/Data_Analysis_AUPP/](https://hassothea.github.io/Data_Analysis_AUPP/){target='_blank'}
+:::
+
+<iframe width="100%" height="80%" src="https://hassothea.github.io/Data_Analysis_AUPP/" frameborder="0" marginwidth="0" marginheight="0" style="border: none; max-width:100%; max-height:100vh" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen> </iframe>
+
+## Just want to know you a bit 👇
+
+![[Link to the survey](https://forms.cloud.microsoft/r/DmRtDZGbzV){target="_blank"}.](./img/QRCode_get_2_know_2026.png){fig-align="center" height="500px"}
+
+
+
+## Let's see 🫣
+
+<iframe width="100%" height="90%" src="https://forms.cloud.microsoft/Pages/AnalysisPage.aspx?AnalyzerToken=WA91U0Pvf5bCaVXUdR6X7crGJM6Z7499&id=5lO5wryojkq_zkjrwHUnMWS5zwU1oqlEh9vQjCQRLPdUQlpCVFpZVzg1QkdaRFE1QjFUVEs0V0hBUi4u" frameborder="0" marginwidth="0" marginheight="0" style="border: none; max-width:100%; max-height:100vh" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen> </iframe>
+
+
+# Introduction to<br> Data Analysis (DA) {background-color="#345a8b"} 
+
+## 📋 Outline
+
+- [Motivation & Overview]{.section} <br>
+
+- [Type of Data Analysis]{.section} <br>
+
+- [Related Roles in Data Ecosystem]{.section} <br>
+
+- [Key part: Data Analysis Process]{.section} <br>
+
+- [The Importance of Data Analysis]{.section} <br>
+
+- [Applications of Data Analysis]{.section} <br>
+
+```{python}
+path0 = "/Users/hassothea/Documents/Teaching/AUPP/Data_Analytics/Courses/data"
+```
+
+# Motivation {background-color="#345a8b"} 
+
+## Motivation
+### [Old Faithful dataset](https://bookdown.org/pkaldunn/DataFiles/OldFaithful.html){target="_blank"} ($272$ rows, $2$ columns)
+:::{.columns}
+:::{.column width="48%"}
+```{python}
+#| echo: true
+#| code-fold: true
+#| fig-align: center
+import pandas as pd                 # Import pandas package
+import seaborn as sns               # Package for beautiful graphs
+import matplotlib.pyplot as plt     # Graph management
+sns.set(style="whitegrid")          # Set grid background
+# path = "https://gist.githubusercontent.com/curran/4b59d1046d9e66f2787780ad51a1cd87/raw/9ec906b78a98cf300947a37b56cfe70d01183200/data.tsv"                       # The data can be found in this link
+df0 = pd.read_csv(path0 + "/faithful.csv" )  # Import it into Python
+df0.head(5)                        # Randomly select 4 points
+```
+:::
+
+:::{.column width="52%"}
+
+:::{.r-stack}
+
+![](./img/old_faithful.jpg){width="400px" height="290px" fig-align="center"}
+
+:::{.fragment}
+```{python}
+#| echo: true
+#| code-fold: true
+#| fig-align: center
+plt.figure(figsize=(5.5,3.5))                          # Define figure size
+sns.scatterplot(df0, x="waiting", y="eruptions")    # Create scatterplot
+plt.title("Old Faithful data from Yellowstone National Park, US", fontsize=10)    # Title
+plt.suptitle("Eruptions vs waiting times", fontsize=13, y=1)                 # Subtitle
+plt.show()
+```
+:::
+:::
+:::
+:::
+
+:::{.fragment}
+:::{style="position: relative; bottom: 50px"}
+- The longer the wait, the longer duration of the eruption.
+:::
+:::
+
+```{python}
+path = "/Users/hassothea/Documents/Teaching/AUPP/Data_Analytics/Courses/data"
+```
+
+## Motivation 
+### [Marketing](https://rdrr.io/github/kassambara/datarium/man/marketing.html) ($200$ rows, $4$ columns) {auto-animate="true"}
+
+```{python}
+#| echo: true
+#| code-fold: true
+import pyreadr
+import pandas as pd
+df = pyreadr.read_r(path + "/marketing.rda")
+df = df['marketing']
+df.head(5)
+```
+
+
+## Motivation {auto-animate="true"}
+### [Marketing](https://rdrr.io/github/kassambara/datarium/man/marketing.html) ($200$ rows, $4$ columns) {auto-animate="true"}
+
+:::{.columns}
+:::{.column width="60%"}
+:::{style="font-size: 60%"}
+```{python}
+#| echo: true
+#| code-fold: true
+df.head(10)
+```
+:::
+:::
+:::{.column width="40%"}
+```{python}
+#| echo: true
+#| code-fold: true
+import plotly.express as px
+fig = px.scatter(df, x="youtube", y="sales", size_max=40)
+fig.update_layout(title="Sales as a function of Youtube Ads",
+                  width=400, height=350)
+```
+:::
+:::
+:::{.fragment}
+- **What we can do**: Leverage this data to boost sales.
+:::
+
+## Data Analysis Overview
+:::{style="font-size: 95%" .incremental}
+- Simply put, it's a process of **treating raw data** and **making sense** of it.
+- It involves using: 
+    - Statistical methods: descriptive, test, regression analysis...
+    - Analytics tools: ![](./img/python_logo.png){width="40" style="position: relative; bottom: -20px"} `Python`, ![](./img/R_logo.png){width="40" style="position: relative; bottom: -13px"}, `Excel`, `Power BI`...
+    - Techniques to identify patterns and trends: Data modeling, machine learning algorithms...
+
+- It helps businesses understand past performance, customer behavior, market trends and guides decision-making for future actions and more.
+
+- Example: What’s the best ad strategy for boosting sales?
+:::
+
+# Types of Data Analysis {background-color="#345a8b"} 
+
+## Types of Data Analysis {auto-animate=true}
+### 1. Descriptive Analysis
+
+:::{style="font-size: 90%"}
+- [Summarizes]{.blue} & [provides]{.blue} insights into the past events.
+- Answers to "*What happened during that time?*"
+- Example: average expenses on ads, average sales...
+:::
+
+:::{.r-stack}
+![](./img/type_DA1.png){fig-align=center width="650px"}
+
+![](./img/rec.png){.absolute top=420 left=260 width="140" height="215"}
+:::
+
+
+## Types of Data Analysis {auto-animate=true}
+### 2. Diagnostic Analysis
+
+:::{style="font-size: 90%"}
+- Delves deeper into the [reasons behind]{.blue} specific outcomes.
+- Answers to "*Why did it happen?*".
+- Example: why did the sales decreased or increased?
+:::
+
+:::{.r-stack}
+![](./img/type_DA1.png){fig-align=center width="650px"}
+
+![](./img/rec.png){.absolute top=395 left=385 width="140" height="240"}
+:::
+
+
+## Types of Data Analysis {auto-animate=true}
+### 3. Predictive Analysis
+
+:::{style="font-size: 90%"}
+- [Forecasts future outcomes]{.blue} using historical data and trends.
+- Answers to "*What's likely to happen next?*".
+- Example: how will the next ads impact sales?
+:::
+
+:::{.r-stack}
+![](./img/type_DA1.png){fig-align=center width="650px"}
+
+![](./img/rec.png){.absolute top=365 left=520 width="140" height="275"}
+:::
+
+## Types of Data Analysis {auto-animate=true}
+### 4. Prescriptive Analysis
+
+:::{style="font-size: 90%"}
+- Use estimated outcomes to [guide appropriate actions]{.blue}.
+- Answers to "*What's the best course of action to take?*".
+- Example: what is the most effective ad strategy?
+:::
+
+:::{.r-stack}
+![](./img/type_DA1.png){fig-align=center width="650px"}
+
+![](./img/rec.png){.absolute top=330 left=652 width="145" height="310"}
+:::
+
+# Related Roles {background-color="#345a8b"}
+
+## Related Roles in Data Ecosystem
+
+1. Data Engineer <br>
+
+2. Data Analyst <br>
+
+3. Data Scientist <br>
+
+4. Machine Learning Engineer <br>
+
+5. Business Analyst and Business Intelligent (BI) Analyst
+
+## Related Roles in Data Ecosystem
+### 1. Data Engineer
+:::{.incremental}
+- [**Builds**]{.blue} and [**maintains**]{.blue} the infrastructure for data generation, collection, storage, and retrieval.
+- Ensures efficient, scalable, and reliable [data pipelines]{.blue}.
+- Required skills: 
+    - DBMS, ETL (Extract, Transform, Load)
+    - Data warehousing, programming (Python, Java, SQL), 
+    - Big data technologies (Hadoop, Spark).
+:::
+
+## Related Roles in Data Ecosystem
+### 2. Data Analyst
+:::{.incremental}
+- [**Analyzes**]{.blue} data to uncover [**trends and insights**]{.blue}, providing actionable information to inform business decisions. 
+- Uses the data infrastructure set up by **Data Engineers**.
+- Required skills: 
+    - Data cleaning, data visualization, statistical analysis.
+    - Programming/Tools: [Python, R, SQL, Excel]{.blue}.
+    - Data visualization tools (Tableau, Power BI).
+:::
+
+## Related Roles in Data Ecosystem
+### 3. Data Scientist
+:::{.incremental}
+- Uses [**advanced analytics**]{.blue}, including machine learning (ML) and predictive modeling, to solve complex problems and generate new insights. 
+- Builds on the work of **Data Engineers** and **Data Analysts** to create advanced models.
+- Required skills:
+    - ML algorithms, Deep learning.
+    - Programming: Python, R.
+    - Statistical analsis, data modeling.
+:::
+
+## Related Roles in Data Ecosystem
+### 4. ML Engineer
+:::{.incremental}
+- [**Develops**, **optimize**]{.blue}, and [**maintains**]{.blue} ML models and algorithms.
+- Transforms prototypes into scalable and efficient model for real-world applications.
+- Work closely with **Data Scientists** and **Data Engineers**.
+- Required skills:
+    - Programming: Python (TensorFlow, PyTorch), R, Java, etc.
+    - Deep understanding of ML frameworks and algorithms.
+    - Big data technologies, preprocessing and feature engineering.
+:::
+
+## Related Roles in Data Ecosystem
+### 5. Business & BI Analyst
+:::{.incremental}
+- Improves business processes and strategies using data-driven insights.
+- Focuses on creating dashboards and reports. 
+- Relies on data infrastructure and insights generated by Data Engineers, Data Analysts, and Data Scientists.
+- Required skills:
+    - Business process analysis
+    - Data visualization, 
+    - SQL, Excel, BI tools (Tableau, Power BI).
+:::
+
+## Summary
+
+<br>
+
+![](./img/related_roles.png){fig-align=center width="800"}
+
+
+## Data Analyst vs Data Scientist
+
+- **Data analysis** is central to the roles of both Data Analysts and Data Scientists.
+
+![](./img/analytics_vs_scientist.png){fig-align=center}
+
+# Key parts of Data Analysis {background-color="#345a8b"}
+
+## Key parts of Data Analysis {auto-animate=true}
+### 1. Define the problem
+
+- Define what is the problem? Desired outcomes?
+- Define what metric may be used to measure its quality?
+- Ex: What factors contribute to tourists' happiness when visiting **Angkor Wat**?
+
+:::{.r-stack}
+![](./img/DA_process.png){fig-align=center}
+
+![](./img/rec.png){.absolute top=401 left=15 width="180" height="230"}
+:::
+
+## Key parts of Data Analysis {auto-animate=true}
+### 2. Data Collection
+
+- Identify necessary data and data sources.
+- What tools to use? How should the data be organized? <br>
+- Ex: Where to collect the data? Platforms like TripAdvisor, Google Reviews, and social media, or Surveys?
+
+:::{.r-stack}
+![](./img/DA_process.png){fig-align=center}
+
+![](./img/rec.png){.absolute top=401 left=185 width="180" height="230"}
+:::
+
+## Key parts of Data Analysis {auto-animate=true}
+### 3. Data Cleaning
+
+- Address quality issues to ensure accurate analysis.
+- Fix missing values, handle outliers, and standardize data...
+- Ex: How should we store the data and clean it while preserving its quality and information?
+
+:::{.r-stack}
+![](./img/DA_process.png){fig-align=center}
+
+![](./img/rec.png){.absolute top=401 left=355 width="180" height="235"}
+:::
+
+## Key parts of Data Analysis {auto-animate=true}
+### 4. Data Analyzing
+
+- Manipulate data to identify trends, correlations, patterns...
+- Examine the data and seek for solutions to the problem.
+- Ex: "What statistical values should we compute? Which graphs should we use? Which models should we try?
+
+:::{.r-stack}
+![](./img/DA_process.png){fig-align=center}
+
+![](./img/rec.png){.absolute top=401 left=522 width="180" height="235"}
+:::
+
+## Key parts of Data Analysis {auto-animate=true}
+### 5. Interpretation
+
+- Deduce key messages/findings from analysis results.
+- Recognize the limitations of the analysis...
+- Ex: What factors most influence tourists' satisfaction? Answering our defined questions.
+
+:::{.r-stack}
+![](./img/DA_process.png){fig-align=center}
+
+![](./img/rec.png){.absolute top=401 right=179 width="180" height="235"}
+:::
+
+## Key parts of Data Analysis {auto-animate=true}
+### 6. Visualization & presentation
+
+- Present the findings using suitable graphs, charts, maps...
+- Convey the insights from the analysis effectively.
+- Ex: How should we present our findings? Which values or graphs will help our audience easily understand?
+
+:::{.r-stack}
+![](./img/DA_process.png){fig-align=center}
+
+![](./img/rec.png){.absolute top=401 right=13 width="180" height="235"}
+:::
+
+# The Importance of Data Analysis {background-color="#345a8b"}
+## The Importance of Data Analysis
+:::{.columns}
+:::{.column width="33%"}
+:::{style="font-size: 70%" .incremental}
+- Analyzes past performance, and uncovers trends, patterns, insights within data.
+- Unables companies to make informed decisions.
+- Leads to better strategies, optimized operations, and enhanced customer satisfaction.
+- Saving time and resources.
+- Drives innovation and fosters growth by identifying new opportunities and areas for improvement.
+:::
+:::
+:::{.column width="67%" .fragment}
+:::{style="font-size: 70%"}
+<br><br><br>
+
+- This is the introduction of my PhD thesis:
+:::
+
+![](./img/my_sentence.png){fig-align="center" width="800" style="position: relative; bottom: -30px"}
+:::
+:::
+
+
+# Applications {background-color="#345a8b"}
+
+## Applications of Data Analysis
+
+![](./img/applications_DA.jpg){fig-align=center}
+
+
+:::{.center}
+
+## 🥳 Yeahhhh....  {background-image="./img/end_page.jpg" background-opacity="0.3"}
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+### Party time... 🥂
+:::

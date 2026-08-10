@@ -1,0 +1,79 @@
+/*-- scss:defaults --*/
+$body-bg: #ffffff;
+$body-color: #000000;
+$link-color: #208edc; 
+$presentation-heading-color: #345a8b;
+$presentation-heading-text-transform: capitalize;
+
+/*-- scss:rules --*/
+
+/* Blockquotes (From Source 1) */
+.reveal .slide blockquote {
+  border-left: 3px solid $text-muted;
+  padding-left: 0.5em;
+}
+
+/* Logo and Slide Number Customization (From Source 1) */
+.reveal .slide-logo {
+  display: block;
+  position: fixed;
+  bottom: unset !important;
+  left: unset !important;
+  top: 10px;
+  right: 20px;
+  height: 30px !important;
+  width: 40px !important; /* Fixed typo from 40x */
+  max-width: unset !important;
+  max-height: unset !important;
+}
+
+.slide-number, .reveal.has-logo .slide-number {
+  bottom: 10px !important;
+  right: 10px !important;
+  left: unset !important;
+  top: unset !important;
+  color: #777777 !important;
+}
+
+/* Typography & Utility Classes (From Source 3) */
+.blue { color: #345a8b; }
+.red { color: #b42121; }
+.white { color: #ffffff; }
+.light-red { color: #ee2c2c; }
+.light-blue { color: #394ae0; }
+.orange { color: #cba823; }
+.green { color: #53a343; }
+.blur { color: #dbdedf; }
+.yellow { color: #ebc909; }
+
+.section {
+    font-size: 1.1em;
+    margin-top: 1px;
+    color: #345a8b;
+    font-weight: 500;
+}
+
+/* Layout Utilities (From Source 3) */
+.hline {
+    border-top: 2px solid #b2b9c3;
+    margin: 20px 0 5px 0;
+}
+.centering {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+.notes {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 0.8em;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.reveal .slides section ul {
+  width: 100% !important;
+  max-width: 100% !important;
+}
