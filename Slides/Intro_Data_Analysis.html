@@ -289,11 +289,16 @@
 </section>
 <section id="just-want-to-know-you-a-bit" class="slide level2">
 <h2>Just want to know you a bit 👇</h2>
-
-<img data-src="./img/QRCode_25_26.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="./img/QRCode_get_2_know_2026.png" height="500"></p>
+<figcaption><a href="https://forms.cloud.microsoft/r/DmRtDZGbzV" target="_blank">Link to the survey</a>.</figcaption>
+</figure>
+</div>
+</section>
 <section id="lets-see" class="slide level2">
 <h2>Let’s see 🫣</h2>
-<iframe width="100%" height="90%" src="https://forms.cloud.microsoft/r/DmRtDZGbzV" frameborder="0" marginwidth="0" marginheight="0" style="border: none; max-width:100%; max-height:100vh" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen="" msallowfullscreen="">
+<iframe width="100%" height="90%" src="https://forms.cloud.microsoft/Pages/AnalysisPage.aspx?AnalyzerToken=WA91U0Pvf5bCaVXUdR6X7crGJM6Z7499&amp;id=5lO5wryojkq_zkjrwHUnMWS5zwU1oqlEh9vQjCQRLPdUQlpCVFpZVzg1QkdaRFE1QjFUVEs0V0hBUi4u" frameborder="0" marginwidth="0" marginheight="0" style="border: none; max-width:100%; max-height:100vh" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen="" msallowfullscreen="">
 </iframe>
 </section>
 <section>
@@ -322,7 +327,7 @@
 <h3 id="old-faithful-dataset-272-rows-2-columns"><a href="https://bookdown.org/pkaldunn/DataFiles/OldFaithful.html" target="_blank">Old Faithful dataset</a> (<span class="math inline">\(272\)</span> rows, <span class="math inline">\(2\)</span> columns)</h3>
 <div class="columns">
 <div class="column" style="width:48%;">
-<div id="cb5dd434" class="cell" data-execution_count="2">
+<div id="0247b688" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href=""></a><span class="im">import</span> pandas <span class="im">as</span> pd                 <span class="co"># Import pandas package</span></span>
@@ -333,7 +338,7 @@
 <span id="cb1-6"><a href=""></a>df0 <span class="op">=</span> pd.read_csv(path0 <span class="op">+</span> <span class="st">"/faithful.csv"</span> )  <span class="co"># Import it into Python</span></span>
 <span id="cb1-7"><a href=""></a>df0.head(<span class="dv">5</span>)                        <span class="co"># Randomly select 4 points</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="2">
+<div class="cell-output cell-output-display" data-execution_count="142">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -397,10 +402,10 @@
 </figure>
 </div>
 <div class="fragment">
-<div id="e2d867db" class="cell" data-execution_count="3">
+<div id="049dcac4" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href=""></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">5</span>,<span class="fl">3.2</span>))                          <span class="co"># Define figure size</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href=""></a>plt.figure(figsize<span class="op">=</span>(<span class="fl">5.5</span>,<span class="fl">3.5</span>))                          <span class="co"># Define figure size</span></span>
 <span id="cb2-2"><a href=""></a>sns.scatterplot(df0, x<span class="op">=</span><span class="st">"waiting"</span>, y<span class="op">=</span><span class="st">"eruptions"</span>)    <span class="co"># Create scatterplot</span></span>
 <span id="cb2-3"><a href=""></a>plt.title(<span class="st">"Old Faithful data from Yellowstone National Park, US"</span>, fontsize<span class="op">=</span><span class="dv">10</span>)    <span class="co"># Title</span></span>
 <span id="cb2-4"><a href=""></a>plt.suptitle(<span class="st">"Eruptions vs waiting times"</span>, fontsize<span class="op">=</span><span class="dv">13</span>, y<span class="op">=</span><span class="dv">1</span>)                 <span class="co"># Subtitle</span></span>
@@ -409,7 +414,7 @@
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="Intro_Data_Analysis_files/figure-revealjs/cell-4-output-1.png" class="quarto-figure quarto-figure-center" width="444" height="339"></p>
+<p><img data-src="Intro_Data_Analysis_files/figure-revealjs/cell-4-output-1.png" class="quarto-figure quarto-figure-center" width="481" height="365"></p>
 </figure>
 </div>
 </div>
@@ -428,7 +433,7 @@
 <section id="motivation-2" class="slide level2">
 <h2>Motivation</h2>
 <h3 data-auto-animate="true" id="marketing-200-rows-4-columns"><a href="https://rdrr.io/github/kassambara/datarium/man/marketing.html">Marketing</a> (<span class="math inline">\(200\)</span> rows, <span class="math inline">\(4\)</span> columns)</h3>
-<div id="8999f34b" class="cell" data-execution_count="5">
+<div id="e7db4ba7" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href=""></a><span class="im">import</span> pyreadr</span>
@@ -437,7 +442,7 @@
 <span id="cb3-4"><a href=""></a>df <span class="op">=</span> df[<span class="st">'marketing'</span>]</span>
 <span id="cb3-5"><a href=""></a>df.head(<span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="145">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -510,13 +515,14 @@
 <h2 data-id="quarto-animate-title">Motivation</h2>
 <h3 data-auto-animate="true" id="marketing-200-rows-4-columns-1"><a href="https://rdrr.io/github/kassambara/datarium/man/marketing.html">Marketing</a> (<span class="math inline">\(200\)</span> rows, <span class="math inline">\(4\)</span> columns)</h3>
 <div class="columns">
-<div class="column" style="width:45%;">
-<div id="ed0e5267" class="cell" data-execution_count="6">
+<div class="column" style="width:60%;">
+<div style="font-size: 60%">
+<div id="8efdd356" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href=""></a>df.head(<span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href=""></a>df.head(<span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="6">
+<div class="cell-output cell-output-display" data-execution_count="146">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -578,26 +584,62 @@
 <td>70.08</td>
 <td>15.48</td>
 </tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">5</th>
+<td>10.44</td>
+<td>58.68</td>
+<td>90.00</td>
+<td>8.64</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">6</th>
+<td>69.00</td>
+<td>39.36</td>
+<td>28.20</td>
+<td>14.16</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">7</th>
+<td>144.24</td>
+<td>23.52</td>
+<td>13.92</td>
+<td>15.84</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">8</th>
+<td>10.32</td>
+<td>2.52</td>
+<td>1.20</td>
+<td>5.76</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">9</th>
+<td>239.76</td>
+<td>3.12</td>
+<td>25.44</td>
+<td>12.72</td>
+</tr>
 </tbody>
 </table>
 
 </div>
 </div>
 </div>
-</div><div class="column" style="width:55%;">
-<div id="f395e85d" class="cell" data-execution_count="7">
+</div>
+</div><div class="column" style="width:40%;">
+<div id="03a43459" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href=""></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
 <span id="cb5-2"><a href=""></a>fig <span class="op">=</span> px.scatter(df, x<span class="op">=</span><span class="st">"youtube"</span>, y<span class="op">=</span><span class="st">"sales"</span>, size_max<span class="op">=</span><span class="dv">40</span>)</span>
 <span id="cb5-3"><a href=""></a>fig.update_layout(title<span class="op">=</span><span class="st">"Sales as a function of Youtube Ads"</span>,</span>
-<span id="cb5-4"><a href=""></a>                  width<span class="op">=</span><span class="dv">550</span>, height<span class="op">=</span><span class="dv">380</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb5-4"><a href=""></a>                  width<span class="op">=</span><span class="dv">400</span>, height<span class="op">=</span><span class="dv">350</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>            <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_SVG"></script><script type="text/javascript">if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}</script>                <script type="text/javascript">window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
-        <script charset="utf-8" src="https://cdn.plot.ly/plotly-3.1.1.min.js" integrity="sha256-HUEFyfiTnZJxCxur99FjbKYTvKSzwDaD3/x5TqHpFu4=" crossorigin="anonymous"></script>                <div id="d6b4bcac-7d8a-414f-89db-7e2b2263133a" class="plotly-graph-div" style="height:380px; width:550px;"></div>            <script type="text/javascript">                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("d6b4bcac-7d8a-414f-89db-7e2b2263133a")) {                    Plotly.newPlot(                        "d6b4bcac-7d8a-414f-89db-7e2b2263133a",                        [{"hovertemplate":"youtube=%{x}\u003cbr\u003esales=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"","marker":{"color":"#636efa","symbol":"circle"},"mode":"markers","name":"","orientation":"v","showlegend":false,"x":{"dtype":"f8","bdata":"UrgehetBcUAzMzMzM7NKQKNwPQrXozRAmZmZmZm5ZkAfhetRuB5rQOF6FK5H4SRAAAAAAABAUUBI4XoUrgdiQKNwPQrXoyRAuB6F61H4bUAUrkfhetRTQArXo3A9GnBAj8L1KFyPPEAAAAAAAEBdQD0K16NwnW5Aj8L1KFxPbUDXo3A9CldUQHoUrkfhGnVAw\u002fUoXI\u002fCVEC5HoXrURhmQOF6FK5HYXBArkfhehTOcUCtR+F6FK4vQI\u002fC9ShcH3FAcD0K16OwUkBH4XoUrrdzQI\u002fC9Shcb2VAUrgehesBckApXI\u002fC9ahyQK1H4XoULlVAR+F6FK73dUCPwvUoXO9gQClcj8L1KF1A7FG4HoXrc0D2KFyPwrVcQD0K16NwzXVAFK5H4XoEdEApXI\u002fC9WhWQFyPwvUo3ElAmZmZmZkZcUAAAAAAAGBuQM3MzMzMjGpAhetRuB4FdkApXI\u002fC9QhvQB+F61G4Hj5Ao3A9CtdDakApXI\u002fC9ehaQK5H4XoU\u002fnFACtejcD0KcUBSuB6F6xFUQLgehetR+G1AH4XrUbgeXkB7FK5H4TpwQKNwPQrXY2tAo3A9Ctezc0D2KFyPwtVtQIXrUbgehSFArUfhehRuZEAfhetRuJ5vQHoUrkfhmm9AzczMzMwMUEApXI\u002fC9ZhzQMP1KFyP8nFAj8L1KFzPXkAK16NwPapjQDMzMzMzs1RAZmZmZmbmQkCF61G4HuVkQK5H4XoUznFAw\u002fUoXI9CcEA9CtejcN1tQLgehetReGBAFK5H4XoUQEApXI\u002fC9WhjQOF6FK5HAXBAR+F6FK5HNEAAAAAAAIBAQDMzMzMzE2JA7FG4HoXrGUBmZmZmZmZhQOxRuB6F61ZAXI\u002fC9Sj8cUDXo3A9CpdWQIXrUbgehVRAMzMzMzMDcEB6FK5H4fpsQKNwPQrX41ZAexSuR+GaYEA9CtejcH1aQLgehetReGBAhetRuB4lZEApXI\u002fC9ShBQKNwPQrXU3BA4XoUrkfRckBcj8L1KBxgQB+F61G4fmhAo3A9CtejbUBcj8L1KLxrQArXo3A9unVAR+F6FK5HZECuR+F6FK5wQHoUrkfhOnZAo3A9CtcDdUCPwvUoXC9sQD0K16Nw3XFAj8L1KFyvZEAAAAAAAAA+QB+F61G4HltAcD0K16NwL0BI4XoUridzQI\u002fC9Shc73BAcD0K16MgckB6FK5H4VpqQHA9CtejcG9A9ihcj8J1V0BH4XoUrodWQOF6FK5H4WRA7FG4HoXrVkB7FK5H4dpiQEfhehSuRzdAUrgehesxZUCPwvUoXI82QM3MzMzMzHBA16NwPQp3YkBmZmZmZjZxQClcj8L1KFpAuB6F61G4IkCPwvUoXA9YQPYoXI\u002fChXBA4XoUrkfhUUDhehSuR+HqP6NwPQrX43NAKVyPwvUoJEBcj8L1KHxwQKNwPQrXI0ZAehSuR+H6TEC4HoXrUbg+QNejcD0Kh3RAzczMzMzMSUBcj8L1KLxrQIXrUbgeBVZArUfhehQObUCZmZmZmYlwQOB6FK5HYV9AXI\u002fC9SjcXEDsUbgehQtlQFK4HoXrAXJAPQrXo3A9ckDNzMzMzMxGQFK4HoXr0UpAPQrXo3ANdUBmZmZmZiZiQKNwPQrXo21AUrgeheuxaUDsUbgehStsQK1H4XoUrhNA7FG4HoUrXEC5HoXrUXhmQBSuR+F6FCxA4XoUrkfBY0AAAAAAAOBpQPYoXI\u002fCtVlAw\u002fUoXI9CbEBmZmZmZoZoQBSuR+F6lGFAZmZmZmaWcUB6FK5H4Xo1QIXrUbgeBW9ASOF6FK4ncEDD9Shcj1J1QAAAAAAAAE5AzczMzMysaECF61G4HoU3QMP1KFyPQmlArkfhehSucEAUrkfhesR0QOF6FK5HoXJAR+F6FK6HaUBwPQrXo8B0QNejcD0K12hAPQrXo3B9Z0AzMzMzM2NwQFyPwvUo3FBAUrgeheuRdUApXI\u002fC9QhzQAAAAAAAwG5AzczMzMzsZEAK16NwPapsQDMzMzMzc3VAcD0K16NwNkAzMzMzM7NHQGZmZmZmplZAo3A9CtejNECF61G4HgVpQBSuR+F6dGZA7FG4HoXrRkDD9Shcj0JcQM3MzMzMjGpAhetRuB5FdUC4HoXrUWhxQA=="},"xaxis":"x","y":{"dtype":"f8","bdata":"hetRuB6FOkD2KFyPwvUoQFK4HoXrUSZAMzMzMzMzNkD2KFyPwvUuQEjhehSuRyFAUrgehetRLECtR+F6FK4vQArXo3A9ChdAcD0K16NwKUCjcD0K16MkQOF6FK5H4TRAFK5H4XoUJkBH4XoUrkcnQM3MzMzMzDZA4XoUrkfhOkAAAAAAAAAuQEfhehSuRz1AH4XrUbgeK0CF61G4HoUxQJmZmZmZmTVAAAAAAAAALkDhehSuR+EaQJmZmZmZmTJAR+F6FK5HJ0DMzMzMzMwsQAAAAAAAADJAFK5H4XoUM0CtR+F6FK42QDMzMzMzMylArUfhehSuOUCPwvUoXI8sQArXo3A9CidA4XoUrkfhNEDNzMzMzMwmQLgehetRuC5AehSuR+F6PkCjcD0K16MxQD0K16NwPShAzczMzMzMOUDsUbgeheszQIXrUbgehTRA16NwPQrXOED2KFyPwvUuQGZmZmZmZiRA4XoUrkfhMUBwPQrXo3ApQNejcD0K1ztAw\u002fUoXI\u002fCMUBH4XoUrkcnQFyPwvUoXCtArUfhehSuKUAfhetRuB47QHA9CtejcDlAPQrXo3A9OEBwPQrXo3A8QGZmZmZmZhpArUfhehSuL0CPwvUoXI88QBSuR+F6FDZAcD0K16NwI0AK16NwPQo9QNejcD0K1zJAzczMzMzMMECZmZmZmZk1QFK4HoXrUSZAzczMzMzMJkAUrkfhehQwQK1H4XoUrjZAw\u002fUoXI\u002fCOkD2KFyPwvU1QML1KFyPwi1AH4XrUbgeJUBmZmZmZmYqQGZmZmZmZjRA4XoUrkfhJECPwvUoXI8gQArXo3A9CjFAcD0K16NwGUBmZmZmZmYqQFK4HoXrUSxAhetRuB6FLUAfhetRuB4rQFK4HoXrUTBACtejcD0KOkA9CtejcD0yQMzMzMzMzCxAMzMzMzMzM0D2KFyPwvUuQArXo3A9CjRA4XoUrkfhKkCF61G4HoUhQEfhehSuRzdAo3A9CtejOkCZmZmZmZkrQEfhehSuRzRAFK5H4XoULECZmZmZmZkyQHoUrkfhej5Ao3A9CtejNEAUrkfhehQsQI\u002fC9ShcjzxAw\u002fUoXI\u002fCMUCjcD0K16MxQNejcD0K1zhACtejcD0KN0BI4XoUrkchQOF6FK5H4SRAcD0K16NwGUDD9Shcj8I3QBSuR+F6FDBAKVyPwvUoOkDrUbgeheswQBSuR+F6FDNAhetRuB6FMUA9CtejcD0uQEfhehSuRy1Aj8L1KFyPJkAUrkfhehQzQK1H4XoUrh9AmZmZmZmZMkDNzMzMzMwgQNejcD0K1ytAPQrXo3A9MkCjcD0K16M3QHA9CtejcClArUfhehSuH0AfhetRuB4lQKNwPQrXoz1AR+F6FK5HJ0C4HoXrUbj+P3oUrkfhei5AXI\u002fC9ShcG0CF61G4HoU3QOxRuB6F6ylA16NwPQrXK0DNzMzMzMwmQPYoXI\u002fC9ThACtejcD0KJ0DXo3A9Ctc4QClcj8L1KCpACtejcD0KN0AfhetRuB44QPYoXI\u002fC9ShAXI\u002fC9ShcK0C5HoXrUbgoQK1H4XoUri9AehSuR+F6PkApXI\u002fC9SgqQD0K16NwPShAUrgehetRM0DXo3A9CtcrQOxRuB6F6zNAzczMzMzMNkC4HoXrUbgyQLgehetRuA5AXI\u002fC9ShcMkA9CtejcD0oQIXrUbgehSFA9ihcj8L1LkBI4XoUrkcxQOxRuB6F6y9A4XoUrkfhMUCZmZmZmZk1QI\u002fC9ShcjyxAj8L1KFyPLEAzMzMzMzMjQEfhehSuRy1AhetRuB6FNEAAAAAAAAAyQClcj8L1KCRAZmZmZmZmMUA9CtejcD0iQBSuR+F6FCxAmZmZmZmZK0AzMzMzMzNAQD0K16NwPThAFK5H4XoULEBSuB6F61EsQD0K16NwPS5AMzMzMzMzKUBH4XoUrkctQOF6FK5H4SRAcD0K16NwP0AfhetRuB41QB+F61G4HjtAuR6F61G4KEDD9Shcj8I0QBSuR+F6FDNAFK5H4XoUIEDsUbgehespQMP1KFyPwidAUrgehetRHECF61G4HoU3QMP1KFyPwjRAPQrXo3A9IkBH4XoUrkcnQLgehetRuC5AmZmZmZmZPkAUrkfhehQwQA=="},"yaxis":"y","type":"scatter"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"youtube"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"sales"}},"legend":{"tracegroupgap":0},"title":{"text":"Sales as a function of Youtube Ads"},"width":550,"height":380},                        {"responsive": true}                    ).then(function(){
+        <script charset="utf-8" src="https://cdn.plot.ly/plotly-3.1.1.min.js" integrity="sha256-HUEFyfiTnZJxCxur99FjbKYTvKSzwDaD3/x5TqHpFu4=" crossorigin="anonymous"></script>                <div id="1a4daa96-2e9d-401f-8f3e-54ff8495bf47" class="plotly-graph-div" style="height:350px; width:400px;"></div>            <script type="text/javascript">                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("1a4daa96-2e9d-401f-8f3e-54ff8495bf47")) {                    Plotly.newPlot(                        "1a4daa96-2e9d-401f-8f3e-54ff8495bf47",                        [{"hovertemplate":"youtube=%{x}\u003cbr\u003esales=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"","marker":{"color":"#636efa","symbol":"circle"},"mode":"markers","name":"","orientation":"v","showlegend":false,"x":{"dtype":"f8","bdata":"UrgehetBcUAzMzMzM7NKQKNwPQrXozRAmZmZmZm5ZkAfhetRuB5rQOF6FK5H4SRAAAAAAABAUUBI4XoUrgdiQKNwPQrXoyRAuB6F61H4bUAUrkfhetRTQArXo3A9GnBAj8L1KFyPPEAAAAAAAEBdQD0K16NwnW5Aj8L1KFxPbUDXo3A9CldUQHoUrkfhGnVAw\u002fUoXI\u002fCVEC5HoXrURhmQOF6FK5HYXBArkfhehTOcUCtR+F6FK4vQI\u002fC9ShcH3FAcD0K16OwUkBH4XoUrrdzQI\u002fC9Shcb2VAUrgehesBckApXI\u002fC9ahyQK1H4XoULlVAR+F6FK73dUCPwvUoXO9gQClcj8L1KF1A7FG4HoXrc0D2KFyPwrVcQD0K16NwzXVAFK5H4XoEdEApXI\u002fC9WhWQFyPwvUo3ElAmZmZmZkZcUAAAAAAAGBuQM3MzMzMjGpAhetRuB4FdkApXI\u002fC9QhvQB+F61G4Hj5Ao3A9CtdDakApXI\u002fC9ehaQK5H4XoU\u002fnFACtejcD0KcUBSuB6F6xFUQLgehetR+G1AH4XrUbgeXkB7FK5H4TpwQKNwPQrXY2tAo3A9Ctezc0D2KFyPwtVtQIXrUbgehSFArUfhehRuZEAfhetRuJ5vQHoUrkfhmm9AzczMzMwMUEApXI\u002fC9ZhzQMP1KFyP8nFAj8L1KFzPXkAK16NwPapjQDMzMzMzs1RAZmZmZmbmQkCF61G4HuVkQK5H4XoUznFAw\u002fUoXI9CcEA9CtejcN1tQLgehetReGBAFK5H4XoUQEApXI\u002fC9WhjQOF6FK5HAXBAR+F6FK5HNEAAAAAAAIBAQDMzMzMzE2JA7FG4HoXrGUBmZmZmZmZhQOxRuB6F61ZAXI\u002fC9Sj8cUDXo3A9CpdWQIXrUbgehVRAMzMzMzMDcEB6FK5H4fpsQKNwPQrX41ZAexSuR+GaYEA9CtejcH1aQLgehetReGBAhetRuB4lZEApXI\u002fC9ShBQKNwPQrXU3BA4XoUrkfRckBcj8L1KBxgQB+F61G4fmhAo3A9CtejbUBcj8L1KLxrQArXo3A9unVAR+F6FK5HZECuR+F6FK5wQHoUrkfhOnZAo3A9CtcDdUCPwvUoXC9sQD0K16Nw3XFAj8L1KFyvZEAAAAAAAAA+QB+F61G4HltAcD0K16NwL0BI4XoUridzQI\u002fC9Shc73BAcD0K16MgckB6FK5H4VpqQHA9CtejcG9A9ihcj8J1V0BH4XoUrodWQOF6FK5H4WRA7FG4HoXrVkB7FK5H4dpiQEfhehSuRzdAUrgehesxZUCPwvUoXI82QM3MzMzMzHBA16NwPQp3YkBmZmZmZjZxQClcj8L1KFpAuB6F61G4IkCPwvUoXA9YQPYoXI\u002fChXBA4XoUrkfhUUDhehSuR+HqP6NwPQrX43NAKVyPwvUoJEBcj8L1KHxwQKNwPQrXI0ZAehSuR+H6TEC4HoXrUbg+QNejcD0Kh3RAzczMzMzMSUBcj8L1KLxrQIXrUbgeBVZArUfhehQObUCZmZmZmYlwQOB6FK5HYV9AXI\u002fC9SjcXEDsUbgehQtlQFK4HoXrAXJAPQrXo3A9ckDNzMzMzMxGQFK4HoXr0UpAPQrXo3ANdUBmZmZmZiZiQKNwPQrXo21AUrgeheuxaUDsUbgehStsQK1H4XoUrhNA7FG4HoUrXEC5HoXrUXhmQBSuR+F6FCxA4XoUrkfBY0AAAAAAAOBpQPYoXI\u002fCtVlAw\u002fUoXI9CbEBmZmZmZoZoQBSuR+F6lGFAZmZmZmaWcUB6FK5H4Xo1QIXrUbgeBW9ASOF6FK4ncEDD9Shcj1J1QAAAAAAAAE5AzczMzMysaECF61G4HoU3QMP1KFyPQmlArkfhehSucEAUrkfhesR0QOF6FK5HoXJAR+F6FK6HaUBwPQrXo8B0QNejcD0K12hAPQrXo3B9Z0AzMzMzM2NwQFyPwvUo3FBAUrgeheuRdUApXI\u002fC9QhzQAAAAAAAwG5AzczMzMzsZEAK16NwPapsQDMzMzMzc3VAcD0K16NwNkAzMzMzM7NHQGZmZmZmplZAo3A9CtejNECF61G4HgVpQBSuR+F6dGZA7FG4HoXrRkDD9Shcj0JcQM3MzMzMjGpAhetRuB5FdUC4HoXrUWhxQA=="},"xaxis":"x","y":{"dtype":"f8","bdata":"hetRuB6FOkD2KFyPwvUoQFK4HoXrUSZAMzMzMzMzNkD2KFyPwvUuQEjhehSuRyFAUrgehetRLECtR+F6FK4vQArXo3A9ChdAcD0K16NwKUCjcD0K16MkQOF6FK5H4TRAFK5H4XoUJkBH4XoUrkcnQM3MzMzMzDZA4XoUrkfhOkAAAAAAAAAuQEfhehSuRz1AH4XrUbgeK0CF61G4HoUxQJmZmZmZmTVAAAAAAAAALkDhehSuR+EaQJmZmZmZmTJAR+F6FK5HJ0DMzMzMzMwsQAAAAAAAADJAFK5H4XoUM0CtR+F6FK42QDMzMzMzMylArUfhehSuOUCPwvUoXI8sQArXo3A9CidA4XoUrkfhNEDNzMzMzMwmQLgehetRuC5AehSuR+F6PkCjcD0K16MxQD0K16NwPShAzczMzMzMOUDsUbgeheszQIXrUbgehTRA16NwPQrXOED2KFyPwvUuQGZmZmZmZiRA4XoUrkfhMUBwPQrXo3ApQNejcD0K1ztAw\u002fUoXI\u002fCMUBH4XoUrkcnQFyPwvUoXCtArUfhehSuKUAfhetRuB47QHA9CtejcDlAPQrXo3A9OEBwPQrXo3A8QGZmZmZmZhpArUfhehSuL0CPwvUoXI88QBSuR+F6FDZAcD0K16NwI0AK16NwPQo9QNejcD0K1zJAzczMzMzMMECZmZmZmZk1QFK4HoXrUSZAzczMzMzMJkAUrkfhehQwQK1H4XoUrjZAw\u002fUoXI\u002fCOkD2KFyPwvU1QML1KFyPwi1AH4XrUbgeJUBmZmZmZmYqQGZmZmZmZjRA4XoUrkfhJECPwvUoXI8gQArXo3A9CjFAcD0K16NwGUBmZmZmZmYqQFK4HoXrUSxAhetRuB6FLUAfhetRuB4rQFK4HoXrUTBACtejcD0KOkA9CtejcD0yQMzMzMzMzCxAMzMzMzMzM0D2KFyPwvUuQArXo3A9CjRA4XoUrkfhKkCF61G4HoUhQEfhehSuRzdAo3A9CtejOkCZmZmZmZkrQEfhehSuRzRAFK5H4XoULECZmZmZmZkyQHoUrkfhej5Ao3A9CtejNEAUrkfhehQsQI\u002fC9ShcjzxAw\u002fUoXI\u002fCMUCjcD0K16MxQNejcD0K1zhACtejcD0KN0BI4XoUrkchQOF6FK5H4SRAcD0K16NwGUDD9Shcj8I3QBSuR+F6FDBAKVyPwvUoOkDrUbgeheswQBSuR+F6FDNAhetRuB6FMUA9CtejcD0uQEfhehSuRy1Aj8L1KFyPJkAUrkfhehQzQK1H4XoUrh9AmZmZmZmZMkDNzMzMzMwgQNejcD0K1ytAPQrXo3A9MkCjcD0K16M3QHA9CtejcClArUfhehSuH0AfhetRuB4lQKNwPQrXoz1AR+F6FK5HJ0C4HoXrUbj+P3oUrkfhei5AXI\u002fC9ShcG0CF61G4HoU3QOxRuB6F6ylA16NwPQrXK0DNzMzMzMwmQPYoXI\u002fC9ThACtejcD0KJ0DXo3A9Ctc4QClcj8L1KCpACtejcD0KN0AfhetRuB44QPYoXI\u002fC9ShAXI\u002fC9ShcK0C5HoXrUbgoQK1H4XoUri9AehSuR+F6PkApXI\u002fC9SgqQD0K16NwPShAUrgehetRM0DXo3A9CtcrQOxRuB6F6zNAzczMzMzMNkC4HoXrUbgyQLgehetRuA5AXI\u002fC9ShcMkA9CtejcD0oQIXrUbgehSFA9ihcj8L1LkBI4XoUrkcxQOxRuB6F6y9A4XoUrkfhMUCZmZmZmZk1QI\u002fC9ShcjyxAj8L1KFyPLEAzMzMzMzMjQEfhehSuRy1AhetRuB6FNEAAAAAAAAAyQClcj8L1KCRAZmZmZmZmMUA9CtejcD0iQBSuR+F6FCxAmZmZmZmZK0AzMzMzMzNAQD0K16NwPThAFK5H4XoULEBSuB6F61EsQD0K16NwPS5AMzMzMzMzKUBH4XoUrkctQOF6FK5H4SRAcD0K16NwP0AfhetRuB41QB+F61G4HjtAuR6F61G4KEDD9Shcj8I0QBSuR+F6FDNAFK5H4XoUIEDsUbgehespQMP1KFyPwidAUrgehetRHECF61G4HoU3QMP1KFyPwjRAPQrXo3A9IkBH4XoUrkcnQLgehetRuC5AmZmZmZmZPkAUrkfhehQwQA=="},"yaxis":"y","type":"scatter"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"youtube"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"sales"}},"legend":{"tracegroupgap":0},"title":{"text":"Sales as a function of Youtube Ads"},"width":400,"height":350},                        {"responsive": true}                    ).then(function(){
                             
-var gd = document.getElementById('d6b4bcac-7d8a-414f-89db-7e2b2263133a');
+var gd = document.getElementById('1a4daa96-2e9d-401f-8f3e-54ff8495bf47');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
@@ -625,7 +667,7 @@ if (outputEl) {{
 </div></div>
 <div class="fragment">
 <ul>
-<li><strong>Objective</strong>: Leverage this data to boost sales.</li>
+<li><strong>What we can do</strong>: Leverage this data to boost sales.</li>
 </ul>
 </div>
 </section>
@@ -654,7 +696,7 @@ if (outputEl) {{
 <h2 data-id="quarto-animate-title">Types of Data Analysis</h2>
 <h3 id="descriptive-analysis">1. Descriptive Analysis</h3>
 <ul>
-<li>Summarizes and provides insights into the past events.</li>
+<li><span class="blue">Summarizes</span> &amp; <span class="blue">provides</span> insights into the past events.</li>
 <li>Answers to “<em>What happened during that time?</em>”</li>
 <li>Example: average expenses on ads, average sales…</li>
 </ul>
@@ -671,7 +713,7 @@ if (outputEl) {{
 <h2 data-id="quarto-animate-title">Types of Data Analysis</h2>
 <h3 id="diagnostic-analysis">2. Diagnostic Analysis</h3>
 <ul>
-<li>Delves deeper into the reasons behind specific outcomes.</li>
+<li>Delves deeper into the <span class="blue">reasons behind</span> specific outcomes.</li>
 <li>Answers to “<em>Why did it happen?</em>”.</li>
 <li>Example: why did the sales decreased or increased?</li>
 </ul>
@@ -688,7 +730,7 @@ if (outputEl) {{
 <h2 data-id="quarto-animate-title">Types of Data Analysis</h2>
 <h3 id="predictive-analysis">3. Predictive Analysis</h3>
 <ul>
-<li>Forecasts future outcomes using historical data and trends.</li>
+<li><span class="blue">Forecasts future outcomes</span> using historical data and trends.</li>
 <li>Answers to “<em>What’s likely to happen next?</em>”.</li>
 <li>Example: how will the next ads impact sales?</li>
 </ul>
@@ -705,7 +747,7 @@ if (outputEl) {{
 <h2 data-id="quarto-animate-title">Types of Data Analysis</h2>
 <h3 id="prescriptive-analysis">4. Prescriptive Analysis</h3>
 <ul>
-<li>Use estimated outcomes to guide appropriate actions.</li>
+<li>Use estimated outcomes to <span class="blue">guide appropriate actions</span>.</li>
 <li>Answers to “<em>What’s the best course of action to take?</em>”.</li>
 <li>Example: what is the most effective ad strategy?</li>
 </ul>
@@ -726,23 +768,11 @@ if (outputEl) {{
 <section id="related-roles-in-data-ecosystem" class="slide level2">
 <h2>Related Roles in Data Ecosystem</h2>
 <ol type="1">
-<li>Data Engineer</li>
-</ol>
-<p><span class="br0"> </span></p>
-<ol start="2" type="1">
-<li>Data Analyst</li>
-</ol>
-<p><span class="br0"> </span></p>
-<ol start="3" type="1">
-<li>Data Scientist</li>
-</ol>
-<p><span class="br0"> </span></p>
-<ol start="4" type="1">
-<li>Machine Learning Engineer</li>
-</ol>
-<p><span class="br0"> </span></p>
-<ol start="5" type="1">
-<li>Business Analyst and Business Intelligent (BI) Analyst</li>
+<li><p>Data Engineer <br></p></li>
+<li><p>Data Analyst <br></p></li>
+<li><p>Data Scientist <br></p></li>
+<li><p>Machine Learning Engineer <br></p></li>
+<li><p>Business Analyst and Business Intelligent (BI) Analyst</p></li>
 </ol>
 </section>
 <section id="related-roles-in-data-ecosystem-1" class="slide level2">
