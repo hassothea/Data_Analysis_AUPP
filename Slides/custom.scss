@@ -72,3 +72,29 @@ $presentation-heading-text-transform: capitalize;
     padding: 5px;
     border-radius: 5px;
 }
+
+.reveal .slides section ul {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* ---------------------------------------------------
+   MATH EQUATION SCALING 
+--------------------------------------------------- */
+
+/* 1. Target all standard MathJax containers */
+mjx-container {
+  font-size: 115% !important; /* Adjust percentage up or down as needed */
+}
+
+/* 2. Make block/display equations ($$ ... $$) slightly larger */
+mjx-container[display="true"] {
+  font-size: 130% !important; 
+  margin-top: 15px !important;
+  margin-bottom: 15px !important;
+}
+
+/* 3. Fallback if you ever compile using KaTeX instead of MathJax */
+.katex {
+  font-size: 1.15em !important;
+}

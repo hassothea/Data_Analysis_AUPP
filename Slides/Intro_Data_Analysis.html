@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="Intro_Data_Analysis_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Intro_Data_Analysis_files/libs/quarto-html/tabby.min.js"></script>
+<script src="Intro_Data_Analysis_files/libs/quarto-html/popper.min.js"></script>
+<script src="Intro_Data_Analysis_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="Intro_Data_Analysis_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Intro_Data_Analysis_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="Intro_Data_Analysis_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.25">
+
+  <meta name="author" content="Lecturer: Dr.&nbsp;Sothea HAS">
+  <title>Introduction to Data Analysis</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="Intro_Data_Analysis_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="Intro_Data_Analysis_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="Intro_Data_Analysis_files/libs/revealjs/dist/theme/quarto-4abfcc63ecfc94a4c179160c6f44abbf.css">
+  <link rel="stylesheet" href="styles.css">
+  <link href="Intro_Data_Analysis_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="Intro_Data_Analysis_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="Intro_Data_Analysis_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="Intro_Data_Analysis_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+  
+  <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+  <script type="text/javascript">
+  window.PlotlyConfig = {MathJaxConfig: 'local'};
+  if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}
+  </script>
+  <script type="module">import "https://cdn.plot.ly/plotly-3.1.1.min"</script>
+
+  <style>
+  #title-slide .title {
+      font-size: 2em;
+  }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Introduction to Data Analysis</h1>
+  <p class="subtitle"><br> <span class="blue">INF-604: Data Analysis</span> <br> <a href="https://www.aupp.edu.kh/" target="_blank"><img data-src="./img/AUPP_Logo.png" width="150"></a> <br></p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+<span class="blue">Lecturer: Dr.&nbsp;Sothea HAS</span> 
+</div>
+</div>
+</div>
+
+</section>
+<section id="about-the-course" class="slide level2">
+<h2>About the course</h2>
+<div style="font-size: 80%">
+<ul>
+<li><p><strong>Objective:</strong> Equip you with essential <code>Data Analysis</code> skills to uncover insights from data and make informed decisions.</p></li>
+<li><p><strong>Grading Criteria</strong></p></li>
+</ul>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong><code>Criteria</code></strong></th>
+<th style="text-align: center;"><strong><code>Percentage</code></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Labs</td>
+<td style="text-align: center;">30%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Participation &amp; quiz</td>
+<td style="text-align: center;">10%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Midterm Exam</td>
+<td style="text-align: center;">30%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Final Project &amp; Presentation / Practical labs</td>
+<td style="text-align: center;">30%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Programming:</strong></li>
+</ul>
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1"><code>Python</code></a></li><li><a href="#tabset-1-2"><code>R</code></a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1">
+<ul>
+<li><a href="https://docs.jupyter.org/en/latest/" target="_blank"><img data-src="./img/jupyter.png" style="position: relative; bottom: -15px" width="30"> Jupyter Notebook</a>, <a href="https://colab.research.google.com/" target="_blank"><img data-src="./img/colab.png" style="position: relative; bottom: -12px" width="35"> Google colab</a>, <a href="https://matplotlib.org/" target="_blank"><img data-src="./img/plt_logo.png" style="position: relative; bottom: -18px" width="35"> Matplotlib</a>, <a href="https://seaborn.pydata.org/" target="_blank"><img data-src="./img/sns_logo.svg" style="position: relative; bottom: -15px" width="30"> Seaborn</a></li>
+</ul>
+</div>
+<div id="tabset-1-2">
+<ul>
+<li><a href="https://quarto.org/" target="_blank"><img data-src="./img/quarto_logo.png" style="position: relative; bottom: -20px" width="60"> Rmarkdown/Quarto</a>, <a href="https://ggplot2.tidyverse.org/" target="_blank"><img data-src="./img/posit_logo.png" style="position: relative; bottom: -15px" width="25"> Posit cloud</a>, <a href="https://ggplot2.tidyverse.org/" target="_blank"><img data-src="./img/ggplot_logo.png" style="position: relative; bottom: -15px" width="27"> Ggplot2</a>, <a href="https://www.tidyverse.org/" target="_blank"><img data-src="./img/tidyverse_logo.png" style="position: relative; bottom: -15px" width="30"> Tidyverse</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="where-to-visit" class="slide level2">
+<h2>Where to visit</h2>
+<div class="r-fit-text">
+<ul>
+<li><span class="blue"><strong>Canvas &amp; Course webpage</strong></span>: <a href="https://hassothea.github.io/Data_Analysis_AUPP/" target="_blank">https://hassothea.github.io/Data_Analysis_AUPP/</a></li>
+</ul>
+</div>
+<iframe width="100%" height="80%" data-src="https://hassothea.github.io/Data_Analysis_AUPP/" frameborder="0" marginwidth="0" marginheight="0" style="border: none; max-width:100%; max-height:100vh" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen="" msallowfullscreen="">
+</iframe>
+</section>
+<section id="just-want-to-know-you-a-bit" class="slide level2">
+<h2>Just want to know you a bit 👇</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="./img/QRCode_get_2_know_2026.png" height="500"></p>
+<figcaption><a href="https://forms.cloud.microsoft/r/DmRtDZGbzV" target="_blank">Link to the survey</a>.</figcaption>
+</figure>
+</div>
+</section>
+<section id="lets-see" class="slide level2">
+<h2>Let’s see 🫣</h2>
+<iframe width="100%" height="90%" data-src="https://forms.cloud.microsoft/Pages/AnalysisPage.aspx?AnalyzerToken=WA91U0Pvf5bCaVXUdR6X7crGJM6Z7499&amp;id=5lO5wryojkq_zkjrwHUnMWS5zwU1oqlEh9vQjCQRLPdUQlpCVFpZVzg1QkdaRFE1QjFUVEs0V0hBUi4u" frameborder="0" marginwidth="0" marginheight="0" style="border: none; max-width:100%; max-height:100vh" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen="" msallowfullscreen="">
+</iframe>
+</section>
+<section>
+<section id="introduction-to-data-analysis-da" class="title-slide slide level1 center" data-background-color="#345a8b">
+<h1>Introduction to<br> Data Analysis (DA)</h1>
+
+</section>
+<section id="outline" class="slide level2">
+<h2>📋 Outline</h2>
+<ul>
+<li><p><span class="blue"><strong>Motivation &amp; Overview</strong></span> <br><br></p></li>
+<li><p><span class="blue"><strong>Type of Data Analysis</strong></span> <br><br></p></li>
+<li><p><span class="blue"><strong>Related Roles in Data Ecosystem</strong></span> <br><br></p></li>
+<li><p><span class="blue"><strong>Key part: Data Analysis Process</strong></span> <br><br></p></li>
+<li><p><span class="blue"><strong>The Importance of Data Analysis</strong></span> <br><br></p></li>
+<li><p><span class="blue"><strong>Applications of Data Analysis</strong></span> <br></p></li>
+</ul>
+</section></section>
+<section>
+<section id="motivation" class="title-slide slide level1 center" data-background-color="#345a8b">
+<h1>Motivation</h1>
+
+</section>
+<section id="motivation-1" class="slide level2">
+<h2>Motivation</h2>
+<h3 id="old-faithful-dataset-272-rows-2-columns"><a href="https://bookdown.org/pkaldunn/DataFiles/OldFaithful.html" target="_blank">Old Faithful dataset</a> (<span class="math inline">\(272\)</span> rows, <span class="math inline">\(2\)</span> columns)</h3>
+<div class="columns">
+<div class="column" style="width:48%;">
+<div id="8f8707f6" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href=""></a><span class="im">import</span> pandas <span class="im">as</span> pd                 <span class="co"># Import pandas package</span></span>
+<span id="cb1-2"><a href=""></a><span class="im">import</span> seaborn <span class="im">as</span> sns               <span class="co"># Package for beautiful graphs</span></span>
+<span id="cb1-3"><a href=""></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt     <span class="co"># Graph management</span></span>
+<span id="cb1-4"><a href=""></a>sns.<span class="bu">set</span>(style<span class="op">=</span><span class="st">"whitegrid"</span>)          <span class="co"># Set grid background</span></span>
+<span id="cb1-5"><a href=""></a><span class="co"># path = "https://gist.githubusercontent.com/curran/4b59d1046d9e66f2787780ad51a1cd87/raw/9ec906b78a98cf300947a37b56cfe70d01183200/data.tsv"                       # The data can be found in this link</span></span>
+<span id="cb1-6"><a href=""></a>df0 <span class="op">=</span> pd.read_csv(path0 <span class="op">+</span> <span class="st">"/faithful.csv"</span> )  <span class="co"># Import it into Python</span></span>
+<span id="cb1-7"><a href=""></a>df0.head(<span class="dv">5</span>)                        <span class="co"># Randomly select 4 points</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe caption-top" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">eruptions</th>
+<th data-quarto-table-cell-role="th">waiting</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>3.600</td>
+<td>79</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>1.800</td>
+<td>54</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>3.333</td>
+<td>74</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>2.283</td>
+<td>62</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>4.533</td>
+<td>85</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div><div class="column" style="width:52%;">
+<div class="r-stack">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="./img/old_faithful.jpg" class="quarto-figure quarto-figure-center" width="400" height="290"></p>
+</figure>
+</div>
+<div class="fragment">
+<div id="843a58bc" class="cell" data-execution_count="3">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href=""></a>plt.figure(figsize<span class="op">=</span>(<span class="fl">5.5</span>,<span class="fl">3.5</span>))                          <span class="co"># Define figure size</span></span>
+<span id="cb2-2"><a href=""></a>sns.scatterplot(df0, x<span class="op">=</span><span class="st">"waiting"</span>, y<span class="op">=</span><span class="st">"eruptions"</span>)    <span class="co"># Create scatterplot</span></span>
+<span id="cb2-3"><a href=""></a>plt.title(<span class="st">"Old Faithful data from Yellowstone National Park, US"</span>, fontsize<span class="op">=</span><span class="dv">10</span>)    <span class="co"># Title</span></span>
+<span id="cb2-4"><a href=""></a>plt.suptitle(<span class="st">"Eruptions vs waiting times"</span>, fontsize<span class="op">=</span><span class="dv">13</span>, y<span class="op">=</span><span class="dv">1</span>)                 <span class="co"># Subtitle</span></span>
+<span id="cb2-5"><a href=""></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Intro_Data_Analysis_files/figure-revealjs/cell-4-output-1.png" class="quarto-figure quarto-figure-center" width="481" height="365"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></div>
+<div class="fragment">
+<div style="position: relative; bottom: 50px">
+<ul>
+<li>The longer the wait, the longer duration of the eruption.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="motivation-2" class="slide level2">
+<h2>Motivation</h2>
+<h3 data-auto-animate="true" id="marketing-200-rows-4-columns"><a href="https://rdrr.io/github/kassambara/datarium/man/marketing.html">Marketing</a> (<span class="math inline">\(200\)</span> rows, <span class="math inline">\(4\)</span> columns)</h3>
+<div id="70f0af03" class="cell" data-execution_count="5">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href=""></a><span class="im">import</span> pyreadr</span>
+<span id="cb3-2"><a href=""></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb3-3"><a href=""></a>df <span class="op">=</span> pyreadr.read_r(path <span class="op">+</span> <span class="st">"/marketing.rda"</span>)</span>
+<span id="cb3-4"><a href=""></a>df <span class="op">=</span> df[<span class="st">'marketing'</span>]</span>
+<span id="cb3-5"><a href=""></a>df.head(<span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe caption-top" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">youtube</th>
+<th data-quarto-table-cell-role="th">facebook</th>
+<th data-quarto-table-cell-role="th">newspaper</th>
+<th data-quarto-table-cell-role="th">sales</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>276.12</td>
+<td>45.36</td>
+<td>83.04</td>
+<td>26.52</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>53.40</td>
+<td>47.16</td>
+<td>54.12</td>
+<td>12.48</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>20.64</td>
+<td>55.08</td>
+<td>83.16</td>
+<td>11.16</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>181.80</td>
+<td>49.56</td>
+<td>70.20</td>
+<td>22.20</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>216.96</td>
+<td>12.96</td>
+<td>70.08</td>
+<td>15.48</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="motivation-3" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Motivation</h2>
+<h3 data-auto-animate="true" id="marketing-200-rows-4-columns-1"><a href="https://rdrr.io/github/kassambara/datarium/man/marketing.html">Marketing</a> (<span class="math inline">\(200\)</span> rows, <span class="math inline">\(4\)</span> columns)</h3>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div style="font-size: 60%">
+<div id="46df51bd" class="cell" data-execution_count="6">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href=""></a>df.head(<span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+
+<table class="dataframe caption-top" data-border="1">
+<thead>
+<tr class="header" style="text-align: right;">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">youtube</th>
+<th data-quarto-table-cell-role="th">facebook</th>
+<th data-quarto-table-cell-role="th">newspaper</th>
+<th data-quarto-table-cell-role="th">sales</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>276.12</td>
+<td>45.36</td>
+<td>83.04</td>
+<td>26.52</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>53.40</td>
+<td>47.16</td>
+<td>54.12</td>
+<td>12.48</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>20.64</td>
+<td>55.08</td>
+<td>83.16</td>
+<td>11.16</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>181.80</td>
+<td>49.56</td>
+<td>70.20</td>
+<td>22.20</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>216.96</td>
+<td>12.96</td>
+<td>70.08</td>
+<td>15.48</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">5</th>
+<td>10.44</td>
+<td>58.68</td>
+<td>90.00</td>
+<td>8.64</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">6</th>
+<td>69.00</td>
+<td>39.36</td>
+<td>28.20</td>
+<td>14.16</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">7</th>
+<td>144.24</td>
+<td>23.52</td>
+<td>13.92</td>
+<td>15.84</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">8</th>
+<td>10.32</td>
+<td>2.52</td>
+<td>1.20</td>
+<td>5.76</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">9</th>
+<td>239.76</td>
+<td>3.12</td>
+<td>25.44</td>
+<td>12.72</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:40%;">
+<div id="9f80a858" class="cell" data-execution_count="7">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href=""></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb5-2"><a href=""></a>fig <span class="op">=</span> px.scatter(df, x<span class="op">=</span><span class="st">"youtube"</span>, y<span class="op">=</span><span class="st">"sales"</span>, size_max<span class="op">=</span><span class="dv">40</span>)</span>
+<span id="cb5-3"><a href=""></a>fig.update_layout(title<span class="op">=</span><span class="st">"Sales as a function of Youtube Ads"</span>,</span>
+<span id="cb5-4"><a href=""></a>                  width<span class="op">=</span><span class="dv">400</span>, height<span class="op">=</span><span class="dv">350</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>            <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_SVG"></script><script type="text/javascript">if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}</script>                <script type="text/javascript">window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script charset="utf-8" src="https://cdn.plot.ly/plotly-3.1.1.min.js" integrity="sha256-HUEFyfiTnZJxCxur99FjbKYTvKSzwDaD3/x5TqHpFu4=" crossorigin="anonymous"></script>                <div id="091dba72-6139-4c7a-92e8-5e77ac55aade" class="plotly-graph-div" style="height:350px; width:400px;"></div>            <script type="text/javascript">                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("091dba72-6139-4c7a-92e8-5e77ac55aade")) {                    Plotly.newPlot(                        "091dba72-6139-4c7a-92e8-5e77ac55aade",                        [{"hovertemplate":"youtube=%{x}\u003cbr\u003esales=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"","marker":{"color":"#636efa","symbol":"circle"},"mode":"markers","name":"","orientation":"v","showlegend":false,"x":{"dtype":"f8","bdata":"UrgehetBcUAzMzMzM7NKQKNwPQrXozRAmZmZmZm5ZkAfhetRuB5rQOF6FK5H4SRAAAAAAABAUUBI4XoUrgdiQKNwPQrXoyRAuB6F61H4bUAUrkfhetRTQArXo3A9GnBAj8L1KFyPPEAAAAAAAEBdQD0K16NwnW5Aj8L1KFxPbUDXo3A9CldUQHoUrkfhGnVAw\u002fUoXI\u002fCVEC5HoXrURhmQOF6FK5HYXBArkfhehTOcUCtR+F6FK4vQI\u002fC9ShcH3FAcD0K16OwUkBH4XoUrrdzQI\u002fC9Shcb2VAUrgehesBckApXI\u002fC9ahyQK1H4XoULlVAR+F6FK73dUCPwvUoXO9gQClcj8L1KF1A7FG4HoXrc0D2KFyPwrVcQD0K16NwzXVAFK5H4XoEdEApXI\u002fC9WhWQFyPwvUo3ElAmZmZmZkZcUAAAAAAAGBuQM3MzMzMjGpAhetRuB4FdkApXI\u002fC9QhvQB+F61G4Hj5Ao3A9CtdDakApXI\u002fC9ehaQK5H4XoU\u002fnFACtejcD0KcUBSuB6F6xFUQLgehetR+G1AH4XrUbgeXkB7FK5H4TpwQKNwPQrXY2tAo3A9Ctezc0D2KFyPwtVtQIXrUbgehSFArUfhehRuZEAfhetRuJ5vQHoUrkfhmm9AzczMzMwMUEApXI\u002fC9ZhzQMP1KFyP8nFAj8L1KFzPXkAK16NwPapjQDMzMzMzs1RAZmZmZmbmQkCF61G4HuVkQK5H4XoUznFAw\u002fUoXI9CcEA9CtejcN1tQLgehetReGBAFK5H4XoUQEApXI\u002fC9WhjQOF6FK5HAXBAR+F6FK5HNEAAAAAAAIBAQDMzMzMzE2JA7FG4HoXrGUBmZmZmZmZhQOxRuB6F61ZAXI\u002fC9Sj8cUDXo3A9CpdWQIXrUbgehVRAMzMzMzMDcEB6FK5H4fpsQKNwPQrX41ZAexSuR+GaYEA9CtejcH1aQLgehetReGBAhetRuB4lZEApXI\u002fC9ShBQKNwPQrXU3BA4XoUrkfRckBcj8L1KBxgQB+F61G4fmhAo3A9CtejbUBcj8L1KLxrQArXo3A9unVAR+F6FK5HZECuR+F6FK5wQHoUrkfhOnZAo3A9CtcDdUCPwvUoXC9sQD0K16Nw3XFAj8L1KFyvZEAAAAAAAAA+QB+F61G4HltAcD0K16NwL0BI4XoUridzQI\u002fC9Shc73BAcD0K16MgckB6FK5H4VpqQHA9CtejcG9A9ihcj8J1V0BH4XoUrodWQOF6FK5H4WRA7FG4HoXrVkB7FK5H4dpiQEfhehSuRzdAUrgehesxZUCPwvUoXI82QM3MzMzMzHBA16NwPQp3YkBmZmZmZjZxQClcj8L1KFpAuB6F61G4IkCPwvUoXA9YQPYoXI\u002fChXBA4XoUrkfhUUDhehSuR+HqP6NwPQrX43NAKVyPwvUoJEBcj8L1KHxwQKNwPQrXI0ZAehSuR+H6TEC4HoXrUbg+QNejcD0Kh3RAzczMzMzMSUBcj8L1KLxrQIXrUbgeBVZArUfhehQObUCZmZmZmYlwQOB6FK5HYV9AXI\u002fC9SjcXEDsUbgehQtlQFK4HoXrAXJAPQrXo3A9ckDNzMzMzMxGQFK4HoXr0UpAPQrXo3ANdUBmZmZmZiZiQKNwPQrXo21AUrgeheuxaUDsUbgehStsQK1H4XoUrhNA7FG4HoUrXEC5HoXrUXhmQBSuR+F6FCxA4XoUrkfBY0AAAAAAAOBpQPYoXI\u002fCtVlAw\u002fUoXI9CbEBmZmZmZoZoQBSuR+F6lGFAZmZmZmaWcUB6FK5H4Xo1QIXrUbgeBW9ASOF6FK4ncEDD9Shcj1J1QAAAAAAAAE5AzczMzMysaECF61G4HoU3QMP1KFyPQmlArkfhehSucEAUrkfhesR0QOF6FK5HoXJAR+F6FK6HaUBwPQrXo8B0QNejcD0K12hAPQrXo3B9Z0AzMzMzM2NwQFyPwvUo3FBAUrgeheuRdUApXI\u002fC9QhzQAAAAAAAwG5AzczMzMzsZEAK16NwPapsQDMzMzMzc3VAcD0K16NwNkAzMzMzM7NHQGZmZmZmplZAo3A9CtejNECF61G4HgVpQBSuR+F6dGZA7FG4HoXrRkDD9Shcj0JcQM3MzMzMjGpAhetRuB5FdUC4HoXrUWhxQA=="},"xaxis":"x","y":{"dtype":"f8","bdata":"hetRuB6FOkD2KFyPwvUoQFK4HoXrUSZAMzMzMzMzNkD2KFyPwvUuQEjhehSuRyFAUrgehetRLECtR+F6FK4vQArXo3A9ChdAcD0K16NwKUCjcD0K16MkQOF6FK5H4TRAFK5H4XoUJkBH4XoUrkcnQM3MzMzMzDZA4XoUrkfhOkAAAAAAAAAuQEfhehSuRz1AH4XrUbgeK0CF61G4HoUxQJmZmZmZmTVAAAAAAAAALkDhehSuR+EaQJmZmZmZmTJAR+F6FK5HJ0DMzMzMzMwsQAAAAAAAADJAFK5H4XoUM0CtR+F6FK42QDMzMzMzMylArUfhehSuOUCPwvUoXI8sQArXo3A9CidA4XoUrkfhNEDNzMzMzMwmQLgehetRuC5AehSuR+F6PkCjcD0K16MxQD0K16NwPShAzczMzMzMOUDsUbgeheszQIXrUbgehTRA16NwPQrXOED2KFyPwvUuQGZmZmZmZiRA4XoUrkfhMUBwPQrXo3ApQNejcD0K1ztAw\u002fUoXI\u002fCMUBH4XoUrkcnQFyPwvUoXCtArUfhehSuKUAfhetRuB47QHA9CtejcDlAPQrXo3A9OEBwPQrXo3A8QGZmZmZmZhpArUfhehSuL0CPwvUoXI88QBSuR+F6FDZAcD0K16NwI0AK16NwPQo9QNejcD0K1zJAzczMzMzMMECZmZmZmZk1QFK4HoXrUSZAzczMzMzMJkAUrkfhehQwQK1H4XoUrjZAw\u002fUoXI\u002fCOkD2KFyPwvU1QML1KFyPwi1AH4XrUbgeJUBmZmZmZmYqQGZmZmZmZjRA4XoUrkfhJECPwvUoXI8gQArXo3A9CjFAcD0K16NwGUBmZmZmZmYqQFK4HoXrUSxAhetRuB6FLUAfhetRuB4rQFK4HoXrUTBACtejcD0KOkA9CtejcD0yQMzMzMzMzCxAMzMzMzMzM0D2KFyPwvUuQArXo3A9CjRA4XoUrkfhKkCF61G4HoUhQEfhehSuRzdAo3A9CtejOkCZmZmZmZkrQEfhehSuRzRAFK5H4XoULECZmZmZmZkyQHoUrkfhej5Ao3A9CtejNEAUrkfhehQsQI\u002fC9ShcjzxAw\u002fUoXI\u002fCMUCjcD0K16MxQNejcD0K1zhACtejcD0KN0BI4XoUrkchQOF6FK5H4SRAcD0K16NwGUDD9Shcj8I3QBSuR+F6FDBAKVyPwvUoOkDrUbgeheswQBSuR+F6FDNAhetRuB6FMUA9CtejcD0uQEfhehSuRy1Aj8L1KFyPJkAUrkfhehQzQK1H4XoUrh9AmZmZmZmZMkDNzMzMzMwgQNejcD0K1ytAPQrXo3A9MkCjcD0K16M3QHA9CtejcClArUfhehSuH0AfhetRuB4lQKNwPQrXoz1AR+F6FK5HJ0C4HoXrUbj+P3oUrkfhei5AXI\u002fC9ShcG0CF61G4HoU3QOxRuB6F6ylA16NwPQrXK0DNzMzMzMwmQPYoXI\u002fC9ThACtejcD0KJ0DXo3A9Ctc4QClcj8L1KCpACtejcD0KN0AfhetRuB44QPYoXI\u002fC9ShAXI\u002fC9ShcK0C5HoXrUbgoQK1H4XoUri9AehSuR+F6PkApXI\u002fC9SgqQD0K16NwPShAUrgehetRM0DXo3A9CtcrQOxRuB6F6zNAzczMzMzMNkC4HoXrUbgyQLgehetRuA5AXI\u002fC9ShcMkA9CtejcD0oQIXrUbgehSFA9ihcj8L1LkBI4XoUrkcxQOxRuB6F6y9A4XoUrkfhMUCZmZmZmZk1QI\u002fC9ShcjyxAj8L1KFyPLEAzMzMzMzMjQEfhehSuRy1AhetRuB6FNEAAAAAAAAAyQClcj8L1KCRAZmZmZmZmMUA9CtejcD0iQBSuR+F6FCxAmZmZmZmZK0AzMzMzMzNAQD0K16NwPThAFK5H4XoULEBSuB6F61EsQD0K16NwPS5AMzMzMzMzKUBH4XoUrkctQOF6FK5H4SRAcD0K16NwP0AfhetRuB41QB+F61G4HjtAuR6F61G4KEDD9Shcj8I0QBSuR+F6FDNAFK5H4XoUIEDsUbgehespQMP1KFyPwidAUrgehetRHECF61G4HoU3QMP1KFyPwjRAPQrXo3A9IkBH4XoUrkcnQLgehetRuC5AmZmZmZmZPkAUrkfhehQwQA=="},"yaxis":"y","type":"scatter"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"},"margin":{"b":0,"l":0,"r":0,"t":30}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"youtube"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"sales"}},"legend":{"tracegroupgap":0},"title":{"text":"Sales as a function of Youtube Ads"},"width":400,"height":350},                        {"responsive": true}                    ).then(function(){
+                            
+var gd = document.getElementById('091dba72-6139-4c7a-92e8-5e77ac55aade');
+var x = new MutationObserver(function (mutations, observer) {{
+        var display = window.getComputedStyle(gd).display;
+        if (!display || display === 'none') {{
+            console.log([gd, 'removed!']);
+            Plotly.purge(gd);
+            observer.disconnect();
+        }}
+}});
+
+// Listen for the removal of the full notebook cells
+var notebookContainer = gd.closest('#notebook-container');
+if (notebookContainer) {{
+    x.observe(notebookContainer, {childList: true});
+}}
+
+// Listen for the clearing of the current output cell
+var outputEl = gd.closest('.output');
+if (outputEl) {{
+    x.observe(outputEl, {childList: true});
+}}
+
+                        })                };            </script>        </div>
+</div>
+</div>
+</div></div>
+<div class="fragment">
+<ul>
+<li><strong>What we can do</strong>: Leverage this data to boost sales.</li>
+</ul>
+</div>
+</section>
+<section id="data-analysis-overview" class="slide level2">
+<h2>Data Analysis Overview</h2>
+<div style="font-size: 95%">
+<ul>
+<li class="fragment"><p>Simply put, it’s a process of <strong>treating raw data</strong> and <strong>making sense</strong> of it.</p></li>
+<li class="fragment"><p>It involves using:</p>
+<ul>
+<li class="fragment">Statistical methods: descriptive, test, regression analysis…</li>
+<li class="fragment">Analytics tools: <img data-src="./img/python_logo.png" style="position: relative; bottom: -20px" width="40"> <code>Python</code>, <img data-src="./img/R_logo.png" style="position: relative; bottom: -13px" width="40">, <code>Excel</code>, <code>Power BI</code>…</li>
+<li class="fragment">Techniques to identify patterns and trends: Data modeling, machine learning algorithms…</li>
+</ul></li>
+<li class="fragment"><p>It helps businesses understand past performance, customer behavior, market trends and guides decision-making for future actions and more.</p></li>
+<li class="fragment"><p>Example: What’s the best ad strategy for boosting sales?</p></li>
+</ul>
+</div>
+</section></section>
+<section>
+<section id="types-of-data-analysis" class="title-slide slide level1 center" data-background-color="#345a8b">
+<h1>Types of Data Analysis</h1>
+
+</section>
+<section id="types-of-data-analysis-1" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Types of Data Analysis</h2>
+<h3 id="descriptive-analysis">1. Descriptive Analysis</h3>
+<div style="font-size: 90%">
+<ul>
+<li><span class="blue">Summarizes</span> &amp; <span class="blue">provides</span> insights into past events.</li>
+<li>Answers to “<em>What happened during that time?</em>”</li>
+<li>Example: average expenses on ads, average sales…</li>
+</ul>
+</div>
+<div class="r-stack">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="./img/type_DA1.png" class="quarto-figure quarto-figure-center" width="650"></p>
+</figure>
+</div>
+<p><img data-src="./img/rec.png" class="absolute" style="top: 420px; left: 260px; width: 140px; height: 215px; "></p>
+</div>
+</section>
+<section id="types-of-data-analysis-2" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Types of Data Analysis</h2>
+<h3 id="diagnostic-analysis">2. Diagnostic Analysis</h3>
+<div style="font-size: 90%">
+<ul>
+<li>Delves deeper into <span class="blue">reasons behind</span> specific outcomes.</li>
+<li>Answers to “<em>Why did it happen?</em>”.</li>
+<li>Example: why did the sales decreased or increased?</li>
+</ul>
+</div>
+<div class="r-stack">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="./img/type_DA1.png" class="quarto-figure quarto-figure-center" width="650"></p>
+</figure>
+</div>
+<p><img data-src="./img/rec.png" class="absolute" style="top: 395px; left: 385px; width: 140px; height: 240px; "></p>
+</div>
+</section>
+<section id="types-of-data-analysis-3" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Types of Data Analysis</h2>
+<h3 id="predictive-analysis">3. Predictive Analysis</h3>
+<div style="font-size: 90%">
+<ul>
+<li><span class="blue">Forecasts future outcomes</span> using data and trends.</li>
+<li>Answers to “<em>What’s likely to happen next?</em>”.</li>
+<li>Example: how will the next ads impact sales?</li>
+</ul>
+</div>
+<div class="r-stack">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="./img/type_DA1.png" class="quarto-figure quarto-figure-center" width="650"></p>
+</figure>
+</div>
+<p><img data-src="./img/rec.png" class="absolute" style="top: 365px; left: 520px; width: 140px; height: 275px; "></p>
+</div>
+</section>
+<section id="types-of-data-analysis-4" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Types of Data Analysis</h2>
+<h3 id="prescriptive-analysis">4. Prescriptive Analysis</h3>
+<div style="font-size: 87%">
+<ul>
+<li>Use estimated outcomes to <span class="blue">guide appropriate actions</span>.</li>
+<li>Answers to “<em>What’s the best course of action to take?</em>”.</li>
+<li>Example: what is the most effective ad strategy?</li>
+</ul>
+</div>
+<div class="r-stack">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="./img/type_DA1.png" class="quarto-figure quarto-figure-center" width="650"></p>
+</figure>
+</div>
+<p><img data-src="./img/rec.png" class="absolute" style="top: 330px; left: 652px; width: 145px; height: 310px; "></p>
+</div>
+</section></section>
+<section>
+<section id="related-roles" class="title-slide slide level1 center" data-background-color="#345a8b">
+<h1>Related Roles</h1>
+
+</section>
+<section id="related-roles-in-data-ecosystem" class="slide level2">
+<h2>Related Roles in Data Ecosystem</h2>
+<ol type="1">
+<li><p>Data Engineer <br></p></li>
+<li><p>Data Analyst <br></p></li>
+<li><p>Data Scientist <br></p></li>
+<li><p>Machine Learning Engineer <br></p></li>
+<li><p>Business Analyst and Business Intelligent (BI) Analyst</p></li>
+</ol>
+</section>
+<section id="related-roles-in-data-ecosystem-1" class="slide level2">
+<h2>Related Roles in Data Ecosystem</h2>
+<h3 id="data-engineer">1. Data Engineer</h3>
+<ul>
+<li class="fragment"><span class="blue"><strong>Builds</strong></span> and <span class="blue"><strong>maintains</strong></span> the infrastructure for data generation, collection, storage, and retrieval.</li>
+<li class="fragment">Ensures efficient, scalable, and reliable <span class="blue">data pipelines</span>.</li>
+<li class="fragment">Required skills:
+<ul>
+<li class="fragment">DBMS, ETL (Extract, Transform, Load)</li>
+<li class="fragment">Data warehousing, programming (Python, Java, SQL),</li>
+<li class="fragment">Big data technologies (Hadoop, Spark).</li>
+</ul></li>
+</ul>
+</section>
+<section id="related-roles-in-data-ecosystem-2" class="slide level2">
+<h2>Related Roles in Data Ecosystem</h2>
+<h3 id="data-analyst">2. Data Analyst</h3>
+<ul>
+<li class="fragment"><span class="blue"><strong>Analyzes</strong></span> data to uncover <span class="blue"><strong>trends and insights</strong></span>, providing actionable information to inform business decisions.</li>
+<li class="fragment">Uses the data infrastructure set up by <strong>Data Engineers</strong>.</li>
+<li class="fragment">Required skills:
+<ul>
+<li class="fragment">Data cleaning, data visualization, statistical analysis.</li>
+<li class="fragment">Programming/Tools: <span class="blue">Python, R, SQL, Excel</span>.</li>
+<li class="fragment">Data visualization tools (Tableau, Power BI).</li>
+</ul></li>
+</ul>
+</section>
+<section id="related-roles-in-data-ecosystem-3" class="slide level2">
+<h2>Related Roles in Data Ecosystem</h2>
+<h3 id="data-scientist">3. Data Scientist</h3>
+<ul>
+<li class="fragment">Uses <span class="blue"><strong>advanced analytics</strong></span>, including machine learning (ML) and predictive modeling, to solve complex problems and generate new insights.</li>
+<li class="fragment">Builds on the work of <strong>Data Engineers</strong> and <strong>Data Analysts</strong> to create advanced models.</li>
+<li class="fragment">Required skills:
+<ul>
+<li class="fragment">ML algorithms, Deep learning.</li>
+<li class="fragment">Programming: Python, R.</li>
+<li class="fragment">Statistical analsis, data modeling.</li>
+</ul></li>
+</ul>
+</section>
+<section id="related-roles-in-data-ecosystem-4" class="slide level2">
+<h2>Related Roles in Data Ecosystem</h2>
+<h3 id="ml-engineer">4. ML Engineer</h3>
+<ul>
+<li class="fragment"><span class="blue"><strong>Develops</strong>, <strong>optimize</strong></span>, and <span class="blue"><strong>maintains</strong></span> ML models and algorithms.</li>
+<li class="fragment">Transforms prototypes into scalable and efficient model for real-world applications.</li>
+<li class="fragment">Work closely with <strong>Data Scientists</strong> and <strong>Data Engineers</strong>.</li>
+<li class="fragment">Required skills:
+<ul>
+<li class="fragment">Programming: Python (TensorFlow, PyTorch), R, Java, etc.</li>
+<li class="fragment">Deep understanding of ML frameworks and algorithms.</li>
+<li class="fragment">Big data technologies, preprocessing and feature engineering.</li>
+</ul></li>
+</ul>
+</section>
+<section id="related-roles-in-data-ecosystem-5" class="slide level2">
+<h2>Related Roles in Data Ecosystem</h2>
+<h3 id="business-bi-analyst">5. Business &amp; BI Analyst</h3>
+<ul>
+<li class="fragment">Improves business processes and strategies using data-driven insights.</li>
+<li class="fragment">Focuses on creating dashboards and reports.</li>
+<li class="fragment">Relies on data infrastructure and insights generated by Data Engineers, Data Analysts, and Data Scientists.</li>
+<li class="fragment">Required skills:
+<ul>
+<li class="fragment">Business process analysis</li>
+<li class="fragment">Data visualization,</li>
+<li class="fragment">SQL, Excel, BI tools (Tableau, Power BI).</li>
+</ul></li>
+</ul>
+</section>
+<section id="summary" class="slide level2">
+<h2>Summary</h2>
+<p><br></p>
+
+<img data-src="./img/related_roles.png" class="quarto-figure quarto-figure-center r-stretch" width="800"></section>
+<section id="data-analyst-vs-data-scientist" class="slide level2">
+<h2>Data Analyst vs Data Scientist</h2>
+<ul>
+<li><strong>Data analysis</strong> is central to the roles of both Data Analysts and Data Scientists.</li>
+</ul>
+
+<img data-src="./img/analytics_vs_scientist.png" class="quarto-figure quarto-figure-center r-stretch"></section></section>
+<section>
+<section id="key-parts-of-data-analysis" class="title-slide slide level1 center" data-background-color="#345a8b">
+<h1>Key parts of Data Analysis</h1>
+
+</section>
+<section id="key-parts-of-data-analysis-1" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Key parts of Data Analysis</h2>
+<h3 id="define-the-problem">1. Define the problem</h3>
+<ul>
+<li>Define what is the problem? Desired outcomes?</li>
+<li>Define what metric may be used to measure its quality?</li>
+<li>Ex: What factors contribute to tourists’ happiness when visiting <strong>Angkor Wat</strong>?</li>
+</ul>
+<div class="r-stack">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="./img/DA_process.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+<p><img data-src="./img/rec.png" class="absolute" style="top: 401px; left: 15px; width: 180px; height: 230px; "></p>
+</div>
+</section>
+<section id="key-parts-of-data-analysis-2" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Key parts of Data Analysis</h2>
+<h3 id="data-collection">2. Data Collection</h3>
+<ul>
+<li>Identify necessary data and data sources.</li>
+<li>What tools to use? How should the data be organized? <br></li>
+<li>Ex: Where to collect the data? Platforms like TripAdvisor, Google Reviews, and social media, or Surveys?</li>
+</ul>
+<div class="r-stack">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="./img/DA_process.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+<p><img data-src="./img/rec.png" class="absolute" style="top: 401px; left: 185px; width: 180px; height: 230px; "></p>
+</div>
+</section>
+<section id="key-parts-of-data-analysis-3" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Key parts of Data Analysis</h2>
+<h3 id="data-cleaning">3. Data Cleaning</h3>
+<ul>
+<li>Address quality issues to ensure accurate analysis.</li>
+<li>Fix missing values, handle outliers, and standardize data…</li>
+<li>Ex: How should we store the data and clean it while preserving its quality and information?</li>
+</ul>
+<div class="r-stack">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="./img/DA_process.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+<p><img data-src="./img/rec.png" class="absolute" style="top: 401px; left: 355px; width: 180px; height: 235px; "></p>
+</div>
+</section>
+<section id="key-parts-of-data-analysis-4" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Key parts of Data Analysis</h2>
+<h3 id="data-analyzing">4. Data Analyzing</h3>
+<ul>
+<li>Manipulate data to identify trends, correlations, patterns…</li>
+<li>Examine the data and seek for solutions to the problem.</li>
+<li>Ex: “What statistical values should we compute? Which graphs should we use? Which models should we try?</li>
+</ul>
+<div class="r-stack">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="./img/DA_process.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+<p><img data-src="./img/rec.png" class="absolute" style="top: 401px; left: 522px; width: 180px; height: 235px; "></p>
+</div>
+</section>
+<section id="key-parts-of-data-analysis-5" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Key parts of Data Analysis</h2>
+<h3 id="interpretation">5. Interpretation</h3>
+<ul>
+<li>Deduce key messages/findings from analysis results.</li>
+<li>Recognize the limitations of the analysis…</li>
+<li>Ex: What factors most influence tourists’ satisfaction? Answering our defined questions.</li>
+</ul>
+<div class="r-stack">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="./img/DA_process.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+<p><img data-src="./img/rec.png" class="absolute" style="top: 401px; right: 179px; width: 180px; height: 235px; "></p>
+</div>
+</section>
+<section id="key-parts-of-data-analysis-6" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Key parts of Data Analysis</h2>
+<h3 id="visualization-presentation">6. Visualization &amp; presentation</h3>
+<ul>
+<li>Present the findings using suitable graphs, charts, maps…</li>
+<li>Convey the insights from the analysis effectively.</li>
+<li>Ex: How should we present our findings? Which values or graphs will help our audience easily understand?</li>
+</ul>
+<div class="r-stack">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="./img/DA_process.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+<p><img data-src="./img/rec.png" class="absolute" style="top: 401px; right: 13px; width: 180px; height: 235px; "></p>
+</div>
+</section></section>
+<section>
+<section id="the-importance-of-data-analysis" class="title-slide slide level1 center" data-background-color="#345a8b">
+<h1>The Importance of Data Analysis</h1>
+
+</section>
+<section id="the-importance-of-data-analysis-1" class="slide level2">
+<h2>The Importance of Data Analysis</h2>
+<div class="columns">
+<div class="column" style="width:33%;">
+<div style="font-size: 70%">
+<ul>
+<li class="fragment">Analyzes past performance, and uncovers trends, patterns, insights within data.</li>
+<li class="fragment">Unables companies to make informed decisions.</li>
+<li class="fragment">Leads to better strategies, optimized operations, and enhanced customer satisfaction.</li>
+<li class="fragment">Saving time and resources.</li>
+<li class="fragment">Drives innovation and fosters growth by identifying new opportunities and areas for improvement.</li>
+</ul>
+</div>
+</div><div class="column fragment" style="width:67%;">
+<div style="font-size: 70%">
+<p><br><br><br></p>
+<ul>
+<li>This is the introduction of my PhD thesis:</li>
+</ul>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="./img/my_sentence.png" class="quarto-figure quarto-figure-center" style="position: relative; bottom: -30px" width="800"></p>
+</figure>
+</div>
+</div></div>
+</section></section>
+<section>
+<section id="applications" class="title-slide slide level1 center" data-background-color="#345a8b">
+<h1>Applications</h1>
+
+</section>
+<section id="applications-of-data-analysis" class="slide level2">
+<h2>Applications of Data Analysis</h2>
+
+<img data-src="./img/applications_DA.jpg" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="yeahhhh." class="slide level2 center" data-background-image="./img/end_page.jpg" data-background-opacity="0.3">
+<h2>🥳 Yeahhhh….</h2>
+<p><br> <br> <br> <br> <br> <br> <br> <br></p>
+<h3 id="party-time">Party time… 🥂</h3>
+</section>
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<p><img src="./img/AUPP_Logo.png" class="slide-logo"></p>
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="Intro_Data_Analysis_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="Intro_Data_Analysis_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="Intro_Data_Analysis_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="Intro_Data_Analysis_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="Intro_Data_Analysis_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="Intro_Data_Analysis_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="Intro_Data_Analysis_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="Intro_Data_Analysis_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="Intro_Data_Analysis_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="Intro_Data_Analysis_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': false,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":false},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>
