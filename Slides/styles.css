@@ -55,6 +55,11 @@
     padding: -15px 0; /* Smaller padding */
 }
 
+.up2h {
+    display: block;
+    margin: -20px 0; /* Smaller padding */
+}
+
 .up3 {
     display: block;
     margin: -30px 0; /* Smaller padding */
@@ -103,3 +108,10 @@
     width: 50%;
     padding: 10px;
   }
+
+/* Vertical space */
+.vspace {
+  /* It defaults to 20px if you don't provide a value, but uses your --space variable if you do */
+  margin-top: var(--space, 20px) !important; 
+  display: block;
+}
