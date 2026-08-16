@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="HAS Sothea, PhD">
-<meta name="dcterms.date" content="2025-01-17">
+<meta name="dcterms.date" content="2026-08-17">
 
 <title>INF-604: Data Analysis I </title>
 <style>
@@ -55,40 +55,31 @@ background-size: cover;
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <h1 class="title"><span class="white"><strong>INF-604: Data Analysis I</strong></span> <img src="./Slides/img/AUPP_Logo.png#right" class="img-fluid" style="width:0.625in"></h1>
-          </div>
-
-    
-    <div class="quarto-title-meta-container">
-      <div class="quarto-title-meta-column-start">
-        
-        <div class="quarto-title-meta">
-
-                <div>
-            <div class="quarto-title-meta-heading">Author</div>
-            <div class="quarto-title-meta-contents">
-                        <p><a href="https://hassothea.github.io/">HAS Sothea, PhD</a> </p>
                       </div>
-          </div>
-                
-                <div>
-            <div class="quarto-title-meta-heading">Published</div>
-            <div class="quarto-title-meta-contents">
-              <p class="date">January 17, 2025</p>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p><span class="white"><a href="https://hassothea.github.io/">HAS Sothea, PhD</a></span> </p>
             </div>
-          </div>
-          
-                
-              </div>
-      </div>
-      <div class="quarto-title-meta-column-end quarto-other-formats-target">
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">August 17, 2026</p>
       </div>
     </div>
-
-
-
-    <div class="quarto-other-links-text-target">
-    </div>  </div>
-</header><div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
 <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
   <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
@@ -113,7 +104,6 @@ background-size: cover;
 
 
 
-  
 
 
 <section id="introduction" class="level1">
@@ -381,7 +371,7 @@ background-size: cover;
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/hassothea\.github\.io\/Data_Analytics_AUPP");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
