@@ -50,10 +50,10 @@ has something for everyone.
 
 | **`Criteria`**                                | **`Percentage`** |
 |:----------------------------------------------|:----------------:|
-| Participation & quiz                          |       10%        |
+| In-class activity & quiz                      |       15%        |
 | Labs                                          |       30%        |
 | Midterm Exam                                  |       30%        |
-| Final Project & Presentation / Practical labs |       30%        |
+| Final Project & Presentation                  |       30%        |
 
 ## **Programming:**
 
