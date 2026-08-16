@@ -51,7 +51,7 @@ has something for everyone.
 | **`Criteria`**                                | **`Percentage`** |
 |:----------------------------------------------|:----------------:|
 | In-class activity & quiz                      |       15%        |
-| Labs                                          |       30%        |
+| Labs                                          |       25%        |
 | Midterm Exam                                  |       30%        |
 | Final Project & Presentation                  |       30%        |
 
