@@ -151,12 +151,7 @@ window.Quarto = {
 <li>Load the dataset and inspect its structure (dimension).</li>
 <li>Identify quantitative and qualitative columns. Modify column types if necessary. Quick summary statistics for each type.</li>
 <li>Detect outliers and take note of columns with outliers.</li>
-<li>Inspect missing values in all columns of the dataset. You can handle them simply by imputing with <code>mode</code> for categorical column or <code>median</code> for numerical columns.
-<ul>
-<li><strong>Further investigation (optional):</strong> If you wonder if these simple imputation would introduce bias or not, you can study the nature of those missing values, for example, how does it affect other columns.</li>
-<li>Study the relation between those missing values with other features: quantitative and qualitative using bivariate visualization or correlation.</li>
-<li>Then draw your own conclusion of whether it’s reasonable or not to impute them with <code>mode</code> or <code>median</code>.</li>
-</ul></li>
+<li>Inspect missing values in all columns of the dataset. As the missing values represent a state of the column where the accesses are not encripted, we simply denote those missing values by <code>not_encripted</code> instead of imputing them.</li>
 </ul>
 <div id="cell-5" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># To do</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
