@@ -179,17 +179,17 @@ window.Quarto = {
 <li>The traffic uses an unknown browser type and detected as an attack.</li>
 <li>The traffic has tried to login less than 4 times and detected as an attack.</li>
 <li>The traffic has tried to login more than 6 times and detected as an attack.</li>
-<li>The traffic is an attact or attempted to login more than 8 times.</li>
+<li>The traffic is an attack or attempted to login more than 8 times.</li>
 </ol>
 <div id="cell-9" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># To do</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p><strong>B.2. COnditional Information:</strong></p>
+<p><strong>B.2. Conditional Information:</strong></p>
 <ol type="1">
 <li>Knowing that a traffic occurs during unusual time access, what is the probability that it’s an attack?</li>
 <li>What’s the probability that it’s an attack given that it uses AES encryption?</li>
 <li>If a traffic has tried to login more than 6 times, what’s the chance that it’s an attack?</li>
-<li>What’s the probability that it’s an attack given that it uses an unknown browswer tyep?</li>
+<li>What’s the probability that it’s an attack given that it uses an unknown browser tyep?</li>
 <li>What’s the probability that it’s an attack given that it uses an unknown browser type and has tried to login more than 5 times?</li>
 </ol>
 <div id="cell-11" class="cell">
@@ -205,7 +205,7 @@ window.Quarto = {
 <li><span class="math inline">\(Z:\)</span> ‘The number of failed logins’</li>
 </ul>
 <p><strong>A.</strong> What’s the distribution of <span class="math inline">\(X\)</span>?</p>
-<p><strong>B.</strong> Visualize the distribution of <span class="math inline">\(Y\)</span>. Which distribution to do you think best describes the distribution of <span class="math inline">\(Y\)</span>? Give its PMF.</p>
+<p><strong>B.</strong> Visualize the distribution of <span class="math inline">\(Y\)</span>. Which distribution do you think best describes the distribution of <span class="math inline">\(Y\)</span>? Give its PMF.</p>
 <p><strong>C.</strong> Repeat the previous question with <span class="math inline">\(Z\)</span>.</p>
 <p><strong>D.</strong> If we let <span class="math inline">\(W = (X\mid Y\geq 5)\)</span> be the random variable that represents the probability of an attack given that there are at least 5 login attempts, what’s its distribution?</p>
 <p><strong>E.</strong> If we let <span class="math inline">\(V = (Z\mid X=0)\)</span> be the random variable that represents the number of failed logins given that it’s not an attack, what’s its distribution?</p>
